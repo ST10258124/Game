@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://bg4iuiel3lr3y"]
+
+[ext_resource type="ArrayMesh" uid="uid://dpposqh186os1" path="res://Blender/Left_Spike.obj" id="1_l5rs0"]
+[ext_resource type="Script" path="res://Detect_Avoid.cs" id="2_puupk"]
+[ext_resource type="Material" uid="uid://kop6xf4ifcg5" path="res://New folder/Walls_Spikes.tres" id="2_vn4lf"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_afq30"]
+points = PackedVector3Array(3, -0.375, -4, -5, -0.375, 0, -5, -0.375, -2.00039, 3, 0.374999, -4, -5, 0.374999, 0, -5, 0.374999, -2.00039)
+
+[node name="RigidBody3D" type="RigidBody3D"]
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+gravity_scale = 0.0
+
+[node name="LeftSpike" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_l5rs0")
+surface_material_override/0 = ExtResource("2_vn4lf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_afq30")
+
+[node name="Detector" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -4)
+target_position = Vector3(2, 0, 0)
+collision_mask = 4
+script = ExtResource("2_puupk")
+
+[node name="Area3D" type="Area3D" parent="." groups=["Spike"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("ConvexPolygonShape3D_afq30")

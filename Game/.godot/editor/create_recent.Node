@@ -1,0 +1,14 @@
+Label3D
+Sprite3D
+SubViewport
+Label
+AnimatedSprite3D
+VideoStreamPlayer
+ColorRect
+Sprite2D
+AnimationPlayer
+CanvasLayer
+Node2D
+Camera2D
+FogVolume
+GPUParticles3D

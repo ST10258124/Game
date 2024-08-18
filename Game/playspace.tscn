@@ -1,0 +1,958 @@
+[gd_scene load_steps=162 format=3 uid="uid://3qlfhxae8rjg"]
+
+[ext_resource type="Script" path="res://Start.cs" id="1_ian6e"]
+[ext_resource type="Texture2D" uid="uid://bb06ux6jkykav" path="res://panorama_image.png" id="2_851rm"]
+[ext_resource type="Material" uid="uid://64mdpovifjk" path="res://New folder/Walls_Spikes - Copy.tres" id="3_3g3xs"]
+[ext_resource type="Material" uid="uid://kop6xf4ifcg5" path="res://New folder/Walls_Spikes.tres" id="3_65cke"]
+[ext_resource type="Material" uid="uid://dke1o3w1dway0" path="res://New folder/BeamInner.tres" id="4_u3s02"]
+[ext_resource type="AudioStream" uid="uid://bgdxfx6x2t5ts" path="res://SFX/Gate.wav" id="6_c7twy"]
+[ext_resource type="AudioStream" uid="uid://dfltjqvr614mk" path="res://SFX/GateSecondary.wav" id="7_8hdgh"]
+[ext_resource type="AudioStream" uid="uid://u862by6qprqc" path="res://SFX/Crackle.ogg" id="7_pqbln"]
+[ext_resource type="AudioStream" uid="uid://6a6sd0q8xpp" path="res://Music/Opening.ogg" id="8_xweed"]
+[ext_resource type="Texture2D" uid="uid://bt62skx5twl8b" path="res://New folder/Flare01.png" id="9_2gvp3"]
+[ext_resource type="Texture2D" uid="uid://e8ct0l18c45n" path="res://2Dstuff/Background.png" id="11_w0o7v"]
+[ext_resource type="Texture2D" uid="uid://bw60fwg53yyvb" path="res://2Dstuff/Title Frames/Game_Fancy_1_00000.png" id="12_d8x7s"]
+[ext_resource type="Texture2D" uid="uid://b3qkt015iwx6w" path="res://2Dstuff/Title Frames/Game_Fancy_1_00001.png" id="13_048ds"]
+[ext_resource type="Texture2D" uid="uid://cv1h66k47kd1y" path="res://2Dstuff/Title Frames/Game_Fancy_1_00002.png" id="14_42wji"]
+[ext_resource type="Texture2D" uid="uid://1oywxoi622jc" path="res://2Dstuff/Title Frames/Game_Fancy_1_00003.png" id="15_airde"]
+[ext_resource type="Texture2D" uid="uid://ohnhwc72e5xu" path="res://2Dstuff/Title Frames/Game_Fancy_1_00004.png" id="16_uhlby"]
+[ext_resource type="Texture2D" uid="uid://bmurnxoyhpwco" path="res://2Dstuff/Title Frames/Game_Fancy_1_00005.png" id="17_4q40k"]
+[ext_resource type="Texture2D" uid="uid://dgu6w15lh6i7g" path="res://2Dstuff/Title Frames/Game_Fancy_1_00006.png" id="18_3agf8"]
+[ext_resource type="Texture2D" uid="uid://drnp017xw3cro" path="res://2Dstuff/Title Frames/Game_Fancy_1_00007.png" id="19_g7djn"]
+[ext_resource type="Texture2D" uid="uid://q657nptmynu2" path="res://2Dstuff/Title Frames/Game_Fancy_1_00008.png" id="20_aus71"]
+[ext_resource type="Texture2D" uid="uid://bhwkgskeys5r0" path="res://2Dstuff/Title Frames/Game_Fancy_1_00009.png" id="21_lxl33"]
+[ext_resource type="Texture2D" uid="uid://dfoh7stihbdkt" path="res://2Dstuff/Title Frames/Game_Fancy_1_00010.png" id="22_78g2r"]
+[ext_resource type="Texture2D" uid="uid://dbrq0rqqi28ti" path="res://2Dstuff/Title Frames/Game_Fancy_1_00011.png" id="23_ehx8i"]
+[ext_resource type="Texture2D" uid="uid://86atgfjudsh4" path="res://2Dstuff/Title Frames/Game_Fancy_1_00012.png" id="24_eth5c"]
+[ext_resource type="Texture2D" uid="uid://b6k4ubjk4qbsr" path="res://2Dstuff/Title Frames/Game_Fancy_1_00013.png" id="25_ak63x"]
+[ext_resource type="Texture2D" uid="uid://cqa4ehvkdi8yv" path="res://2Dstuff/Title Frames/Game_Fancy_1_00014.png" id="26_8hcyv"]
+[ext_resource type="Texture2D" uid="uid://dnekeddynk6pa" path="res://2Dstuff/Title Frames/Game_Fancy_1_00015.png" id="27_dx2e0"]
+[ext_resource type="Texture2D" uid="uid://dhljnpmrltil2" path="res://2Dstuff/Title Frames/Game_Fancy_1_00016.png" id="28_uacwt"]
+[ext_resource type="Texture2D" uid="uid://t8ueksjbnyr3" path="res://2Dstuff/Title Frames/Game_Fancy_1_00017.png" id="29_f0ote"]
+[ext_resource type="Texture2D" uid="uid://qvys7hofrvhq" path="res://2Dstuff/Title Frames/Game_Fancy_1_00018.png" id="30_l8gy8"]
+[ext_resource type="Texture2D" uid="uid://i6lo1s447mpv" path="res://2Dstuff/Title Frames/Game_Fancy_1_00019.png" id="31_64hub"]
+[ext_resource type="Texture2D" uid="uid://briivqsji08l0" path="res://2Dstuff/Title Frames/Game_Fancy_1_00020.png" id="32_7dkx0"]
+[ext_resource type="Texture2D" uid="uid://du4cdm5xt6237" path="res://2Dstuff/Title Frames/Game_Fancy_1_00021.png" id="33_n1nyt"]
+[ext_resource type="Texture2D" uid="uid://ctq7v0ryoo7l3" path="res://2Dstuff/Title Frames/Game_Fancy_1_00022.png" id="34_batfp"]
+[ext_resource type="Texture2D" uid="uid://di04cmah8kshb" path="res://2Dstuff/Title Frames/Game_Fancy_1_00023.png" id="35_qstsj"]
+[ext_resource type="Texture2D" uid="uid://cjvlwjtms6x3v" path="res://2Dstuff/Title Frames/Game_Fancy_1_00024.png" id="36_bjsk2"]
+[ext_resource type="Texture2D" uid="uid://b6b2capbave34" path="res://2Dstuff/Title Frames/Game_Fancy_1_00025.png" id="37_48le7"]
+[ext_resource type="Texture2D" uid="uid://bb3ld2v2w4gha" path="res://2Dstuff/Title Frames/Game_Fancy_1_00026.png" id="38_2xh61"]
+[ext_resource type="Texture2D" uid="uid://rumr1vyhs84w" path="res://2Dstuff/Title Frames/Game_Fancy_1_00027.png" id="39_okrv4"]
+[ext_resource type="Texture2D" uid="uid://dt7dww7l8c5pe" path="res://2Dstuff/Title Frames/Game_Fancy_1_00028.png" id="40_ay1i4"]
+[ext_resource type="Texture2D" uid="uid://cji1b5aj4a7k" path="res://2Dstuff/Title Frames/Game_Fancy_1_00029.png" id="41_81gi1"]
+[ext_resource type="Texture2D" uid="uid://chyxx7gxc2k45" path="res://2Dstuff/Title Frames/Game_Fancy_1_00030.png" id="42_oeq26"]
+[ext_resource type="Texture2D" uid="uid://bof1r3hdbmdjb" path="res://2Dstuff/Title Frames/Game_Fancy_1_00031.png" id="43_1hip2"]
+[ext_resource type="Texture2D" uid="uid://dtn23nrqipsin" path="res://2Dstuff/Title Frames/Game_Fancy_1_00032.png" id="44_o4stq"]
+[ext_resource type="Texture2D" uid="uid://cnwf8dt80b81x" path="res://2Dstuff/Title Frames/Game_Fancy_1_00033.png" id="45_nlk77"]
+[ext_resource type="Texture2D" uid="uid://cwosdfolt3gj0" path="res://2Dstuff/Title Frames/Game_Fancy_1_00034.png" id="46_fgfbt"]
+[ext_resource type="Texture2D" uid="uid://crggo78j360so" path="res://2Dstuff/Title Frames/Game_Fancy_1_00035.png" id="47_4nf0k"]
+[ext_resource type="Texture2D" uid="uid://ckrvaegtr02jh" path="res://2Dstuff/Title Frames/Game_Fancy_1_00036.png" id="48_6snkk"]
+[ext_resource type="Texture2D" uid="uid://csf6u68n41ir0" path="res://2Dstuff/Title Frames/Game_Fancy_1_00037.png" id="49_t2xne"]
+[ext_resource type="Texture2D" uid="uid://b8q5n824g5ur0" path="res://2Dstuff/Title Frames/Game_Fancy_1_00038.png" id="50_obfq3"]
+[ext_resource type="Texture2D" uid="uid://cfogtx6j2sfe8" path="res://2Dstuff/Title Frames/Game_Fancy_1_00039.png" id="51_2r76t"]
+[ext_resource type="Texture2D" uid="uid://c3ibr6hcnqcyk" path="res://2Dstuff/Title Frames/Game_Fancy_1_00040.png" id="52_dqbql"]
+[ext_resource type="Texture2D" uid="uid://hpiagtt1wann" path="res://2Dstuff/Title Frames/Game_Fancy_1_00041.png" id="53_oq452"]
+[ext_resource type="Texture2D" uid="uid://wf1a1istm3qg" path="res://2Dstuff/Title Frames/Game_Fancy_1_00042.png" id="54_japkw"]
+[ext_resource type="Texture2D" uid="uid://l35ss13pwsbr" path="res://2Dstuff/Title Frames/Game_Fancy_1_00043.png" id="55_pjd7n"]
+[ext_resource type="Texture2D" uid="uid://eosh6twib640" path="res://2Dstuff/Title Frames/Game_Fancy_1_00044.png" id="56_6awvc"]
+[ext_resource type="Texture2D" uid="uid://6ud6dhkbn7ri" path="res://2Dstuff/Title Frames/Game_Fancy_1_00045.png" id="57_4xah7"]
+[ext_resource type="Texture2D" uid="uid://c70kf44esof50" path="res://2Dstuff/Title Frames/Game_Fancy_1_00046.png" id="58_lpyru"]
+[ext_resource type="Texture2D" uid="uid://dd7q7rrg6sl0" path="res://2Dstuff/Title Frames/Game_Fancy_1_00047.png" id="59_jtlma"]
+[ext_resource type="Texture2D" uid="uid://dac4lnecj1yhq" path="res://2Dstuff/Title Frames/Game_Fancy_1_00048.png" id="60_nlsxt"]
+[ext_resource type="Texture2D" uid="uid://vkr1m02fxoid" path="res://2Dstuff/Title Frames/Game_Fancy_1_00049.png" id="61_4xxhy"]
+[ext_resource type="Texture2D" uid="uid://cm6fulibr8cfb" path="res://2Dstuff/Title Frames/Game_Fancy_1_00050.png" id="62_cavns"]
+[ext_resource type="Texture2D" uid="uid://bsfrl8dfwi26o" path="res://2Dstuff/Title Frames/Game_Fancy_1_00051.png" id="63_58gi1"]
+[ext_resource type="Texture2D" uid="uid://det0rb676j21p" path="res://2Dstuff/Title Frames/Game_Fancy_1_00052.png" id="64_hl4ia"]
+[ext_resource type="Texture2D" uid="uid://bxo6lcgny18kw" path="res://2Dstuff/Title Frames/Game_Fancy_1_00053.png" id="65_fkhg0"]
+[ext_resource type="Texture2D" uid="uid://bu4qagb6jqfb" path="res://2Dstuff/Title Frames/Game_Fancy_1_00054.png" id="66_p0h1p"]
+[ext_resource type="Texture2D" uid="uid://cp2md3kechscf" path="res://2Dstuff/Title Frames/Game_Fancy_1_00055.png" id="67_vx0un"]
+[ext_resource type="Texture2D" uid="uid://bf0dlb4skoeok" path="res://2Dstuff/Title Frames/Game_Fancy_1_00056.png" id="68_pyx5x"]
+[ext_resource type="Texture2D" uid="uid://dk46ivv74nymy" path="res://2Dstuff/Title Frames/Game_Fancy_1_00057.png" id="69_ivo46"]
+[ext_resource type="Texture2D" uid="uid://d08o5ni3xmc8d" path="res://2Dstuff/Title Frames/Game_Fancy_1_00058.png" id="70_voyfg"]
+[ext_resource type="Texture2D" uid="uid://dqdx6up7awc75" path="res://2Dstuff/Title Frames/Game_Fancy_1_00059.png" id="71_sg685"]
+[ext_resource type="Texture2D" uid="uid://dgt86hkv3nt1c" path="res://2Dstuff/Title Frames/Game_Fancy_1_00060.png" id="72_5xqec"]
+[ext_resource type="Texture2D" uid="uid://blmdd8ge7pla4" path="res://2Dstuff/Title Frames/Game_Fancy_1_00061.png" id="73_kla5k"]
+[ext_resource type="Texture2D" uid="uid://dmwtggq0pbiao" path="res://2Dstuff/Title Frames/Game_Fancy_1_00062.png" id="74_vdoto"]
+[ext_resource type="Texture2D" uid="uid://weblocgj3gga" path="res://2Dstuff/Title Frames/Game_Fancy_1_00063.png" id="75_75igt"]
+[ext_resource type="Texture2D" uid="uid://bes3mjosjiugk" path="res://2Dstuff/Title Frames/Game_Fancy_1_00064.png" id="76_d65bn"]
+[ext_resource type="Texture2D" uid="uid://bm85dmmb6t38n" path="res://2Dstuff/Title Frames/Game_Fancy_1_00065.png" id="77_vui2s"]
+[ext_resource type="Texture2D" uid="uid://bbl3ypivr26l2" path="res://2Dstuff/Title Frames/Game_Fancy_1_00066.png" id="78_xyxxx"]
+[ext_resource type="Texture2D" uid="uid://b6xdgswduse1o" path="res://2Dstuff/Title Frames/Game_Fancy_1_00067.png" id="79_4qhrm"]
+[ext_resource type="Texture2D" uid="uid://clih2awfk40lp" path="res://2Dstuff/Title Frames/Game_Fancy_1_00068.png" id="80_b57rv"]
+[ext_resource type="Texture2D" uid="uid://b2m2k0buqsrxr" path="res://2Dstuff/Title Frames/Game_Fancy_1_00069.png" id="81_gudhw"]
+[ext_resource type="Texture2D" uid="uid://50qrbusuqcn2" path="res://2Dstuff/Title Frames/Game_Fancy_1_00070.png" id="82_2oo8s"]
+[ext_resource type="Texture2D" uid="uid://drlcvuvlgghxw" path="res://2Dstuff/Title Frames/Game_Fancy_1_00071.png" id="83_tc78d"]
+[ext_resource type="Texture2D" uid="uid://bp02icv7whnso" path="res://2Dstuff/Title Frames/Game_Fancy_1_00072.png" id="84_vle1b"]
+[ext_resource type="Texture2D" uid="uid://bik1758o6yyt" path="res://2Dstuff/Title Frames/Game_Fancy_1_00073.png" id="85_6dw7l"]
+[ext_resource type="Texture2D" uid="uid://bvyxw3cwojiwg" path="res://2Dstuff/Title Frames/Game_Fancy_1_00074.png" id="86_7y0yo"]
+[ext_resource type="Texture2D" uid="uid://irmoh5u6oxq4" path="res://2Dstuff/Title Frames/Game_Fancy_1_00075.png" id="87_oqhfv"]
+[ext_resource type="Texture2D" uid="uid://bxwwrhgcadxh4" path="res://2Dstuff/Title Frames/Game_Fancy_1_00076.png" id="88_8vket"]
+[ext_resource type="Texture2D" uid="uid://deutj7xvny53w" path="res://2Dstuff/Title Frames/Game_Fancy_1_00077.png" id="89_1rwp7"]
+[ext_resource type="Texture2D" uid="uid://wotqfnq8kn35" path="res://2Dstuff/Title Frames/Game_Fancy_1_00078.png" id="90_f146o"]
+[ext_resource type="Texture2D" uid="uid://c8enipeu5nv3w" path="res://2Dstuff/Title Frames/Game_Fancy_1_00079.png" id="91_lctvh"]
+[ext_resource type="Texture2D" uid="uid://cbdthcivsp2g4" path="res://2Dstuff/Title Frames/Game_Fancy_1_00080.png" id="92_udndt"]
+[ext_resource type="Texture2D" uid="uid://cqweq3cv4gl1x" path="res://2Dstuff/Title Frames/Game_Fancy_1_00081.png" id="93_t524f"]
+[ext_resource type="Texture2D" uid="uid://cck88lovrdywv" path="res://2Dstuff/Title Frames/Game_Fancy_1_00082.png" id="94_cggrh"]
+[ext_resource type="Texture2D" uid="uid://bsp3r2wptvpdb" path="res://2Dstuff/Title Frames/Game_Fancy_1_00083.png" id="95_l2i0c"]
+[ext_resource type="Texture2D" uid="uid://cfm6u8qp7yrk8" path="res://2Dstuff/Title Frames/Game_Fancy_1_00084.png" id="96_2v2ty"]
+[ext_resource type="Texture2D" uid="uid://707yqs4xnsny" path="res://2Dstuff/Title Frames/Game_Fancy_1_00085.png" id="97_dqyh5"]
+[ext_resource type="Texture2D" uid="uid://d12yasusn0wst" path="res://2Dstuff/Title Frames/Game_Fancy_1_00086.png" id="98_rdskk"]
+[ext_resource type="Texture2D" uid="uid://br365mq5d84fy" path="res://2Dstuff/Title Frames/Game_Fancy_1_00087.png" id="99_islqh"]
+[ext_resource type="Texture2D" uid="uid://dryn4esa3heqq" path="res://2Dstuff/Title Frames/Game_Fancy_1_00088.png" id="100_nas7s"]
+[ext_resource type="Texture2D" uid="uid://cy5vaiihiukmr" path="res://2Dstuff/Title Frames/Game_Fancy_1_00089.png" id="101_dflfc"]
+[ext_resource type="Texture2D" uid="uid://4i5mejfc7ty5" path="res://2Dstuff/Title Frames/Game_Fancy_1_00090.png" id="102_4w8wl"]
+[ext_resource type="Texture2D" uid="uid://q2w3f154y0hi" path="res://2Dstuff/Title Frames/Game_Fancy_1_00091.png" id="103_budd8"]
+[ext_resource type="Texture2D" uid="uid://ftdv16yj6pgq" path="res://2Dstuff/Title Frames/Game_Fancy_1_00092.png" id="104_lenvu"]
+[ext_resource type="Texture2D" uid="uid://c1bw84fv6v4nh" path="res://2Dstuff/Title Frames/Game_Fancy_1_00093.png" id="105_utny0"]
+[ext_resource type="Texture2D" uid="uid://dnbesymx0vj0x" path="res://2Dstuff/Title Frames/Game_Fancy_1_00094.png" id="106_6ur3d"]
+[ext_resource type="Texture2D" uid="uid://by3cajyupxnfh" path="res://2Dstuff/Title Frames/Game_Fancy_1_00095.png" id="107_0rkus"]
+[ext_resource type="Texture2D" uid="uid://d2545lf664puy" path="res://2Dstuff/Title Frames/Game_Fancy_1_00096.png" id="108_2o2og"]
+[ext_resource type="Texture2D" uid="uid://okrl77l2aq18" path="res://2Dstuff/Title Frames/Game_Fancy_1_00097.png" id="109_l1tis"]
+[ext_resource type="Texture2D" uid="uid://hfelek1u1og8" path="res://2Dstuff/Title Frames/Game_Fancy_1_00098.png" id="110_xrn3d"]
+[ext_resource type="Texture2D" uid="uid://62rw645xb4xx" path="res://2Dstuff/Title Frames/Game_Fancy_1_00099.png" id="111_i5ujp"]
+[ext_resource type="Texture2D" uid="uid://m14nm2uehr8x" path="res://2Dstuff/Title Frames/Game_Fancy_1_00100.png" id="112_8mgpm"]
+[ext_resource type="Texture2D" uid="uid://djvmfvpok2eo8" path="res://2Dstuff/Title Frames/Game_Fancy_1_00101.png" id="113_2onl5"]
+[ext_resource type="Texture2D" uid="uid://dtue2kxynfxto" path="res://2Dstuff/Title Frames/Game_Fancy_1_00102.png" id="114_3c4gq"]
+[ext_resource type="Texture2D" uid="uid://cbs3j7dbqed3l" path="res://2Dstuff/Title Frames/Game_Fancy_1_00103.png" id="115_b0ow2"]
+[ext_resource type="Texture2D" uid="uid://dmk04k87rcvpg" path="res://2Dstuff/Title Frames/Game_Fancy_1_00104.png" id="116_5ijc0"]
+[ext_resource type="Texture2D" uid="uid://dmf6xnc28qxdy" path="res://2Dstuff/Title Frames/Game_Fancy_1_00105.png" id="117_87mjg"]
+[ext_resource type="Texture2D" uid="uid://c3vh15ap4i5cm" path="res://2Dstuff/Title Frames/Game_Fancy_1_00106.png" id="118_cvy4u"]
+[ext_resource type="Texture2D" uid="uid://kq2wg0oqi3rn" path="res://2Dstuff/Title Frames/Game_Fancy_1_00107.png" id="119_2rxw6"]
+[ext_resource type="Texture2D" uid="uid://bf2omaluh2d6p" path="res://2Dstuff/Title Frames/Game_Fancy_1_00108.png" id="120_ta3sj"]
+[ext_resource type="Texture2D" uid="uid://dknbf7bkof1cg" path="res://2Dstuff/Title Frames/Game_Fancy_1_00109.png" id="121_fa5xn"]
+[ext_resource type="Texture2D" uid="uid://deorvrfur7dli" path="res://2Dstuff/Title Frames/Game_Fancy_1_00110.png" id="122_w4gy4"]
+[ext_resource type="Texture2D" uid="uid://bapcfdk1gf3hw" path="res://2Dstuff/Title Frames/Game_Fancy_1_00111.png" id="123_wihwu"]
+[ext_resource type="Texture2D" uid="uid://dao1fxokl18vx" path="res://2Dstuff/Title Frames/Game_Fancy_1_00112.png" id="124_gelnw"]
+[ext_resource type="Texture2D" uid="uid://cxyoovr6paa2k" path="res://2Dstuff/Title Frames/Game_Fancy_1_00113.png" id="125_2x6og"]
+[ext_resource type="Texture2D" uid="uid://cjjuk76j32itg" path="res://2Dstuff/Title Frames/Game_Fancy_1_00114.png" id="126_p6n2q"]
+[ext_resource type="Texture2D" uid="uid://reburmmal7sn" path="res://2Dstuff/Title Frames/Game_Fancy_1_00115.png" id="127_2xd6p"]
+[ext_resource type="Texture2D" uid="uid://bn6st13viygwp" path="res://2Dstuff/Title Frames/Game_Fancy_1_00116.png" id="128_gmx00"]
+[ext_resource type="Texture2D" uid="uid://dpjkh531quy2o" path="res://2Dstuff/Title Frames/Game_Fancy_1_00117.png" id="129_nlftm"]
+[ext_resource type="Texture2D" uid="uid://cvh2ytblg8iry" path="res://2Dstuff/Title Frames/Game_Fancy_1_00118.png" id="130_4ciaf"]
+[ext_resource type="Texture2D" uid="uid://bjwr656yc6l7a" path="res://2Dstuff/Title Frames/Game_Fancy_1_00119.png" id="131_nth2s"]
+[ext_resource type="Texture2D" uid="uid://y6vby5iwiogg" path="res://2Dstuff/Game_Title_Fancy_BG.png" id="132_g102n"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4cnch"]
+size = Vector3(10, 0.25, 150)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ouape"]
+panorama = ExtResource("2_851rm")
+
+[sub_resource type="Sky" id="Sky_cknos"]
+sky_material = SubResource("PanoramaSkyMaterial_ouape")
+
+[sub_resource type="Environment" id="Environment_c13pl"]
+background_mode = 2
+sky = SubResource("Sky_cknos")
+sky_custom_fov = 70.0
+sky_rotation = Vector3(-2.72271, 4.53786, -0.698132)
+glow_enabled = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7vlgm"]
+particle_flag_rotate_y = true
+emission_shape = 3
+emission_box_extents = Vector3(8.75, 4, 0)
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+gravity = Vector3(0, 0, -9.8)
+linear_accel_min = -4.0
+linear_accel_max = 8.0
+scale_min = 0.75
+scale_max = 1.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_u34mj"]
+size = Vector3(1.5, 1.5, 1.5)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_62gg7"]
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_box_extents = Vector3(0.25, 0.5, 0)
+spread = 90.0
+gravity = Vector3(25, 0, 50)
+color = Color(2, 2, 2, 1)
+turbulence_enabled = true
+turbulence_noise_strength = 20.0
+turbulence_noise_scale = 5.0
+turbulence_noise_speed = Vector3(2, 0, 1)
+turbulence_noise_speed_random = 0.0
+turbulence_influence_min = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ujsg3"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.5, 4, 4, 1)
+albedo_texture = ExtResource("9_2gvp3")
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_ugweh"]
+material = SubResource("StandardMaterial3D_ujsg3")
+flip_faces = true
+size = 0.2
+sections = 4
+section_segments = 4
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ju0ch"]
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_box_extents = Vector3(0.25, 0.5, 0)
+spread = 90.0
+gravity = Vector3(-25, 0, 50)
+color = Color(2, 2, 2, 1)
+turbulence_enabled = true
+turbulence_noise_strength = 20.0
+turbulence_noise_scale = 5.0
+turbulence_noise_speed = Vector3(-2, 0, 1)
+turbulence_noise_speed_random = 0.0
+turbulence_influence_min = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yw6f5"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(4, 0.5, 4, 1)
+albedo_texture = ExtResource("9_2gvp3")
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_cie2m"]
+material = SubResource("StandardMaterial3D_yw6f5")
+flip_faces = true
+size = 0.2
+sections = 4
+section_segments = 4
+
+[sub_resource type="BoxMesh" id="BoxMesh_2dipe"]
+size = Vector3(0.65, 0.65, 0.65)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vyrvn"]
+size = Vector3(0.325, 0.325, 0.325)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mgoek"]
+size = Vector3(0.65, 0.65, 0.65)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2kym6"]
+particle_flag_align_y = true
+emission_shape = 1
+emission_sphere_radius = 1.5
+spread = 180.0
+initial_velocity_min = 16.0
+initial_velocity_max = 32.0
+gravity = Vector3(50, -50, 0)
+linear_accel_min = 10.0
+linear_accel_max = 25.0
+radial_accel_min = 32.0
+radial_accel_max = 64.0
+tangential_accel_min = 32.0
+tangential_accel_max = 64.0
+color = Color(2, 2, 2, 1)
+turbulence_noise_strength = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g17b5"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.5, 4, 4, 1)
+albedo_texture = ExtResource("9_2gvp3")
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_8jfib"]
+material = SubResource("StandardMaterial3D_g17b5")
+size = 0.2
+sections = 4
+section_segments = 4
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_thant"]
+particle_flag_align_y = true
+emission_shape = 1
+emission_sphere_radius = 1.5
+spread = 180.0
+initial_velocity_min = 16.0
+initial_velocity_max = 32.0
+gravity = Vector3(-50, -50, 0)
+linear_accel_min = 10.0
+linear_accel_max = 25.0
+radial_accel_min = 32.0
+radial_accel_max = 64.0
+tangential_accel_min = 32.0
+tangential_accel_max = 64.0
+color = Color(2, 2, 2, 1)
+turbulence_noise_strength = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qlnk3"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(4, 0.5, 4, 1)
+albedo_texture = ExtResource("9_2gvp3")
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_ofm2e"]
+material = SubResource("StandardMaterial3D_qlnk3")
+size = 0.2
+sections = 4
+section_segments = 4
+
+[sub_resource type="BoxMesh" id="BoxMesh_x1511"]
+size = Vector3(1, 0.75, 30)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_d35gw"]
+points = PackedVector3Array(0.5, 0.375, 15, 0.5, -0.375, 15, 0.5, 0.375, -15, -0.5, 0.375, 15, -0.5, -0.375, 15, 0.5, -0.375, -15, -0.5, 0.375, -15, -0.5, -0.375, -15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2odi3"]
+size = Vector3(1, 0.75, 0.75)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uxxmu"]
+points = PackedVector3Array(0.5, 0.375, 15, 0.5, -0.375, 15, 0.5, 0.375, -15, -0.5, 0.375, 15, -0.5, -0.375, 15, 0.5, -0.375, -15, -0.5, 0.375, -15, -0.5, -0.375, -15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bhf7m"]
+size = Vector3(1, 0.75, 0.75)
+
+[sub_resource type="Animation" id="Animation_o3ogq"]
+resource_name = "FadeOut"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackBG:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_de55m"]
+_data = {
+"FadeOut": SubResource("Animation_o3ogq")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v10oa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_d8x7s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_048ds")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_42wji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_airde")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_uhlby")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_4q40k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_3agf8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_g7djn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_aus71")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_lxl33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_78g2r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_ehx8i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_eth5c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_ak63x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_8hcyv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_dx2e0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_uacwt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_f0ote")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_l8gy8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_64hub")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_7dkx0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_n1nyt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_batfp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_qstsj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_bjsk2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_48le7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_2xh61")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_okrv4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_ay1i4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_81gi1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_oeq26")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_1hip2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_o4stq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_nlk77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_fgfbt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_4nf0k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_6snkk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_t2xne")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_obfq3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_2r76t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_dqbql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_oq452")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_japkw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_pjd7n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_6awvc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_4xah7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_lpyru")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_jtlma")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_nlsxt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_4xxhy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_cavns")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_58gi1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_hl4ia")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_fkhg0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_p0h1p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_vx0un")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_pyx5x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_ivo46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_voyfg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_sg685")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_5xqec")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_kla5k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_vdoto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_75igt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_d65bn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_vui2s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_xyxxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_4qhrm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_b57rv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_gudhw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_2oo8s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_tc78d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_vle1b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_6dw7l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_7y0yo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_oqhfv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_8vket")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_1rwp7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_f146o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_lctvh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_udndt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_t524f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_cggrh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_l2i0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_2v2ty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("97_dqyh5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("98_rdskk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_islqh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_nas7s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_dflfc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_4w8wl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("103_budd8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_lenvu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("105_utny0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("106_6ur3d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("107_0rkus")
+}, {
+"duration": 1.0,
+"texture": ExtResource("108_2o2og")
+}, {
+"duration": 1.0,
+"texture": ExtResource("109_l1tis")
+}, {
+"duration": 1.0,
+"texture": ExtResource("110_xrn3d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("111_i5ujp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("112_8mgpm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("113_2onl5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("114_3c4gq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("115_b0ow2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("116_5ijc0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("117_87mjg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("118_cvy4u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("119_2rxw6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("120_ta3sj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("121_fa5xn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("122_w4gy4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("123_wihwu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("124_gelnw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("125_2x6og")
+}, {
+"duration": 1.0,
+"texture": ExtResource("126_p6n2q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("127_2xd6p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("128_gmx00")
+}, {
+"duration": 1.0,
+"texture": ExtResource("129_nlftm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("130_4ciaf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("131_nth2s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 60.0
+}]
+
+[node name="StaticBody3D" type="StaticBody3D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_ian6e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -66)
+shape = SubResource("BoxShape3D_4cnch")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.573577, 0.819152, 0, -0.819152, 0.573577, 0, 4, 8)
+fov = 90.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_c13pl")
+
+[node name="Blocks" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 13)
+layers = 8
+amount = 325
+lifetime = 4.5
+preprocess = 2.25
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_7vlgm")
+draw_pass_1 = SubResource("BoxMesh_u34mj")
+
+[node name="MetalSparksLeft" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75, 0.5, 6.5)
+emitting = false
+amount = 250
+preprocess = 0.1
+randomness = 0.5
+fixed_fps = 60
+trail_enabled = true
+trail_lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_62gg7")
+draw_pass_1 = SubResource("RibbonTrailMesh_ugweh")
+
+[node name="MetalSparksRight" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75, 0.5, 6.5)
+emitting = false
+amount = 250
+preprocess = 0.1
+randomness = 0.5
+fixed_fps = 60
+trail_enabled = true
+trail_lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_ju0ch")
+draw_pass_1 = SubResource("RibbonTrailMesh_cie2m")
+
+[node name="ParticleLightFront" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.999798, -0.00286717, 0.0198993, -0.0201048, -0.142582, 0.989579, 0, -0.989779, -0.142611, 0, 0, 0)
+light_color = Color(0, 0, 0, 1)
+light_cull_mask = 4294966280
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.574863, 0.81825, 0, -0.81825, 0.574863, 0, 0, 10.1094)
+light_color = Color(0, 0.490196, 1, 1)
+light_energy = 16.0
+light_cull_mask = 4294966280
+spot_range = 27.9769
+spot_angle = 66.4106
+
+[node name="PlayerLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.701556, 0.712614, 0, -0.712614, -0.701556, 0, 3.08295, 0)
+light_cull_mask = 4294967287
+
+[node name="Beam" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 6.5)
+
+[node name="Outer" type="MeshInstance3D" parent="Beam"]
+mesh = SubResource("BoxMesh_2dipe")
+surface_material_override/0 = ExtResource("3_3g3xs")
+
+[node name="Inner" type="MeshInstance3D" parent="Beam"]
+mesh = SubResource("BoxMesh_vyrvn")
+surface_material_override/0 = ExtResource("4_u3s02")
+
+[node name="Area3D" type="Area3D" parent="Beam"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Beam/Area3D"]
+shape = SubResource("BoxShape3D_mgoek")
+
+[node name="HumMiddle" type="AudioStreamPlayer3D" parent="Beam"]
+
+[node name="SparksGateBlue" type="GPUParticles3D" parent="Beam"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, -1, 0.5)
+emitting = false
+amount = 300
+lifetime = 2.0
+one_shot = true
+preprocess = 0.1
+explosiveness = 0.8
+randomness = 0.25
+fixed_fps = 60
+trail_enabled = true
+trail_lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_2kym6")
+draw_pass_1 = SubResource("RibbonTrailMesh_8jfib")
+
+[node name="SparksGatePink" type="GPUParticles3D" parent="Beam"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, -1, 0.5)
+emitting = false
+amount = 300
+lifetime = 2.0
+one_shot = true
+preprocess = 0.1
+explosiveness = 0.8
+randomness = 0.25
+fixed_fps = 60
+trail_enabled = true
+trail_lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_thant")
+draw_pass_1 = SubResource("RibbonTrailMesh_ofm2e")
+
+[node name="WallLeft" type="StaticBody3D" parent="."]
+collision_layer = 6
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WallLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0.5, -6)
+mesh = SubResource("BoxMesh_x1511")
+surface_material_override/0 = ExtResource("3_65cke")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0.5, -6)
+shape = SubResource("ConvexPolygonShape3D_d35gw")
+
+[node name="CrackleLeft" type="AudioStreamPlayer3D" parent="WallLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, 10)
+stream = ExtResource("7_pqbln")
+
+[node name="MetallicLeft" type="AudioStreamPlayer3D" parent="WallLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, 8)
+
+[node name="Area3D" type="Area3D" parent="WallLeft" groups=["LeftWall"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0.5, 6.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallLeft/Area3D"]
+shape = SubResource("BoxShape3D_2odi3")
+
+[node name="WallRight" type="StaticBody3D" parent="."]
+collision_layer = 6
+collision_mask = 0
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="WallRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0.5, -6)
+mesh = SubResource("BoxMesh_x1511")
+surface_material_override/0 = ExtResource("3_65cke")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0.5, -6)
+shape = SubResource("ConvexPolygonShape3D_uxxmu")
+
+[node name="CrackleRight" type="AudioStreamPlayer3D" parent="WallRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, 10)
+stream = ExtResource("7_pqbln")
+
+[node name="MetallicRight" type="AudioStreamPlayer3D" parent="WallRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 4, 8)
+stream = ExtResource("7_pqbln")
+
+[node name="Area3D" type="Area3D" parent="WallRight" groups=["RightWall"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0.5, 6.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallRight/Area3D"]
+shape = SubResource("BoxShape3D_bhf7m")
+
+[node name="ResetTimer" type="Timer" parent="."]
+wait_time = 3.5
+one_shot = true
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_xweed")
+autoplay = true
+
+[node name="Gate" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.375, 6.125)
+stream = ExtResource("6_c7twy")
+emission_angle_enabled = true
+emission_angle_degrees = 90.0
+
+[node name="GateSecondary" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, 6.125)
+stream = ExtResource("7_8hdgh")
+emission_angle_enabled = true
+emission_angle_degrees = 90.0
+
+[node name="HumLeft" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4, 8)
+
+[node name="HumRight" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4, 8)
+
+[node name="2DStuff" type="CanvasLayer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="2DStuff"]
+libraries = {
+"": SubResource("AnimationLibrary_de55m")
+}
+autoplay = "FadeOut"
+
+[node name="BlackBG" type="Sprite2D" parent="2DStuff"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(964, 552.5)
+scale = Vector2(1.025, 1.05463)
+texture = ExtResource("11_w0o7v")
+
+[node name="AnimatedTitle" type="AnimatedSprite3D" parent="2DStuff"]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 2.75, 5)
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_v10oa")
+frame = 66
+frame_progress = 0.80018
+
+[node name="TitleBG" type="Sprite3D" parent="2DStuff/AnimatedTitle"]
+sorting_offset = -1.0
+billboard = 1
+texture = ExtResource("132_g102n")
+
+[node name="Prompt" type="Label3D" parent="2DStuff/AnimatedTitle"]
+transform = Transform3D(2.85714, 0, 0, 0, 2.85714, 0, 0, 0, 2.85714, 0, -7.85714, 8.57143)
+billboard = 1
+text = "-Click to Start-"
+font_size = 128
+
+[node name="HighScore" type="Label3D" parent="2DStuff/AnimatedTitle"]
+transform = Transform3D(1.857, 0, 0, 0, 1.857, 0, 0, 0, 1.857, 0, -4, 5)
+billboard = 1
+text = "High Score: "
+font_size = 200
+
+[node name="Label3D" type="Label3D" parent="2DStuff/AnimatedTitle"]
+transform = Transform3D(2.85714, 0, 0, 0, 2.85714, 0, 0, 0, 2.85714, 0, -7.857, 10.5)
+billboard = 1
+text = "dev got lazy. . ."
+font_size = 10
+
+[node name="Score" type="Label3D" parent="2DStuff"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 8.2)
+visible = false
+billboard = 1
+text = "0"
+font_size = 100
+
+[connection signal="area_entered" from="Beam/Area3D" to="." method="Level_Cleared"]
+[connection signal="finished" from="WallLeft/CrackleLeft" to="." method="LeftCrackleLoop"]
+[connection signal="finished" from="WallLeft/MetallicLeft" to="." method="LeftMetallicLoop"]
+[connection signal="area_entered" from="WallLeft/Area3D" to="." method="LeftMetallic"]
+[connection signal="area_exited" from="WallLeft/Area3D" to="." method="LeftMetallicStop"]
+[connection signal="finished" from="WallRight/CrackleRight" to="." method="RightCrackleLoop"]
+[connection signal="finished" from="WallRight/MetallicRight" to="." method="RightMetallicLoop"]
+[connection signal="area_entered" from="WallRight/Area3D" to="." method="RightMetallic"]
+[connection signal="area_exited" from="WallRight/Area3D" to="." method="RightMetallicStop"]
+[connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]
+[connection signal="finished" from="BGM" to="." method="_on_bgm_finished"]
+[connection signal="animation_finished" from="2DStuff/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

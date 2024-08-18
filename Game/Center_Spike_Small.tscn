@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdu0p8xrsfrtf"]
+
+[ext_resource type="Script" path="res://Detect_Avoid.cs" id="1_it8pu"]
+[ext_resource type="Material" uid="uid://kop6xf4ifcg5" path="res://New folder/Walls_Spikes.tres" id="1_ss7w4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_arasw"]
+size = Vector3(4.242, 0.75, 4.242)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lyfet"]
+points = PackedVector3Array(-2.121, -0.375, -2.121, -2.121, 0.375, -2.121, 2.121, -0.375, -2.121, -2.121, -0.375, 2.121, -2.121, 0.375, 2.121, 2.121, 0.375, -2.121, 2.121, -0.375, 2.121, 2.121, 0.375, 2.121)
+
+[node name="RigidBody3D" type="RigidBody3D"]
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+gravity_scale = 0.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, -3)
+mesh = SubResource("BoxMesh_arasw")
+surface_material_override/0 = ExtResource("1_ss7w4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, -3)
+shape = SubResource("ConvexPolygonShape3D_lyfet")
+
+[node name="Detector" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -6)
+target_position = Vector3(10, 0, 0)
+collision_mask = 4
+script = ExtResource("1_it8pu")
+
+[node name="Area3D" type="Area3D" parent="." groups=["Spike"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, -3)
+shape = SubResource("ConvexPolygonShape3D_lyfet")

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cbko5hj41fim2"
+path="res://.godot/imported/Menu Variation2.ogg-c5a8693a618fd3ef644f9f06379103d7.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/Menu Variation2.ogg"
+dest_files=["res://.godot/imported/Menu Variation2.ogg-c5a8693a618fd3ef644f9f06379103d7.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

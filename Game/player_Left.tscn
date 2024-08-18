@@ -1,0 +1,115 @@
+[gd_scene load_steps=16 format=3 uid="uid://cp3lii1467a5m"]
+
+[ext_resource type="Script" path="res://playerLeft.cs" id="1_cq4b5"]
+[ext_resource type="Material" uid="uid://d3kgljg5nlmoq" path="res://New folder/Glitch.tres" id="2_fygsc"]
+[ext_resource type="Texture2D" uid="uid://bt62skx5twl8b" path="res://New folder/Flare01.png" id="3_pfp13"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8jr3e"]
+size = Vector3(0.75, 0.75, 0.75)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3g6ht"]
+size = Vector3(0.75, 0.75, 0.75)
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_ulh5a"]
+albedo_color = Color(0.588235, 1, 1, 1)
+emission_enabled = true
+emission = Color(0, 1.5, 1.5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3dyx4"]
+size = Vector3(0.65, 0.65, 0.65)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_58jw8"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ap5mr"]
+size = Vector3(0.75, 0.75, 0.75)
+
+[sub_resource type="Environment" id="Environment_od5a1"]
+glow_enabled = true
+glow_intensity = 8.0
+glow_strength = 0.8
+volumetric_fog_length = 1.0
+adjustment_contrast = 2.5
+adjustment_saturation = 0.6
+
+[sub_resource type="Curve" id="Curve_q0hc6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_rqd2s"]
+curve = SubResource("Curve_q0hc6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k70rq"]
+emission_shape = 3
+emission_box_extents = Vector3(0.375, 0.375, 0)
+gravity = Vector3(0, 0, 100)
+alpha_curve = SubResource("CurveTexture_rqd2s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeexc"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 2, 2, 1)
+albedo_texture = ExtResource("3_pfp13")
+
+[sub_resource type="QuadMesh" id="QuadMesh_15atm"]
+lightmap_size_hint = Vector2i(3, 3)
+material = SubResource("StandardMaterial3D_eeexc")
+size = Vector2(0.2, 0.2)
+orientation = 1
+
+[node name="PlayerChar" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 5
+axis_lock_linear_y = true
+script = ExtResource("1_cq4b5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_8jr3e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_3g6ht")
+surface_material_override/0 = SubResource("ORMMaterial3D_ulh5a")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D"]
+light_color = Color(0, 1, 1, 1)
+light_energy = 0.75
+omni_range = 1.25
+omni_attenuation = 0.5
+
+[node name="GlitchBG" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_3dyx4")
+skeleton = NodePath("Glitch")
+surface_material_override/0 = SubResource("StandardMaterial3D_58jw8")
+
+[node name="Glitch" type="MeshInstance3D" parent="GlitchBG"]
+mesh = SubResource("BoxMesh_ap5mr")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_fygsc")
+
+[node name="Area3D" type="Area3D" parent="." groups=["Player"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_8jr3e")
+
+[node name="ResetTimer" type="Timer" parent="."]
+wait_time = 3.5
+one_shot = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_od5a1")
+
+[node name="Death" type="AudioStreamPlayer3D" parent="."]
+
+[node name="Trail" type="GPUParticles3D" parent="."]
+amount = 200
+lifetime = 0.2
+preprocess = 0.1
+fixed_fps = 60
+trail_lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_k70rq")
+draw_pass_1 = SubResource("QuadMesh_15atm")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]

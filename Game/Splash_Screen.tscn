@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://bumcuwdbkn5b2"]
+
+[ext_resource type="Script" path="res://Splash.cs" id="1_q61if"]
+
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_l1uon"]
+file = "2Dstuff/Splash.ogg"
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Vid_and_cam" type="Node2D" parent="."]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Vid_and_cam"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -544.0
+offset_right = 960.0
+offset_bottom = 544.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = SubResource("VideoStreamTheora_l1uon")
+autoplay = true
+script = ExtResource("1_q61if")
+
+[node name="Camera2D" type="Camera2D" parent="Vid_and_cam"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+offset_left = -972.0
+offset_top = -556.0
+offset_right = 972.0
+offset_bottom = 552.0
+color = Color(0, 0, 0, 1)
+
+[connection signal="finished" from="Vid_and_cam/VideoStreamPlayer" to="Vid_and_cam/VideoStreamPlayer" method="_on_finished"]

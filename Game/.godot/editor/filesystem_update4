@@ -1,0 +1,15 @@
+res://playspace.tscn
+res://New folder/Walls_Spikes - Copy.tres
+res://New folder/Walls_Spikes.tres
+res://New folder/BeamInner.tres
+res://New folder/GateInner.gdshader
+res://New folder/GateOuter.gdshader
+res://New folder/GateMiddle.gdshader
+res://Splash_Screen.tscn
+res://Detect_Avoid.cs
+res://Explode.cs
+res://Globals.cs
+res://playerLeft.cs
+res://playerRight.cs
+res://Splash.cs
+res://Start.cs

@@ -1,0 +1,56 @@
+[gd_scene load_steps=11 format=3 uid="uid://b6041vve88ppl"]
+
+[ext_resource type="Shader" path="res://New folder/GateOuter.gdshader" id="1_m7eov"]
+[ext_resource type="Shader" path="res://New folder/GateInner.gdshader" id="1_mxynx"]
+[ext_resource type="Shader" path="res://New folder/GateMiddle.gdshader" id="2_xfuu8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vfc7q"]
+size = Vector3(10, 0.75, 0.75)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0e555"]
+render_priority = 0
+shader = ExtResource("1_m7eov")
+
+[sub_resource type="BoxMesh" id="BoxMesh_mh0jh"]
+size = Vector3(10, 0.5, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5c132"]
+render_priority = 0
+shader = ExtResource("2_xfuu8")
+
+[sub_resource type="BoxMesh" id="BoxMesh_fcshq"]
+size = Vector3(10, 0.25, 0.25)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bldi4"]
+render_priority = 0
+shader = ExtResource("1_mxynx")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2h5sr"]
+size = Vector3(10, 0.25, 0.25)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="GateOuter" type="MeshInstance3D" parent="."]
+layers = 16
+mesh = SubResource("BoxMesh_vfc7q")
+surface_material_override/0 = SubResource("ShaderMaterial_0e555")
+
+[node name="GateMiddle" type="MeshInstance3D" parent="."]
+layers = 16
+mesh = SubResource("BoxMesh_mh0jh")
+surface_material_override/0 = SubResource("ShaderMaterial_5c132")
+
+[node name="GateInner" type="MeshInstance3D" parent="."]
+layers = 16
+mesh = SubResource("BoxMesh_fcshq")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_bldi4")
+
+[node name="Area3D" type="Area3D" parent="." groups=["Gate"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_2h5sr")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

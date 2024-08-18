@@ -1,0 +1,21 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dke1o3w1dway0"]
+
+[resource]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(12, 8, 0, 0.882353)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.0
+emission_operator = 1
+normal_scale = 16.0
+rim_tint = 1.0
+clearcoat_enabled = true
+clearcoat_roughness = 1.0
+anisotropy_enabled = true
+anisotropy = 1.0
+subsurf_scatter_enabled = true
+subsurf_scatter_skin_mode = true
+backlight = Color(0.2, 0.2, 0.2, 1)
+refraction_scale = -1.0
+detail_blend_mode = 3
