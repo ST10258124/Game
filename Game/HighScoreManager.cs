@@ -7,8 +7,8 @@ public class HighScoreManager
 {
     private string _filePath = "highscore.save";
 
-    byte[] key = new byte[32];
-    byte[] iv = new byte[16];
+    static byte[] key = new byte[32];
+    static byte[] iv = new byte[16];
 
     //line 10 and 11. . .don't even ask. hopefully nash covers this sometime
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://diyj642qs3hw6" path="res://Blender/Right_Spike.obj" id="1_6dufh"]
 [ext_resource type="Script" path="res://Detect_Avoid.cs" id="2_5jnck"]
-[ext_resource type="Material" uid="uid://kop6xf4ifcg5" path="res://New folder/Walls_Spikes.tres" id="2_h1725"]
+[ext_resource type="Material" uid="uid://dtb3sf4taa6hh" path="res://New folder/Walls_Spikes.tres" id="2_h1725"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_axyk0"]
 points = PackedVector3Array(-3, -0.375001, -4, -3, 0.374927, -4, 4.99989, -0.375001, -2.00039, 4.99989, -0.375001, 0, 4.99989, 0.375, 0, 4.99989, 0.375, -2.00039)

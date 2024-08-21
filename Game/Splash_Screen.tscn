@@ -1,9 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bumcuwdbkn5b2"]
 
+[ext_resource type="VideoStream" path="res://2Dstuff/Splash.ogv" id="1_4wwc2"]
 [ext_resource type="Script" path="res://Splash.cs" id="1_q61if"]
-
-[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_l1uon"]
-file = "2Dstuff/Splash.ogg"
 
 [node name="Node2D" type="Node2D"]
 
@@ -21,7 +19,7 @@ offset_right = 960.0
 offset_bottom = 544.0
 grow_horizontal = 2
 grow_vertical = 2
-stream = SubResource("VideoStreamTheora_l1uon")
+stream = ExtResource("1_4wwc2")
 autoplay = true
 script = ExtResource("1_q61if")
 

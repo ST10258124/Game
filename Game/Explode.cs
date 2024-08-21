@@ -3,7 +3,7 @@ using System;
 
 public partial class Explode : Node3D
 {
-	Random rng = new Random();
+	static Random rng = new Random();
 
 	public override void _Ready()
 	{

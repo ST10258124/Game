@@ -4,22 +4,24 @@ using Godot;
 public partial class playerLeft : CharacterBody3D
 {
 	[Export]
-	public float Speed = 6.0f;
+	private static float Speed = 6.0f;
 	Globals Controller;
 	Timer Reset;
 	MeshInstance3D playerLeftMesh;
 	MeshInstance3D playerGlitch;
-	PackedScene leftExplode = GD.Load<PackedScene>("res://Explode_Left.tscn");
+	static PackedScene leftExplode = GD.Load<PackedScene>("res://Explode_Left.tscn");
 	Node3D explode;
 	AudioStreamPlayer3D sfxDeath;
 	GpuParticles3D trail;
+	static StringName left = new StringName("MoveLeft");
+	static StringName right = new StringName("MoveRight");
 
-	String[] explosionSounds = { "Explode1", "Explode2" };
+	static string[] explosionSounds = { "Explode1", "Explode2" };
 	public override void _Ready()
 	{
 		Controller = (Globals)GetNode("/root/Globals");
 		Reset = GetNode<Timer>("ResetTimer");
-		explode = (Node3D)leftExplode.Instantiate();
+		
 		playerLeftMesh = GetNode<MeshInstance3D>("MeshInstance3D");
 		playerGlitch = GetNode<MeshInstance3D>("GlitchBG");
 		sfxDeath = GetNode<AudioStreamPlayer3D>("Death");
@@ -33,7 +35,7 @@ public partial class playerLeft : CharacterBody3D
 			Reset.Start();
 			SetPhysicsProcess(false);
 
-			if (!explode.IsInsideTree())
+			if (explode == null)
 			{
 				playerGlitch.Visible = true;
 				playerLeftMesh.Visible = false;
@@ -46,22 +48,22 @@ public partial class playerLeft : CharacterBody3D
 
 		var currentPosition = GlobalTransform.Origin;
 
-		if (!Input.IsActionPressed("MoveLeft") && Input.IsActionPressed("MoveRight"))
+		if (!Input.IsActionPressed(left) && Input.IsActionPressed(right))
 		{ //MOVE RIGHT
 			GlobalPosition = currentPosition.Lerp(new Vector3(4.5f, 0.5f, 6.5f), (Speed + 0.75f) * (float)delta);
 		}
 
-		if (Input.IsActionPressed("MoveLeft") && !Input.IsActionPressed("MoveRight"))
+		if (Input.IsActionPressed(left) && !Input.IsActionPressed(right))
 		{ //MOVE LEFT
 			GlobalPosition = currentPosition.Lerp(new Vector3(-5.25f, 0.5f, 6.5f), Speed * (float)delta);
 		}
 
-		if (Input.IsActionPressed("MoveLeft") && Input.IsActionPressed("MoveRight"))
+		if (Input.IsActionPressed(left) && Input.IsActionPressed(right))
 		{ //SPLIT
 			GlobalPosition = currentPosition.Lerp(new Vector3(-5.25f, 0.5f, 6.5f), Speed * (float)delta);
 		}
 
-		if (!Input.IsActionPressed("MoveLeft") && !Input.IsActionPressed("MoveRight")) //RE-CENTER
+		if (!Input.IsActionPressed(left) && !Input.IsActionPressed(right)) //RE-CENTER
 		{
 			GlobalPosition = currentPosition.Lerp(new Vector3(-0.3f, 0.5f, 6.5f), (Speed + 1.75f) * (float)delta);
 		}
@@ -78,12 +80,13 @@ public partial class playerLeft : CharacterBody3D
 
 	void _on_area_3d_area_entered(Area3D area)
 	{
-		if (area.IsInGroup("Spike"))
+		if (area.IsInGroup("Spike")) //player died
 		{
 			Random rng = new Random();
 
 			Controller.gameOver();
 			playerLeftMesh.Visible = false;
+			explode = (Node3D)leftExplode.Instantiate();
 			AddChild(explode);
 
 			sfxDeath.Stream = (AudioStream)ResourceLoader.Load("res://SFX/" + explosionSounds[rng.Next(2)] + ".wav");
@@ -98,6 +101,7 @@ public partial class playerLeft : CharacterBody3D
 
 	public void _on_reset_timer_timeout()
 	{
-		QueueFree();
+		sfxDeath.Stream.Dispose();
+		if (explode != null) explode.QueueFree();
 	}
 }

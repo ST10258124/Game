@@ -1,0 +1,198 @@
+res://BGM_Shuffler.cs::1708670828::6f7ea0e24331c60e5918fbc4261923b2::CSharpScript
+res://Center_Spike_Big.tscn::1709013702::d4767296cb0b9fd019e0a446ac8f6ef5::PackedScene,BoxMesh,ConvexPolygonShape3D,RigidBody3D,MeshInstance3D,CollisionShape3D,RayCast3D,Area3D
+res://Center_Spike_Small.tscn::1708978089::8d50cc69920798139fe1e8eec69372d6::PackedScene,BoxMesh,ConvexPolygonShape3D,RigidBody3D,MeshInstance3D,CollisionShape3D,RayCast3D,Area3D
+res://Detect_Avoid.cs::1708873248::1ad453d0a35045fa341f391b5cbd467e::CSharpScript
+res://Explode.cs::1714852901::1e330c4d598b137fc9760d33872dc16c::CSharpScript
+res://Explode_Left.tscn::1707980524::c52a0f58f15ae9ca528539323ffa2340::PackedScene,BoxMesh,StandardMaterial3D,BoxShape3D,Node3D,RigidBody3D,MeshInstance3D,CollisionShape3D
+res://Explode_Right.tscn::1707980524::8a431c321b7113fb29ddf4926a850391::PackedScene,BoxMesh,StandardMaterial3D,BoxShape3D,Node3D,RigidBody3D,MeshInstance3D,CollisionShape3D
+res://export_presets.cfg::1712133183::8aad965c5731f99ca2aa39c5282b1c8f::
+res://Gate.tscn::1708453691::ac8b97a0aab9a7fcfb5dea0a5e8117db::PackedScene,BoxMesh,ShaderMaterial,BoxShape3D,Node3D,MeshInstance3D,Area3D,CollisionShape3D
+res://Globals.cs::1717323922::b7698490ea97df4cb083680f4cda3d6c::CSharpScript
+res://HighScoreManager.cs::1708897349::30c9dca5f6492b4710cc92cfd344f37a::CSharpScript
+res://icon.png::1708937893::4408c92e767e1e00746508dfb773e21a::CompressedTexture2D
+res://icon.svg::1706093695::43b305bd3d55f8faec5e5175cbe35533::CompressedTexture2D
+res://Left_Spike.tscn::1709013702::737fffde7ac78db062486b438027c5a8::PackedScene,ConvexPolygonShape3D,RigidBody3D,MeshInstance3D,CollisionShape3D,RayCast3D,Area3D
+res://Lighting.res::1709017741::649d0e133e5fceafdc4ca1ac528b15c3::VoxelGIData
+res://panorama_image.png::1708867710::6091a33e2d3139e08195bbbd17408b3c::CompressedTexture2D
+res://playerLeft.cs::1708622971::3b67d232ef783f5a012827028f94614b::CSharpScript
+res://playerRight.cs::1708622981::53ed0686241e2c06a513fc05138b0925::CSharpScript
+res://player_Left.tscn::1720527111::3f7b90a7db64c568f7190fabb3522ab3::PackedScene,BoxShape3D,BoxMesh,StandardMaterial3D,Curve,CurveTexture,ParticleProcessMaterial,QuadMesh,CharacterBody3D,CollisionShape3D,MeshInstance3D,OmniLight3D,Area3D,Timer,AudioStreamPlayer3D,GPUParticles3D
+res://player_Right.tscn::1720527111::29196a8be6ed03efca5e0a8ec9e24385::PackedScene,BoxShape3D,BoxMesh,StandardMaterial3D,Curve,CurveTexture,ParticleProcessMaterial,QuadMesh,CharacterBody3D,CollisionShape3D,MeshInstance3D,OmniLight3D,Area3D,Timer,AudioStreamPlayer3D,GPUParticles3D
+res://playspace.tscn::1720527111::8f6887e35e29265b160ef6beac24ecb9::PackedScene,QuadOccluder3D,BoxShape3D,PanoramaSkyMaterial,Sky,Environment,ParticleProcessMaterial,BoxMesh,Curve,CurveTexture,StandardMaterial3D,RibbonTrailMesh,ConvexPolygonShape3D,Animation,AnimationLibrary,SpriteFrames,StaticBody3D,OccluderInstance3D,CollisionShape3D,Camera3D,WorldEnvironment,GPUParticles3D,SpotLight3D,DirectionalLight3D,Node3D,MeshInstance3D,Area3D,AudioStreamPlayer3D,Timer,AudioStreamPlayer,CanvasLayer,Label,AnimationPlayer,Sprite2D,AnimatedSprite3D,Sprite3D,Label3D
+res://Right_Spike.tscn::1708965508::30755c57d005578db3ac466f410bded4::PackedScene,ConvexPolygonShape3D,RigidBody3D,MeshInstance3D,CollisionShape3D,RayCast3D,Area3D
+res://Side_Spikes.tscn::1708978128::3d78749a3556390ecc4e993aa5f52304::PackedScene,ConvexPolygonShape3D,RigidBody3D,MeshInstance3D,CollisionShape3D,RayCast3D,Area3D
+res://Splash.cs::1708799078::d84952c43e50d61fc579eeedfe62451a::CSharpScript
+res://Splash_Screen.tscn::1720527111::1b06a2b23ee3fdfdf0dc50bd3cc00b8e::PackedScene,VideoStreamTheora,Node2D,VideoStreamPlayer,Camera2D,ColorRect
+res://Start.cs::1717343581::2fedce2b0991119f355a91a2d4f4fe48::CSharpScript
+res://StringEncryptor.cs::1708896244::c0a5fda96756154636efb3c1a4eb7a50::CSharpScript
+res://2Dstuff/Background.png::1708672259::e35085542560290506476c7ddcef5e2e::CompressedTexture2D
+res://2Dstuff/Game_Title_Fancy_BG.png::1708861554::6858fee54a525bdb53cf5d2c8710ae27::CompressedTexture2D
+res://2Dstuff/Splash.ogg::1708785400::4933f90be02f4d8b171433d0b8185d2d::OggPacketSequence,AudioStreamOggVorbis
+res://2Dstuff/Splash.ogv::1708785879::461ca1bf57403284941a8f9d34db7fa3::VideoStreamTheora
+res://2Dstuff/Title Frames/Game_Fancy_1_00000.png::1708858442::6dde148c0d2a836a4e1d36185a8c9e1a::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00001.png::1708858442::6ed545538a95445c0cfbb7814034de49::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00002.png::1708858442::73c6515d65c41e0d9a80b4eb0e03bfcf::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00003.png::1708858442::34921f526ddef5e6041adf088958ec1f::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00004.png::1708858442::a32fa2589d06d60d88fabce25f19673f::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00005.png::1708858443::135dd203663235072557243c075be911::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00006.png::1708858443::c628498a46c0373f63f04e01adf10453::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00007.png::1708858443::b39527fa62f3f1875da23fb1962fab32::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00008.png::1708858443::e31dbf43f36567a95b5630f234b355d9::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00009.png::1708858443::a71ab6e1b108aadbda5abe0ae891ea36::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00010.png::1708858443::d13bedce699898b054d69cc454740d82::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00011.png::1708858444::42d5165385012e1bcf14d596d0256ac3::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00012.png::1708858444::aa0390955dfed20187c273c5c824763b::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00013.png::1708858444::64b936cb124bd3881ed44c182ab191bf::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00014.png::1708858444::6b9f88c17c9e7610013179d08c9a4b3d::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00015.png::1708858444::67177f4f22df0b8c0093e72b3b68079d::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00016.png::1708858444::0ca0ea1227c868503407b303854c667f::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00017.png::1708858445::1ce7732470988f255361275702844f0c::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00018.png::1708858445::eb8abc30b7483b7c3b13c7cad496d932::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00019.png::1708858445::3790d89a701c1ae50823fbae84a86409::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00020.png::1708858445::041e6509aad8709d23fec951e9ac210d::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00021.png::1708858445::178ea6f79d0411a583afd87a460bd84d::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00022.png::1708858445::292ed63b694f0a5fdba270c2ad4e0325::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00023.png::1708858445::9c66ec153309afa8944335b460625cea::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00024.png::1708858446::6762be05df84305caf1bc451765b264b::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00025.png::1708858446::4ae08e63297a1a19f91deb47dc0dd7d7::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00026.png::1708858446::00cee37e094d15579493cffa14bf2aa3::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00027.png::1708858446::f22b8f6c7475b8002a1ea7b32c12b6d3::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00028.png::1708858446::ca5baef92527deb6f5957b65fdbe755f::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00029.png::1708858446::dee8b3a5c7c2f790cf8c866bb87b028f::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00030.png::1708858447::10e5e77a4aaa1b065640fe1235c90ebf::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00031.png::1708858447::08d2a0b167f750201c37bd3398314b3b::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00032.png::1708858447::a39450c8f945e2a325ada2237da19a16::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00033.png::1708858447::b49195a38c0a943b2f0a104d8d056981::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00034.png::1708858447::6171b8318865c75e20a53e8c5661d609::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00035.png::1708858447::0364af09df2660927d6baac04d3cb326::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00036.png::1708858447::0eda4538033be739fb7e6cc8b53ad9fa::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00037.png::1708858448::b38c30abc866d7c937aec50117307a09::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00038.png::1708858448::97200e1d1000565ca34ad1a19a203955::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00039.png::1708858448::946925b33b3524c2d3b851996b36af3a::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00040.png::1708858448::83f95448250444153dbc12f5280af8eb::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00041.png::1708858448::6bb24d9f7f0a690f950535b1f4a21de4::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00042.png::1708858448::4cbf531b01be99f117be12e76ab9b719::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00043.png::1708858449::8888c5c8ac00c763193eb97242b49bc3::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00044.png::1708858449::ce563c725c70ba3db92a295bca157b60::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00045.png::1708858449::68901eba0825b7f6232e0b730fc8dfa8::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00046.png::1708858449::d4db48b345371b3246706163745ee3b1::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00047.png::1708858449::055fa2ff71c65766fc3b9e7820a98c7b::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00048.png::1708858449::d4b5c1b99dae4c1940d6b9d251669f3d::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00049.png::1708858449::91e0b826067e2fe922c1fd73aad36444::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00050.png::1708858450::18bfafcb671a0e928c330eee6bd807fc::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00051.png::1708858450::7c28ab03cb518314e60237002e977096::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00052.png::1708858450::a7bb66f823d894f23e78a5416f8d747a::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00053.png::1708858450::c6f019c103e7684e5924e851fe2edbe1::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00054.png::1708858450::94bdda5711ad339d695cc510c12e6226::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00055.png::1708858450::4a6cbbfb98492be37a13273293cf72d6::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00056.png::1708858451::8c1bbdf31a69a7751d2e2b04f4d8b304::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00057.png::1708858451::5c15c6fdcd2990ed1d2ff04af5a9ec68::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00058.png::1708858451::4cd0dd6c1ec5c39b7dbf12dd9c3c3dec::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00059.png::1708858451::3934e172886c46c98e7118ed0bf734e6::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00060.png::1708858451::1739f7005e3b6531b290f46886760a3a::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00061.png::1708858451::542026899cbbfd6e48becb6d30c963b9::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00062.png::1708858451::55d42b70ec13d9c0fa72586d7a55ec2c::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00063.png::1708858452::9470d060044cb77e3567db1f88106c92::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00064.png::1708858452::9cb219133af4f992f42608a71d66338f::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00065.png::1708858452::3b161a9f6c9c48861a498d49c29c82ea::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00066.png::1708858452::d5dda92212f27f63450ba95cd8dc3800::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00067.png::1708858452::077e92093f8951c92e41c0dde4b36422::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00068.png::1708858452::ffd167c2fcb17028bce236a215a326d3::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00069.png::1708858453::324b8b9dd759304cb217d14d3a903dab::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00070.png::1708858453::87b873d4a2f7ad5f8fdb00d606621396::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00071.png::1708858453::1d90e83041506c45212dc143fa30ed03::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00072.png::1708858453::02e4b3463286e82ab41298764813daf8::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00073.png::1708858453::43c9d10aa3054bfa88cbf6d00c299f96::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00074.png::1708858453::a8ce995fbb2a29bb204667f4c4247951::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00075.png::1708858454::d838093c510504e4aca11a246a01216f::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00076.png::1708858454::26a20057faf9fa1ae14eb50a80e9076a::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00077.png::1708858454::69f1384f8f1c116aeb513b4b34d4d10f::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00078.png::1708858454::db75338ba0345438c61a1d652ad8b0c1::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00079.png::1708858454::eac64bd440d3c6bbe6e82141b55466fd::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00080.png::1708858454::4be734e3aadbc743a4f47b1e1bfb296f::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00081.png::1708858455::c59d8eec39a68da58ab8c8c08f27acfc::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00082.png::1708858455::e176e51eafb596944a5245800c5a9696::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00083.png::1708858455::a7fbd0fad68ab8fec6d134e3f11a07a9::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00084.png::1708858455::56f25a0025a5047496ed52fb56dae61c::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00085.png::1708858455::d6a00d17ed9394686feb7624219fb068::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00086.png::1708858455::665baed5324fe05464d40033f05928ca::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00087.png::1708858456::c597150da71fa6647b6a7730945d79a9::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00088.png::1708858456::38d64ad950959e73c0240b4d5dc32be7::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00089.png::1708858456::f5df83e44eb356e89b98a704768218fb::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00090.png::1708858456::9b69d792416e60817cefe60d134367d1::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00091.png::1708858456::327486b18cf1ae94badf5a4489760e1f::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00092.png::1708858456::3246a46c39361420f768d5f241f3c552::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00093.png::1708858457::bfee4bfeb2f39fc7ac61b1aa41bc8812::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00094.png::1708858457::7e61d524e942e5336cc285140da06c16::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00095.png::1708858457::c0efa1fd154642f7ad945cf928e51fa6::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00096.png::1708858457::ee4ca17ce2d6cb6d360ec40d920ac43d::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00097.png::1708858457::d75a740e77cb63200b6064ed4304539f::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00098.png::1708858457::86a506f09e82ebc1f7a3bb2e314a148a::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00099.png::1708858458::d85351deece635ddb172d0fc9fd3d340::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00100.png::1708858458::afd0eec2ae8ec2e5377e5a6394febb64::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00101.png::1708858458::f7680df0a9519f9932f673138093dff2::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00102.png::1708858458::769b70df9cd56c3285fc3bb95403c3de::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00103.png::1708858458::4bd6400e54fec30c36b237c5187eba0f::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00104.png::1708858458::644dd02197f22daf653acde76080ac24::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00105.png::1708858459::9ec0b336bc962370c2d5b3194f16a4fe::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00106.png::1708858459::0cb7bf3832c7c86f7c1e577185c701be::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00107.png::1708858459::88c5344d4a729743ecf1df7642cd9f71::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00108.png::1708858459::02694ce7a8f650051643e72ebfe3c2fd::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00109.png::1708858459::c44c9b9783bd663af1d60d4d6c134334::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00110.png::1708858459::7cfc51b114dd4336aad148b78c9a466e::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00111.png::1708858460::8a38850210f04a4e18633176221f1f60::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00112.png::1708858460::67dc0b59faee940fa9875115f033c319::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00113.png::1708858460::615f1504527ded85680d3c41e8d39214::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00114.png::1708858460::1b6d4e7dcdecf2215a7ebda9f752ece5::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00115.png::1708858460::9588831a6f440f98917e7760ddf61999::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00116.png::1708858460::3b321da9772beea8b24c3749aadeccf3::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00117.png::1708858461::90b667f20503dbbd2d840dae66505235::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00118.png::1708858461::627e4a9c7f6512aa2e5f185f02b69b9b::CompressedTexture2D
+res://2Dstuff/Title Frames/Game_Fancy_1_00119.png::1708858461::d2e00b16bf05577796fbb4ed40923141::CompressedTexture2D
+res://addons/godot-jolt/godot-jolt.gdextension::1706262088::806b4fa082d4f563c4b4b403d37658d6::GDExtension
+res://addons/godot-jolt/LICENSE.txt::1706262088::33b30a230ec5777a619fd4a1dd64f4a8::
+res://addons/godot-jolt/THIRDPARTY.txt::1706262088::11d9c183ea866bce5a83bc60a0d6b1c8::
+res://Blender/Left_Spike.blend::1707120954::e935a32e344151979770a325b7b17499::StandardMaterial3D,ntandardMaterial3D
+res://Blender/Left_Spike.obj::1707120811::f153da225830a55f3392d1ae517fb646::ArrayMesh
+res://Blender/Right_Spike.blend::1707121380::5685ea9c937a0a7c065ca62457889dcd::StandardMaterial3D,ntandardMaterial3D
+res://Blender/Right_Spike.obj::1707121402::ed0891d9d8417f3d8ddadc92c318d351::ArrayMesh
+res://Blender/Side_Spike.blend::1707122792::424e205ef3c476428872fe35a534593a::StandardMaterial3D,ntandardMaterial3D
+res://Blender/Side_Spike.obj::1707122799::ffd85d0d0d1354214a8698dda9ead880::ArrayMesh
+res://Music/Menu Variation0.ogg::1708108282::630113a0f8de615bbf50cfc9b178e717::OggPacketSequence,AudioStreamOggVorbis
+res://Music/Menu Variation1.ogg::1708108259::1caaf2cedb542406a92b0b96d8a2f082::OggPacketSequence,AudioStreamOggVorbis
+res://Music/Menu Variation2.ogg::1708172045::cf19c2f7f33401d086ace74ed6d840eb::OggPacketSequence,AudioStreamOggVorbis
+res://Music/Menu Variation3.ogg::1708108147::b01fd1096b80595504b3316f2bb901bc::OggPacketSequence,AudioStreamOggVorbis
+res://Music/Opening.ogg::1708789014::62401e192ba90f62c1dca02e31332b68::OggPacketSequence,AudioStreamOggVorbis
+res://Music/Startup.ogg::1708169785::36648312cd6d8b5646421166bfb6ea2e::OggPacketSequence,AudioStreamOggVorbis
+res://New folder/BeamInner.tres::1720526943::2a233795e745e076cfe6097520162a15::
+res://New folder/Circle03.png::1691058308::5df8892d8430c51a4fb5e9817ee58df6::CompressedTexture2D
+res://New folder/Flare00.PNG::1515583555::6d5e475bd3dbbdc76225f96daa985a8a::CompressedTexture2D
+res://New folder/Flare01.png::1641402714::d30ef9010dbb6798e9d147d4707d6500::CompressedTexture2D
+res://New folder/GateInner.gdshader::1720527238::46fcc6ee4d182d20e499a87b8a9d9294::Shader
+res://New folder/GateMiddle.gdshader::1720527238::220c5fe694e05757b252d56f7ee6924a::Shader
+res://New folder/GateOuter.gdshader::1720527238::93abefe75901f058fe90a0a223e369d1::Shader
+res://New folder/Glitch.gdshader::1707999187::ec449d58d7afe32e2f8ea5683b7ff6f9::Shader
+res://New folder/Glitch.tres::1707999187::210725cc952604c23830370850a1d2a4::
+res://New folder/Glitch_texture_1.png::1707999178::b7d02b3a608c26fb2746dc351b99e9ab::CompressedTexture2D
+res://New folder/Left.tres::1707763067::bab0f843a8dadae72c213040c0771e77::
+res://New folder/Left_albedo.png::1707762580::b3ed84fc5982ce184bc11439b4f9ae7c::CompressedTexture2D
+res://New folder/Left_normal.png::1707762580::eba1cae751448b42db16b5b9439fbac9::CompressedTexture2D
+res://New folder/Right.tres::1707763067::2d842f078307646fb84dc7ead0272739::
+res://New folder/Right_albedo.png::1707762629::26783999024a6b4e70e63f94e9884da9::CompressedTexture2D
+res://New folder/Right_normal.png::1707762629::eba1cae751448b42db16b5b9439fbac9::CompressedTexture2D
+res://New folder/Test.tres::1708362687::e9cbcc2285c28c17c19e9054754ab494::
+res://New folder/Walls_Spikes - Copy.tres::1720526943::25d417f8c902ff66320c97b77caf7a7d::
+res://New folder/Walls_Spikes.tres::1720526943::0d69a40d260a23ba2f71efb2b6812d61::
+res://New folder/Walls_Spikes_orm - Copy.png::1707901802::c5f2aee6d1ea6966f02563805cf02692::CompressedTexture2D
+res://New folder/Walls_Spikes_orm.png::1707901802::c5f2aee6d1ea6966f02563805cf02692::CompressedTexture2D
+res://SFX/Crackle.ogg::1708540465::48890c245a04d05fd89cf0fea276a5e5::OggPacketSequence,AudioStreamOggVorbis
+res://SFX/Explode1.wav::1708184085::9dc28acf55ee0cba7f8833a63f661d57::AudioStreamWAV
+res://SFX/Explode2.wav::1708184007::30f8b4566257f1b0684f465c135c33fb::AudioStreamWAV
+res://SFX/Gate.wav::1708330171::5ee3ffbc30b424605e06e758373dd197::AudioStreamWAV
+res://SFX/GateSecondary.wav::1708330165::21a87164c12ea0b2535c926af8e10b52::AudioStreamWAV
+res://SFX/Glitchy.wav::1708455992::7821a30169324e6f9b239adea4833f06::AudioStreamWAV
+res://SFX/Hum1.wav::1708422099::fd9ce5b620ed1c874cbdfe264cd56cca::AudioStreamWAV
+res://SFX/Hum2.wav::1708422092::5b0e5386f64199c5465995b3bb6b8f8b::AudioStreamWAV
+res://SFX/Metallic1.ogg::1708541587::1023a0a90b2a4de239e38eacbbc6fbb9::OggPacketSequence,AudioStreamOggVorbis
+res://SFX/Metallic2.ogg::1708542105::27f45a46bac82ddc8a09e7ba34b00b92::OggPacketSequence,AudioStreamOggVorbis
+res://SFX/Metallic3.ogg::1708542107::eefc67247d7457e5c4d9927e82788abb::OggPacketSequence,AudioStreamOggVorbis

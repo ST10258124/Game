@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b8q5n824g5ur0"
 path.s3tc="res://.godot/imported/Game_Fancy_1_00038.png-1bbca750f275bd561972c6d73e36fed1.s3tc.ctex"
+path.etc2="res://.godot/imported/Game_Fancy_1_00038.png-1bbca750f275bd561972c6d73e36fed1.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://2Dstuff/Title Frames/Game_Fancy_1_00038.png"
-dest_files=["res://.godot/imported/Game_Fancy_1_00038.png-1bbca750f275bd561972c6d73e36fed1.s3tc.ctex"]
+dest_files=["res://.godot/imported/Game_Fancy_1_00038.png-1bbca750f275bd561972c6d73e36fed1.s3tc.ctex", "res://.godot/imported/Game_Fancy_1_00038.png-1bbca750f275bd561972c6d73e36fed1.etc2.ctex"]
 
 [params]
 

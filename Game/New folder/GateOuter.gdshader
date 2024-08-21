@@ -8,13 +8,13 @@ void vertex() {
 void fragment() {
 	// Called for every pixel the material is visible on.
     // Oscillate color between red and blue over time
-    float t = sin(TIME * 20.0f) * 0.5 + 0.5;
-    vec3 pink = vec3(2.0, 0.0, 5.0);
+    float t = sin(TIME * 16.0f) * 0.5 + 0.5;
+    vec3 pink = vec3(2.0, 0.0, 2.0);
     vec3 aqua = vec3(0.0, 2.0, 2.0);
     vec3 color = mix(pink, aqua, t);
 
     // Set constant transparency (alpha)
-    ALPHA = 0.15;
+    ALPHA = 0.025;
 
     // Assign color and alpha to ALBEDO
     ALBEDO = color;

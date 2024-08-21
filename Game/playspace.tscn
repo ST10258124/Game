@@ -1,17 +1,22 @@
-[gd_scene load_steps=162 format=3 uid="uid://3qlfhxae8rjg"]
+[gd_scene load_steps=186 format=3 uid="uid://3qlfhxae8rjg"]
 
 [ext_resource type="Script" path="res://Start.cs" id="1_ian6e"]
 [ext_resource type="Texture2D" uid="uid://bb06ux6jkykav" path="res://panorama_image.png" id="2_851rm"]
 [ext_resource type="Material" uid="uid://64mdpovifjk" path="res://New folder/Walls_Spikes - Copy.tres" id="3_3g3xs"]
-[ext_resource type="Material" uid="uid://kop6xf4ifcg5" path="res://New folder/Walls_Spikes.tres" id="3_65cke"]
+[ext_resource type="Material" uid="uid://dtb3sf4taa6hh" path="res://New folder/Walls_Spikes.tres" id="3_65cke"]
 [ext_resource type="Material" uid="uid://dke1o3w1dway0" path="res://New folder/BeamInner.tres" id="4_u3s02"]
 [ext_resource type="AudioStream" uid="uid://bgdxfx6x2t5ts" path="res://SFX/Gate.wav" id="6_c7twy"]
+[ext_resource type="AudioStream" uid="uid://c6y75xo06560f" path="res://SFX/Hum1.wav" id="6_ot6h3"]
 [ext_resource type="AudioStream" uid="uid://dfltjqvr614mk" path="res://SFX/GateSecondary.wav" id="7_8hdgh"]
 [ext_resource type="AudioStream" uid="uid://u862by6qprqc" path="res://SFX/Crackle.ogg" id="7_pqbln"]
+[ext_resource type="AudioStream" uid="uid://cf2pxox4kperh" path="res://SFX/Hum2.wav" id="7_t53b8"]
 [ext_resource type="AudioStream" uid="uid://6a6sd0q8xpp" path="res://Music/Opening.ogg" id="8_xweed"]
 [ext_resource type="Texture2D" uid="uid://bt62skx5twl8b" path="res://New folder/Flare01.png" id="9_2gvp3"]
+[ext_resource type="AudioStream" uid="uid://b3k5goow65vkd" path="res://SFX/Metallic1.ogg" id="10_h075w"]
+[ext_resource type="AudioStream" uid="uid://cnyifsya47pvy" path="res://SFX/Metallic2.ogg" id="11_678xb"]
 [ext_resource type="Texture2D" uid="uid://e8ct0l18c45n" path="res://2Dstuff/Background.png" id="11_w0o7v"]
 [ext_resource type="Texture2D" uid="uid://bw60fwg53yyvb" path="res://2Dstuff/Title Frames/Game_Fancy_1_00000.png" id="12_d8x7s"]
+[ext_resource type="AudioStream" uid="uid://bwihnhslclbm1" path="res://SFX/Metallic3.ogg" id="12_s6lyw"]
 [ext_resource type="Texture2D" uid="uid://b3qkt015iwx6w" path="res://2Dstuff/Title Frames/Game_Fancy_1_00001.png" id="13_048ds"]
 [ext_resource type="Texture2D" uid="uid://cv1h66k47kd1y" path="res://2Dstuff/Title Frames/Game_Fancy_1_00002.png" id="14_42wji"]
 [ext_resource type="Texture2D" uid="uid://1oywxoi622jc" path="res://2Dstuff/Title Frames/Game_Fancy_1_00003.png" id="15_airde"]
@@ -132,9 +137,13 @@
 [ext_resource type="Texture2D" uid="uid://cvh2ytblg8iry" path="res://2Dstuff/Title Frames/Game_Fancy_1_00118.png" id="130_4ciaf"]
 [ext_resource type="Texture2D" uid="uid://bjwr656yc6l7a" path="res://2Dstuff/Title Frames/Game_Fancy_1_00119.png" id="131_nth2s"]
 [ext_resource type="Texture2D" uid="uid://y6vby5iwiogg" path="res://2Dstuff/Game_Title_Fancy_BG.png" id="132_g102n"]
+[ext_resource type="Shader" path="res://New folder/shockwave.gdshader" id="133_ghn8n"]
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_itepa"]
+size = Vector2(12, 8)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4cnch"]
-size = Vector3(10, 0.25, 150)
+size = Vector3(10, 0.25, 25)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ouape"]
 panorama = ExtResource("2_851rm")
@@ -147,7 +156,21 @@ background_mode = 2
 sky = SubResource("Sky_cknos")
 sky_custom_fov = 70.0
 sky_rotation = Vector3(-2.72271, 4.53786, -0.698132)
+ambient_light_source = 1
+reflected_light_source = 2
+tonemap_mode = 2
+tonemap_exposure = 0.75
+sdfgi_use_occlusion = true
+sdfgi_read_sky_light = false
+sdfgi_bounce_feedback = 1.99
+sdfgi_cascades = 1
+sdfgi_min_cell_size = 0.01
+sdfgi_cascade0_distance = 0.64
+sdfgi_max_distance = 1.28
 glow_enabled = true
+glow_intensity = 0.05
+glow_bloom = 0.25
+glow_blend_mode = 1
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7vlgm"]
 particle_flag_rotate_y = true
@@ -164,19 +187,28 @@ scale_max = 1.4
 [sub_resource type="BoxMesh" id="BoxMesh_u34mj"]
 size = Vector3(1.5, 1.5, 1.5)
 
+[sub_resource type="Curve" id="Curve_bah7o"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_l6fk7"]
+curve = SubResource("Curve_bah7o")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_62gg7"]
 lifetime_randomness = 1.0
 emission_shape = 3
-emission_box_extents = Vector3(0.25, 0.5, 0)
+emission_box_extents = Vector3(0.25, 0.38, 0)
 spread = 90.0
-gravity = Vector3(25, 0, 50)
+gravity = Vector3(100, 0, 500)
 color = Color(2, 2, 2, 1)
+alpha_curve = SubResource("CurveTexture_l6fk7")
 turbulence_enabled = true
 turbulence_noise_strength = 20.0
 turbulence_noise_scale = 5.0
-turbulence_noise_speed = Vector3(2, 0, 1)
+turbulence_noise_speed = Vector3(5, 0, 5)
 turbulence_noise_speed_random = 0.0
 turbulence_influence_min = 0.0
+turbulence_influence_max = 0.3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ujsg3"]
 transparency = 1
@@ -193,19 +225,28 @@ size = 0.2
 sections = 4
 section_segments = 4
 
+[sub_resource type="Curve" id="Curve_ubkky"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7m0t4"]
+curve = SubResource("Curve_ubkky")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ju0ch"]
 lifetime_randomness = 1.0
 emission_shape = 3
-emission_box_extents = Vector3(0.25, 0.5, 0)
+emission_box_extents = Vector3(0.25, 0.38, 0)
 spread = 90.0
-gravity = Vector3(-25, 0, 50)
+gravity = Vector3(-100, 0, 500)
 color = Color(2, 2, 2, 1)
+alpha_curve = SubResource("CurveTexture_7m0t4")
 turbulence_enabled = true
 turbulence_noise_strength = 20.0
 turbulence_noise_scale = 5.0
-turbulence_noise_speed = Vector3(-2, 0, 1)
+turbulence_noise_speed = Vector3(-5, 0, 5)
 turbulence_noise_speed_random = 0.0
 turbulence_influence_min = 0.0
+turbulence_influence_max = 0.3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yw6f5"]
 transparency = 1
@@ -231,6 +272,21 @@ size = Vector3(0.325, 0.325, 0.325)
 [sub_resource type="BoxShape3D" id="BoxShape3D_mgoek"]
 size = Vector3(0.65, 0.65, 0.65)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5ihee"]
+playback_mode = 1
+streams_count = 2
+stream_0/stream = ExtResource("6_ot6h3")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("7_t53b8")
+stream_1/weight = 1.0
+
+[sub_resource type="Curve" id="Curve_ta2fq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ek6tf"]
+curve = SubResource("Curve_ta2fq")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2kym6"]
 particle_flag_align_y = true
 emission_shape = 1
@@ -238,14 +294,13 @@ emission_sphere_radius = 1.5
 spread = 180.0
 initial_velocity_min = 16.0
 initial_velocity_max = 32.0
-gravity = Vector3(50, -50, 0)
-linear_accel_min = 10.0
-linear_accel_max = 25.0
-radial_accel_min = 32.0
-radial_accel_max = 64.0
-tangential_accel_min = 32.0
-tangential_accel_max = 64.0
+gravity = Vector3(50, -40, 0)
+linear_accel_min = 24.0
+linear_accel_max = 48.0
+tangential_accel_min = -64.0
+tangential_accel_max = -32.0
 color = Color(2, 2, 2, 1)
+alpha_curve = SubResource("CurveTexture_ek6tf")
 turbulence_noise_strength = 0.1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g17b5"]
@@ -262,6 +317,13 @@ size = 0.2
 sections = 4
 section_segments = 4
 
+[sub_resource type="Curve" id="Curve_dnrx7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_q4jw3"]
+curve = SubResource("Curve_dnrx7")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_thant"]
 particle_flag_align_y = true
 emission_shape = 1
@@ -269,14 +331,13 @@ emission_sphere_radius = 1.5
 spread = 180.0
 initial_velocity_min = 16.0
 initial_velocity_max = 32.0
-gravity = Vector3(-50, -50, 0)
-linear_accel_min = 10.0
-linear_accel_max = 25.0
-radial_accel_min = 32.0
-radial_accel_max = 64.0
+gravity = Vector3(-50, -40, 0)
+linear_accel_min = 24.0
+linear_accel_max = 48.0
 tangential_accel_min = 32.0
 tangential_accel_max = 64.0
 color = Color(2, 2, 2, 1)
+alpha_curve = SubResource("CurveTexture_q4jw3")
 turbulence_noise_strength = 0.1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qlnk3"]
@@ -294,19 +355,55 @@ sections = 4
 section_segments = 4
 
 [sub_resource type="BoxMesh" id="BoxMesh_x1511"]
-size = Vector3(1, 0.75, 30)
+size = Vector3(1, 0.75, 24)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_d35gw"]
-points = PackedVector3Array(0.5, 0.375, 15, 0.5, -0.375, 15, 0.5, 0.375, -15, -0.5, 0.375, 15, -0.5, -0.375, 15, 0.5, -0.375, -15, -0.5, 0.375, -15, -0.5, -0.375, -15)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4oogi"]
+points = PackedVector3Array(0.5, 0.375, 12, 0.5, -0.375, 12, 0.5, 0.375, -12, -0.5, 0.375, 12, -0.5, -0.375, 12, 0.5, -0.375, -12, -0.5, 0.375, -12, -0.5, -0.375, -12)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_poj15"]
+playback_mode = 1
+streams_count = 3
+stream_0/stream = ExtResource("10_h075w")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("11_678xb")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("12_s6lyw")
+stream_2/weight = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2odi3"]
 size = Vector3(1, 0.75, 0.75)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uxxmu"]
-points = PackedVector3Array(0.5, 0.375, 15, 0.5, -0.375, 15, 0.5, 0.375, -15, -0.5, 0.375, 15, -0.5, -0.375, 15, 0.5, -0.375, -15, -0.5, 0.375, -15, -0.5, -0.375, -15)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nuslp"]
+points = PackedVector3Array(0.5, 0.375, 12, 0.5, -0.375, 12, 0.5, 0.375, -12, -0.5, 0.375, 12, -0.5, -0.375, 12, 0.5, -0.375, -12, -0.5, 0.375, -12, -0.5, -0.375, -12)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gmo3y"]
+playback_mode = 1
+streams_count = 3
+stream_0/stream = ExtResource("10_h075w")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("11_678xb")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("12_s6lyw")
+stream_2/weight = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bhf7m"]
 size = Vector3(1, 0.75, 0.75)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kc7pw"]
+playback_mode = 1
+streams_count = 2
+stream_0/stream = ExtResource("6_ot6h3")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("7_t53b8")
+stream_1/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_86rb1"]
+playback_mode = 1
+streams_count = 2
+stream_0/stream = ExtResource("6_ot6h3")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("7_t53b8")
+stream_1/weight = 1.0
 
 [sub_resource type="Animation" id="Animation_o3ogq"]
 resource_name = "FadeOut"
@@ -314,11 +411,11 @@ length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BlackBG:self_modulate")
+tracks/0/path = NodePath("AnimationPlayer/BlackBG:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 1.9),
+"times": PackedFloat32Array(0.15, 1.9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
@@ -697,13 +794,62 @@ animations = [{
 "speed": 60.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sgnt2"]
+shader = ExtResource("133_ghn8n")
+shader_parameter/strength = 0.08
+shader_parameter/center = Vector2(0.5, 0.56)
+shader_parameter/radius = 0.25
+shader_parameter/aberration = 0.425
+shader_parameter/width = 0.04
+shader_parameter/feather = 0.135
+
+[sub_resource type="Animation" id="Animation_go0yt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shockwave:material:shader_parameter/radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.25]
+}
+
+[sub_resource type="Animation" id="Animation_0wyjh"]
+resource_name = "shockwave"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shockwave:material:shader_parameter/radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wus5n"]
+_data = {
+"RESET": SubResource("Animation_go0yt"),
+"shockwave": SubResource("Animation_0wyjh")
+}
+
 [node name="StaticBody3D" type="StaticBody3D"]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_ian6e")
 
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -12)
+occluder = SubResource("QuadOccluder3D_itepa")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -66)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.5)
 shape = SubResource("BoxShape3D_4cnch")
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -716,8 +862,8 @@ environment = SubResource("Environment_c13pl")
 [node name="Blocks" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 13)
 layers = 8
-amount = 325
-lifetime = 4.5
+amount = 300
+lifetime = 4.0
 preprocess = 2.25
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_7vlgm")
@@ -726,43 +872,35 @@ draw_pass_1 = SubResource("BoxMesh_u34mj")
 [node name="MetalSparksLeft" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75, 0.5, 6.5)
 emitting = false
-amount = 250
+amount = 500
 preprocess = 0.1
 randomness = 0.5
 fixed_fps = 60
 trail_enabled = true
-trail_lifetime = 0.2
+trail_lifetime = 0.1
 process_material = SubResource("ParticleProcessMaterial_62gg7")
 draw_pass_1 = SubResource("RibbonTrailMesh_ugweh")
 
 [node name="MetalSparksRight" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75, 0.5, 6.5)
 emitting = false
-amount = 250
+amount = 500
 preprocess = 0.1
 randomness = 0.5
 fixed_fps = 60
 trail_enabled = true
-trail_lifetime = 0.2
+trail_lifetime = 0.1
 process_material = SubResource("ParticleProcessMaterial_ju0ch")
 draw_pass_1 = SubResource("RibbonTrailMesh_cie2m")
-
-[node name="ParticleLightFront" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.999798, -0.00286717, 0.0198993, -0.0201048, -0.142582, 0.989579, 0, -0.989779, -0.142611, 0, 0, 0)
-light_color = Color(0, 0, 0, 1)
-light_cull_mask = 4294966280
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.574863, 0.81825, 0, -0.81825, 0.574863, 0, 0, 10.1094)
 light_color = Color(0, 0.490196, 1, 1)
 light_energy = 16.0
+light_bake_mode = 1
 light_cull_mask = 4294966280
 spot_range = 27.9769
 spot_angle = 66.4106
-
-[node name="PlayerLight" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.701556, 0.712614, 0, -0.712614, -0.701556, 0, 3.08295, 0)
-light_cull_mask = 4294967287
 
 [node name="Beam" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 6.5)
@@ -783,12 +921,13 @@ collision_mask = 2
 shape = SubResource("BoxShape3D_mgoek")
 
 [node name="HumMiddle" type="AudioStreamPlayer3D" parent="Beam"]
+stream = SubResource("AudioStreamRandomizer_5ihee")
 
 [node name="SparksGateBlue" type="GPUParticles3D" parent="Beam"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, -1, 0.5)
 emitting = false
 amount = 300
-lifetime = 2.0
+lifetime = 1.4
 one_shot = true
 preprocess = 0.1
 explosiveness = 0.8
@@ -803,7 +942,7 @@ draw_pass_1 = SubResource("RibbonTrailMesh_8jfib")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, -1, 0.5)
 emitting = false
 amount = 300
-lifetime = 2.0
+lifetime = 1.4
 one_shot = true
 preprocess = 0.1
 explosiveness = 0.8
@@ -819,20 +958,22 @@ collision_layer = 6
 collision_mask = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WallLeft"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0.5, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0.5, -3)
 mesh = SubResource("BoxMesh_x1511")
 surface_material_override/0 = ExtResource("3_65cke")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WallLeft"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0.5, -6)
-shape = SubResource("ConvexPolygonShape3D_d35gw")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0.5, -3)
+shape = SubResource("ConvexPolygonShape3D_4oogi")
 
 [node name="CrackleLeft" type="AudioStreamPlayer3D" parent="WallLeft"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, 10)
 stream = ExtResource("7_pqbln")
+volume_db = 1.0
 
 [node name="MetallicLeft" type="AudioStreamPlayer3D" parent="WallLeft"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, 8)
+stream = SubResource("AudioStreamRandomizer_poj15")
 
 [node name="Area3D" type="Area3D" parent="WallLeft" groups=["LeftWall"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0.5, 6.5)
@@ -845,21 +986,22 @@ collision_layer = 6
 collision_mask = 0
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="WallRight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0.5, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0.5, -3)
 mesh = SubResource("BoxMesh_x1511")
 surface_material_override/0 = ExtResource("3_65cke")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WallRight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0.5, -6)
-shape = SubResource("ConvexPolygonShape3D_uxxmu")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0.5, -3)
+shape = SubResource("ConvexPolygonShape3D_nuslp")
 
 [node name="CrackleRight" type="AudioStreamPlayer3D" parent="WallRight"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, 10)
 stream = ExtResource("7_pqbln")
+volume_db = 1.0
 
 [node name="MetallicRight" type="AudioStreamPlayer3D" parent="WallRight"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 4, 8)
-stream = ExtResource("7_pqbln")
+stream = SubResource("AudioStreamRandomizer_gmo3y")
 
 [node name="Area3D" type="Area3D" parent="WallRight" groups=["RightWall"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0.5, 6.5)
@@ -889,11 +1031,21 @@ emission_angle_degrees = 90.0
 
 [node name="HumLeft" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4, 8)
+stream = SubResource("AudioStreamRandomizer_kc7pw")
 
 [node name="HumRight" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4, 8)
+stream = SubResource("AudioStreamRandomizer_86rb1")
 
 [node name="2DStuff" type="CanvasLayer" parent="."]
+
+[node name="FPS" type="Label" parent="2DStuff"]
+offset_right = 40.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 32
+
+[node name="FPSCounterTimer" type="Timer" parent="2DStuff"]
+autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="2DStuff"]
 libraries = {
@@ -901,18 +1053,16 @@ libraries = {
 }
 autoplay = "FadeOut"
 
-[node name="BlackBG" type="Sprite2D" parent="2DStuff"]
+[node name="BlackBG" type="Sprite2D" parent="2DStuff/AnimationPlayer"]
 self_modulate = Color(0, 0, 0, 1)
-position = Vector2(964, 552.5)
-scale = Vector2(1.025, 1.05463)
+position = Vector2(933, 506.5)
+scale = Vector2(1.025, 1)
 texture = ExtResource("11_w0o7v")
 
 [node name="AnimatedTitle" type="AnimatedSprite3D" parent="2DStuff"]
 transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 2.75, 5)
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_v10oa")
-frame = 66
-frame_progress = 0.80018
 
 [node name="TitleBG" type="Sprite3D" parent="2DStuff/AnimatedTitle"]
 sorting_offset = -1.0
@@ -922,7 +1072,7 @@ texture = ExtResource("132_g102n")
 [node name="Prompt" type="Label3D" parent="2DStuff/AnimatedTitle"]
 transform = Transform3D(2.85714, 0, 0, 0, 2.85714, 0, 0, 0, 2.85714, 0, -7.85714, 8.57143)
 billboard = 1
-text = "-Click to Start-"
+text = "-Spacebar to Start-"
 font_size = 128
 
 [node name="HighScore" type="Label3D" parent="2DStuff/AnimatedTitle"]
@@ -931,18 +1081,34 @@ billboard = 1
 text = "High Score: "
 font_size = 200
 
-[node name="Label3D" type="Label3D" parent="2DStuff/AnimatedTitle"]
-transform = Transform3D(2.85714, 0, 0, 0, 2.85714, 0, 0, 0, 2.85714, 0, -7.857, 10.5)
-billboard = 1
-text = "dev got lazy. . ."
-font_size = 10
-
 [node name="Score" type="Label3D" parent="2DStuff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 8.2)
 visible = false
 billboard = 1
 text = "0"
 font_size = 100
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0436193, 0.999048, 0, -0.999048, 0.0436193, 0, 3.10436, 5.90896)
+layers = 1024
+light_color = Color(2, 2, 2, 1)
+light_volumetric_fog_energy = 0.0
+light_angular_distance = 90.0
+light_cull_mask = 4294966289
+
+[node name="Shockwave" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_sgnt2")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ShockwaveAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wus5n")
+}
 
 [connection signal="area_entered" from="Beam/Area3D" to="." method="Level_Cleared"]
 [connection signal="finished" from="WallLeft/CrackleLeft" to="." method="LeftCrackleLoop"]
@@ -955,4 +1121,5 @@ font_size = 100
 [connection signal="area_exited" from="WallRight/Area3D" to="." method="RightMetallicStop"]
 [connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]
 [connection signal="finished" from="BGM" to="." method="_on_bgm_finished"]
+[connection signal="timeout" from="2DStuff/FPSCounterTimer" to="." method="CalculateFPS"]
 [connection signal="animation_finished" from="2DStuff/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -3,7 +3,6 @@ using System;
 
 public partial class Start : StaticBody3D
 {
-
 	PackedScene leftCube = GD.Load<PackedScene>("res://player_Left.tscn");
 	PackedScene rightCube = GD.Load<PackedScene>("res://player_Right.tscn");
 	Timer Reset;
@@ -16,15 +15,24 @@ public partial class Start : StaticBody3D
 	AudioStreamPlayer BGMusic;
 	AudioStreamPlayer3D sfxGate, sfxGateSecondary, sfxHumLeft, sfxHumRight, sfxHumMiddle, sfxMetallicLeft, sfxMetallicRight, sfxCrackleLeft, sfxCrackleRight;
 	GpuParticles3D sparksGateBlue, sparksGatePink, metalSparksLeft, metalSparksRight;
-	AnimationPlayer transition;
 	AnimatedSprite3D title;
+	AnimationPlayer transitionAnimation;
 	Label3D highScore, currentScore;
+	Label fps;
+	ColorRect shockwave;
+	AnimationPlayer shockwaveAnimation;
+	ShaderMaterial shockwaveShader;
+	DirectionalLight3D light;
 	bool SkyMoveDone;
 	bool splashDone = false;
 	Random rng;
-	BGM_Shuffler shuffler = new BGM_Shuffler();
-	HighScoreManager best = new HighScoreManager();
-	StringEncryptor aes = new StringEncryptor(new byte[32], new byte[16]);
+	static BGM_Shuffler shuffler = new BGM_Shuffler();
+	static HighScoreManager best = new HighScoreManager();
+	static StringEncryptor aes = new StringEncryptor(new byte[32], new byte[16]);
+
+	static StringName left = new StringName("MoveLeft");
+	static StringName right = new StringName("MoveRight");
+	static StringName start = new StringName("Start");
 	/*some of the above woulda been declared on the same line but they behave incorrectly when the game statrs and somehow
 	having it like this prevents the issue. . .idek :')*/
 
@@ -34,12 +42,13 @@ public partial class Start : StaticBody3D
 	float skyX = -156.0f;
 	float skyY = 260.0f;
 	float skyZ = -40.0f;
+	float r = 2.0f;
+	float g = 2.0f;
+	float b = 2.0f;
 	Vector3 LeftPos, RightPos;
 	int bgmIndex, bgmPrev;
 
-	private String[] Menuloops = { "Menu Variation0", "Menu Variation1", "Menu Variation2", "Menu Variation3" };
-	private String[] HumSounds = { "Hum1", "Hum2" };
-	private String[] metallicSounds = { "Metallic1", "Metallic2", "Metallic3" };
+	private static string[] Menuloops = { "Menu Variation0", "Menu Variation1", "Menu Variation2", "Menu Variation3" };
 
 	public override void _Process(double delta)
 	{
@@ -48,6 +57,14 @@ public partial class Start : StaticBody3D
 		dont have this run every frame, every second will be fine
 		FPS = (1000 / delta) / 1000
 		*/
+
+		if (Controller.Game_Over)
+		{
+			r -= 0.575f * (float)delta;
+			g -= 0.575f * (float)delta;
+			b -= 0.575f * (float)delta;
+			light.LightColor = new Color(r, g, b);
+		}
 
 		if (!SkyMoveDone)
 		{
@@ -90,6 +107,11 @@ public partial class Start : StaticBody3D
 		title = GetNode<AnimatedSprite3D>("2DStuff/AnimatedTitle");
 		title.Play("default");
 
+		transitionAnimation = GetNode<AnimationPlayer>("2DStuff/AnimationPlayer");
+
+		fps = GetNode<Label>("2DStuff/FPS");
+		fps.Text = Math.Truncate(1 / GetProcessDeltaTime()).ToString();
+
 		sfxGate = GetNode<AudioStreamPlayer3D>("Gate");
 		sfxGateSecondary = GetNode<AudioStreamPlayer3D>("GateSecondary");
 		sfxHumLeft = GetNode<AudioStreamPlayer3D>("HumLeft");
@@ -103,10 +125,14 @@ public partial class Start : StaticBody3D
 		highScore = GetNode<Label3D>("2DStuff/AnimatedTitle/HighScore");
 		currentScore = GetNode<Label3D>("2DStuff/Score");
 
+		shockwave = GetNode<ColorRect>("Shockwave");
+		shockwaveAnimation = GetNode<AnimationPlayer>("ShockwaveAnimation");
+		shockwaveShader = shockwave.Material as ShaderMaterial;
+
+		light = GetNode<DirectionalLight3D>("DirectionalLight3D");
+
 		best.ReplaceHighScore(0);//security measure. . . also prevents a negative score if that magically happens. unless ofc the user gone and tried to be smart
 		highScore.Text = "High Score: " + aes.DecryptString(best.ReadHighScoreFile()[0]);
-
-		
 
 		SetPhysicsProcess(false);
 		/*I THINK IT BE LIKE:
@@ -118,6 +144,19 @@ public partial class Start : StaticBody3D
 	{
 		if (Controller.Game_Over)
 		{
+			shockwaveShader.SetShaderParameter("strength", 0.2);
+			shockwaveShader.SetShaderParameter("abberation", 1);
+			shockwaveShader.SetShaderParameter("width", 0.1);
+			shockwaveShader.SetShaderParameter("feather", 0.35);
+			
+			shockwave.Visible = true;
+			shockwaveAnimation.GetAnimation("shockwave").TrackSetKeyValue(0, 0, 0.25);
+
+			shockwaveAnimation.GetAnimation("shockwave").TrackSetKeyValue(0, 1, 1.1);
+
+			shockwaveAnimation.GetAnimation("shockwave").TrackSetKeyTime(0, 1, 1);			
+			shockwaveAnimation.Play("shockwave");
+
 			Reset.Start();
 			best.ReplaceHighScore(Controller.score);
 
@@ -166,74 +205,102 @@ public partial class Start : StaticBody3D
 
 		//================================PLAYER MOVEMENT SOUND PLAYING LOGIC THINGY BELOW===================================
 
-		if (Input.IsActionJustPressed("MoveLeft") || (Input.IsActionPressed("MoveLeft") && Input.IsActionJustReleased("MoveRight")))
+		
+
+		if (Input.IsActionJustPressed(left) || (Input.IsActionPressed(left) && Input.IsActionJustReleased(right)))
 		{
-			sfxHumLeft.Stream = (AudioStream)ResourceLoader.Load("res://SFX/" + HumSounds[rng.Next(2)] + ".wav");
 			sfxHumLeft.Play();
 		}
 
-		if (Input.IsActionJustPressed("MoveRight") || (Input.IsActionPressed("MoveRight") && Input.IsActionJustReleased("MoveLeft")))
+		if (Input.IsActionJustPressed(right) || (Input.IsActionPressed(right) && Input.IsActionJustReleased(left)))
 		{
-			sfxHumRight.Stream = (AudioStream)ResourceLoader.Load("res://SFX/" + HumSounds[rng.Next(2)] + ".wav");
 			sfxHumRight.Play();
 		}
 
-		if ((!Input.IsActionPressed("MoveLeft") && Input.IsActionJustReleased("MoveRight")) || (!Input.IsActionPressed("MoveRight") && Input.IsActionJustReleased("MoveLeft")))
+		if ((!Input.IsActionPressed(left) && Input.IsActionJustReleased(right)) || (!Input.IsActionPressed(right) && Input.IsActionJustReleased(left)))
 		{
-			sfxHumMiddle.Stream = (AudioStream)ResourceLoader.Load("res://SFX/" + HumSounds[rng.Next(2)] + ".wav");
 			sfxHumMiddle.Play();
 		}
 	}
 
 	public override void _UnhandledInput(InputEvent @event) //prolly a better way to do the "left click to start" bit
 	{
-		if (@event is InputEventMouseButton mouseButton)
+		if (Input.IsActionJustReleased(start) && !Controller.playing && splashDone)
 		{
-			if (!mouseButton.Pressed && !Controller.playing && splashDone)
+			PlayerLeft = (CharacterBody3D)leftCube.Instantiate();
+			PlayerLeft.Position = new Vector3(-2.0f, 0.5f, 7.5f);
+			//Node3d myNode3D = (Node3D)myObjectToInstantiate.Instantiate()
+			PlayerRight = (CharacterBody3D)rightCube.Instantiate();
+			PlayerRight.Position = new Vector3(2.0f, 0.5f, 7.5f);
+
+			AddChild(PlayerLeft);
+			AddChild(PlayerRight);
+			//^^SPAWN PLAYER^^
+
+			BGMusic.Stop();
+			BGMusic.Stream.Dispose();
+			sfxGateSecondary.Play();
+			sfxHumMiddle.Play();
+
+			BeamOuter.Visible = true;
+			BeamInner.Visible = true;
+
+			Controller.score = 0;
+			Controller.playing = true;
+			Controller.SetPhysicsProcess(Controller.playing);
+			if (Controller.spikes.Count == 0)
 			{
-				PlayerLeft = (CharacterBody3D)leftCube.Instantiate();
-				PlayerLeft.Position = new Vector3(-2.0f, 0.5f, 7.5f);
-				//Node3d myNode3D = (Node3D)myObjectToInstantiate.Instantiate()
-				PlayerRight = (CharacterBody3D)rightCube.Instantiate();
-				PlayerRight.Position = new Vector3(2.0f, 0.5f, 7.5f);
-
-				AddChild(PlayerLeft);
-				AddChild(PlayerRight);
-				//^^SPAWN PLAYER^^
-
-				BGMusic.Stop();//MAKE THIS LIKE A FADE OUT KIND OF THING
-				sfxGateSecondary.Play();
-				sfxHumMiddle.Stream = (AudioStream)ResourceLoader.Load("res://SFX/" + HumSounds[rng.Next(2)] + ".wav");
-				sfxHumMiddle.Play();
-
-				BeamOuter.Visible = true;
-				BeamInner.Visible = true;
-
-				Controller.score = 0;
-				Controller.playing = true;
-				Controller.SetPhysicsProcess(Controller.playing);
-				Controller.newGame();
-
-				currentScore.Visible = true;
-
-				sparksGateBlue.Emitting = true;
-				sparksGatePink.Emitting = true;
-
-				title.Visible = false;
-
-				SetPhysicsProcess(true);
+				for (int i = 0; i < 10; i++)
+				{
+					Controller.spikes.Add(new RigidBody3D());
+				}
 			}
+			Controller.newGame();
+
+			currentScore.Visible = true;
+
+			sparksGateBlue.Emitting = true;
+			sparksGatePink.Emitting = true;
+
+			title.Visible = false;
+
+			shockwaveShader.SetShaderParameter("strength", 0.1);
+			shockwaveShader.SetShaderParameter("abberation", 0.1);
+			shockwaveShader.SetShaderParameter("width", 0.1);
+			shockwaveShader.SetShaderParameter("feather", 0.2);
+			shockwaveAnimation.GetAnimation("shockwave").TrackSetKeyValue(0, 0, 0.001);
+
+			shockwaveAnimation.GetAnimation("shockwave").TrackSetKeyValue(0, 1, 1.0);
+
+			shockwaveAnimation.GetAnimation("shockwave").TrackSetKeyTime(0, 1, 0.5);
+
+			SetPhysicsProcess(true);
 		}
 	}
 
 	public void _on_reset_timer_timeout()
 	{
+		transitionAnimation.Play("FadeOut");
+
 		Controller.clearLevel();
+		Controller.spikes.Clear();
 		Controller.playing = false;
 		Controller.Game_Over = false;
 		title.Visible = true;
 
 		currentScore.Visible = false;
+		shockwave.Visible = false;
+
+		PlayerLeft.QueueFree();
+		PlayerRight.QueueFree();
+		PlayerLeft.Dispose();
+		PlayerRight.Dispose();
+		//no clue if the .Dispose is really doing anything since QueueFree is there...but it's there anyway idek
+
+		r = 2.0f;
+		g = 2.0f;
+		b = 2.0f;
+		light.LightColor = new Color(r, g, b);
 		
 		highScore.Text = "High Score: " + aes.DecryptString(best.ReadHighScoreFile()[0]);
 		
@@ -262,6 +329,9 @@ public partial class Start : StaticBody3D
 
 			sparksGateBlue.Emitting = true;
 			sparksGatePink.Emitting = true;
+
+			shockwave.Visible = true;
+			shockwaveAnimation.Play("shockwave");
 		}
 	}
 	//=====================RNG AND START PLAYING METALLIC SOUND===============================
@@ -269,7 +339,6 @@ public partial class Start : StaticBody3D
 	{
 		if (area.IsInGroup("Player"))
 		{
-			sfxMetallicLeft.Stream = (AudioStream)ResourceLoader.Load("res://SFX/" + metallicSounds[rng.Next(3)] + ".ogg");
 			LeftMetallicLoop();
 			metalSparksLeft.Emitting = true;
 			sfxCrackleLeft.Play();
@@ -280,7 +349,6 @@ public partial class Start : StaticBody3D
 	{
 		if (area.IsInGroup("Player"))
 		{
-			sfxMetallicRight.Stream = (AudioStream)ResourceLoader.Load("res://SFX/" + metallicSounds[rng.Next(3)] + ".ogg");
 			RightMetallicLoop();
 			metalSparksRight.Emitting = true;
 			sfxCrackleRight.Play();
@@ -322,7 +390,26 @@ public partial class Start : StaticBody3D
 		sfxCrackleRight.Play();
 	}
 //============================================================
-	void _on_animation_player_animation_finished(string anim){
+	private void _on_animation_player_animation_finished(string anim)
+	{
+		Sprite2D screen = GetNode<Sprite2D>("2DStuff/AnimationPlayer/BlackBG");
+		screen.Texture.Dispose();
+		screen.Texture = (Texture2D)ResourceLoader.Load("res://2DStuff/Transition.png");
+
+		transitionAnimation.GetAnimation("FadeOut").TrackSetKeyTime(0, 0, 0.0);
+		transitionAnimation.GetAnimation("FadeOut").TrackSetKeyTime(0, 1, 1.0);
+		transitionAnimation.GetAnimation("FadeOut").TrackSetKeyValue(0, 0, new Color(1, 1, 1, 1));
+		transitionAnimation.GetAnimation("FadeOut").TrackSetKeyValue(0, 1, new Color(1, 1, 1, 0));
+
+		//disconnect the signal so this method doesn't get called after you die
+		Callable callable = new Callable(this, "_on_animation_player_animation_finished");
+		transitionAnimation.Disconnect("animation_finished", callable);
+
 		splashDone = true;
+	}
+
+	private void CalculateFPS()
+	{
+		fps.Text = Math.Truncate(1 / GetProcessDeltaTime()).ToString();
 	}
 }

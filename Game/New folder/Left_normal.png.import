@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://xf0thdxx2an3"
 path.s3tc="res://.godot/imported/Left_normal.png-dfa84e206d9f30d91cd6ac517753dc7d.s3tc.ctex"
+path.etc2="res://.godot/imported/Left_normal.png-dfa84e206d9f30d91cd6ac517753dc7d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://New folder/Left_normal.png"
-dest_files=["res://.godot/imported/Left_normal.png-dfa84e206d9f30d91cd6ac517753dc7d.s3tc.ctex"]
+dest_files=["res://.godot/imported/Left_normal.png-dfa84e206d9f30d91cd6ac517753dc7d.s3tc.ctex", "res://.godot/imported/Left_normal.png-dfa84e206d9f30d91cd6ac517753dc7d.etc2.ctex"]
 
 [params]
 

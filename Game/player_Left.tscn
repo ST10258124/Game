@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cp3lii1467a5m"]
+[gd_scene load_steps=15 format=3 uid="uid://cp3lii1467a5m"]
 
 [ext_resource type="Script" path="res://playerLeft.cs" id="1_cq4b5"]
 [ext_resource type="Material" uid="uid://d3kgljg5nlmoq" path="res://New folder/Glitch.tres" id="2_fygsc"]
@@ -10,10 +10,12 @@ size = Vector3(0.75, 0.75, 0.75)
 [sub_resource type="BoxMesh" id="BoxMesh_3g6ht"]
 size = Vector3(0.75, 0.75, 0.75)
 
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_ulh5a"]
-albedo_color = Color(0.588235, 1, 1, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p5hvv"]
+shading_mode = 2
+disable_ambient_light = true
+albedo_color = Color(0, 1, 1, 1)
 emission_enabled = true
-emission = Color(0, 1.5, 1.5, 1)
+emission = Color(0, 0.627451, 0.627451, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_3dyx4"]
 size = Vector3(0.65, 0.65, 0.65)
@@ -24,14 +26,6 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_ap5mr"]
 size = Vector3(0.75, 0.75, 0.75)
 
-[sub_resource type="Environment" id="Environment_od5a1"]
-glow_enabled = true
-glow_intensity = 8.0
-glow_strength = 0.8
-volumetric_fog_length = 1.0
-adjustment_contrast = 2.5
-adjustment_saturation = 0.6
-
 [sub_resource type="Curve" id="Curve_q0hc6"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -41,7 +35,7 @@ curve = SubResource("Curve_q0hc6")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k70rq"]
 emission_shape = 3
-emission_box_extents = Vector3(0.375, 0.375, 0)
+emission_box_extents = Vector3(0.35, 0.375, 0)
 gravity = Vector3(0, 0, 100)
 alpha_curve = SubResource("CurveTexture_rqd2s")
 
@@ -68,14 +62,9 @@ script = ExtResource("1_cq4b5")
 shape = SubResource("BoxShape3D_8jr3e")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 1024
 mesh = SubResource("BoxMesh_3g6ht")
-surface_material_override/0 = SubResource("ORMMaterial3D_ulh5a")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D"]
-light_color = Color(0, 1, 1, 1)
-light_energy = 0.75
-omni_range = 1.25
-omni_attenuation = 0.5
+surface_material_override/0 = SubResource("StandardMaterial3D_p5hvv")
 
 [node name="GlitchBG" type="MeshInstance3D" parent="."]
 visible = false
@@ -96,9 +85,6 @@ shape = SubResource("BoxShape3D_8jr3e")
 [node name="ResetTimer" type="Timer" parent="."]
 wait_time = 3.5
 one_shot = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_od5a1")
 
 [node name="Death" type="AudioStreamPlayer3D" parent="."]
 

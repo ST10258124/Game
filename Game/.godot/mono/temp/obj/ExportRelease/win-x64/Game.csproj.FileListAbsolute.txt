@@ -1,7 +1,6 @@
 C:\Users\Vivek\Documents\Game\.godot\mono\temp\bin\ExportRelease\win-x64\Game.deps.json
 C:\Users\Vivek\Documents\Game\.godot\mono\temp\bin\ExportRelease\win-x64\Game.runtimeconfig.json
 C:\Users\Vivek\Documents\Game\.godot\mono\temp\bin\ExportRelease\win-x64\Game.dll
-C:\Users\Vivek\Documents\Game\.godot\mono\temp\bin\ExportRelease\win-x64\Game.pdb
 C:\Users\Vivek\Documents\Game\.godot\mono\temp\bin\ExportRelease\win-x64\GodotSharp.dll
 C:\Users\Vivek\Documents\Game\.godot\mono\temp\bin\ExportRelease\win-x64\Microsoft.CSharp.dll
 C:\Users\Vivek\Documents\Game\.godot\mono\temp\bin\ExportRelease\win-x64\Microsoft.VisualBasic.Core.dll
@@ -233,6 +232,5 @@ C:\Users\Vivek\Documents\Game\.godot\mono\temp\obj\ExportRelease\win-x64\Game.cs
 C:\Users\Vivek\Documents\Game\.godot\mono\temp\obj\ExportRelease\win-x64\Game.csproj.Up2Date
 C:\Users\Vivek\Documents\Game\.godot\mono\temp\obj\ExportRelease\win-x64\Game.dll
 C:\Users\Vivek\Documents\Game\.godot\mono\temp\obj\ExportRelease\win-x64\refint\Game.dll
-C:\Users\Vivek\Documents\Game\.godot\mono\temp\obj\ExportRelease\win-x64\Game.pdb
 C:\Users\Vivek\Documents\Game\.godot\mono\temp\obj\ExportRelease\win-x64\Game.genruntimeconfig.cache
 C:\Users\Vivek\Documents\Game\.godot\mono\temp\obj\ExportRelease\win-x64\ref\Game.dll
