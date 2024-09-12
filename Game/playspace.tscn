@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Start.cs" id="1_ian6e"]
 [ext_resource type="Texture2D" uid="uid://bb06ux6jkykav" path="res://panorama_image.png" id="2_851rm"]
-[ext_resource type="Material" uid="uid://64mdpovifjk" path="res://New folder/Walls_Spikes - Copy.tres" id="3_3g3xs"]
 [ext_resource type="Material" uid="uid://dtb3sf4taa6hh" path="res://New folder/Walls_Spikes.tres" id="3_65cke"]
+[ext_resource type="Material" uid="uid://64mdpovifjk" path="res://New folder/BeamOuter.tres" id="4_0wbbn"]
 [ext_resource type="Material" uid="uid://dke1o3w1dway0" path="res://New folder/BeamInner.tres" id="4_u3s02"]
 [ext_resource type="AudioStream" uid="uid://bgdxfx6x2t5ts" path="res://SFX/Gate.wav" id="6_c7twy"]
 [ext_resource type="AudioStream" uid="uid://c6y75xo06560f" path="res://SFX/Hum1.wav" id="6_ot6h3"]
@@ -150,6 +150,7 @@ panorama = ExtResource("2_851rm")
 
 [sub_resource type="Sky" id="Sky_cknos"]
 sky_material = SubResource("PanoramaSkyMaterial_ouape")
+radiance_size = 4
 
 [sub_resource type="Environment" id="Environment_c13pl"]
 background_mode = 2
@@ -160,17 +161,13 @@ ambient_light_source = 1
 reflected_light_source = 2
 tonemap_mode = 2
 tonemap_exposure = 0.75
-sdfgi_use_occlusion = true
-sdfgi_read_sky_light = false
-sdfgi_bounce_feedback = 1.99
-sdfgi_cascades = 1
-sdfgi_min_cell_size = 0.01
-sdfgi_cascade0_distance = 0.64
-sdfgi_max_distance = 1.28
 glow_enabled = true
 glow_intensity = 0.05
 glow_bloom = 0.25
 glow_blend_mode = 1
+fog_enabled = true
+fog_light_color = Color(0, 0, 0.196078, 1)
+fog_density = 0.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7vlgm"]
 particle_flag_rotate_y = true
@@ -184,7 +181,7 @@ linear_accel_max = 8.0
 scale_min = 0.75
 scale_max = 1.4
 
-[sub_resource type="BoxMesh" id="BoxMesh_u34mj"]
+[sub_resource type="BoxMesh" id="BoxMesh_ox6mg"]
 size = Vector3(1.5, 1.5, 1.5)
 
 [sub_resource type="Curve" id="Curve_bah7o"]
@@ -790,7 +787,7 @@ animations = [{
 "texture": ExtResource("131_nth2s")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Classic",
 "speed": 60.0
 }]
 
@@ -867,7 +864,7 @@ lifetime = 4.0
 preprocess = 2.25
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_7vlgm")
-draw_pass_1 = SubResource("BoxMesh_u34mj")
+draw_pass_1 = SubResource("BoxMesh_ox6mg")
 
 [node name="MetalSparksLeft" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75, 0.5, 6.5)
@@ -895,8 +892,7 @@ draw_pass_1 = SubResource("RibbonTrailMesh_cie2m")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.574863, 0.81825, 0, -0.81825, 0.574863, 0, 0, 10.1094)
-light_color = Color(0, 0.490196, 1, 1)
-light_energy = 16.0
+light_color = Color(0, 2, 4, 1)
 light_bake_mode = 1
 light_cull_mask = 4294966280
 spot_range = 27.9769
@@ -907,7 +903,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 6.5)
 
 [node name="Outer" type="MeshInstance3D" parent="Beam"]
 mesh = SubResource("BoxMesh_2dipe")
-surface_material_override/0 = ExtResource("3_3g3xs")
+surface_material_override/0 = ExtResource("4_0wbbn")
 
 [node name="Inner" type="MeshInstance3D" parent="Beam"]
 mesh = SubResource("BoxMesh_vyrvn")
@@ -1009,6 +1005,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0.5, 6.5)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WallRight/Area3D"]
 shape = SubResource("BoxShape3D_bhf7m")
 
+[node name="TransitionTimer" type="Timer" parent="."]
+wait_time = 3.475
+one_shot = true
+
 [node name="ResetTimer" type="Timer" parent="."]
 wait_time = 3.5
 one_shot = true
@@ -1063,6 +1063,7 @@ texture = ExtResource("11_w0o7v")
 transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 2.75, 5)
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_v10oa")
+animation = &"Classic"
 
 [node name="TitleBG" type="Sprite3D" parent="2DStuff/AnimatedTitle"]
 sorting_offset = -1.0
@@ -1080,6 +1081,20 @@ transform = Transform3D(1.857, 0, 0, 0, 1.857, 0, 0, 0, 1.857, 0, -4, 5)
 billboard = 1
 text = "High Score: "
 font_size = 200
+
+[node name="Control" type="Control" parent="2DStuff/AnimatedTitle"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CheckBox" type="CheckBox" parent="2DStuff/AnimatedTitle/Control"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 688.0
+offset_right = 72.0
+offset_bottom = 719.0
+text = "Glow"
 
 [node name="Score" type="Label3D" parent="2DStuff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 8.2)
@@ -1119,7 +1134,9 @@ libraries = {
 [connection signal="finished" from="WallRight/MetallicRight" to="." method="RightMetallicLoop"]
 [connection signal="area_entered" from="WallRight/Area3D" to="." method="RightMetallic"]
 [connection signal="area_exited" from="WallRight/Area3D" to="." method="RightMetallicStop"]
+[connection signal="timeout" from="TransitionTimer" to="." method="_on_transition_timer_timeout"]
 [connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]
 [connection signal="finished" from="BGM" to="." method="_on_bgm_finished"]
 [connection signal="timeout" from="2DStuff/FPSCounterTimer" to="." method="CalculateFPS"]
 [connection signal="animation_finished" from="2DStuff/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="toggled" from="2DStuff/AnimatedTitle/Control/CheckBox" to="." method="_on_check_box_toggled"]

@@ -5,7 +5,7 @@ public partial class Start : StaticBody3D
 {
 	PackedScene leftCube = GD.Load<PackedScene>("res://player_Left.tscn");
 	PackedScene rightCube = GD.Load<PackedScene>("res://player_Right.tscn");
-	Timer Reset;
+	Timer Reset, Transition;
 	Globals Controller;
 	WorldEnvironment Sky;
 	CharacterBody3D PlayerLeft;
@@ -33,18 +33,10 @@ public partial class Start : StaticBody3D
 	static StringName left = new StringName("MoveLeft");
 	static StringName right = new StringName("MoveRight");
 	static StringName start = new StringName("Start");
-	/*some of the above woulda been declared on the same line but they behave incorrectly when the game statrs and somehow
-	having it like this prevents the issue. . .idek :')*/
-
-	/* float skyDefaultX = -156.0f;
-	 float skyDefaultY = 260.0f;
-	 float skyDefaultZ = -40.0f; */
 	float skyX = -156.0f;
 	float skyY = 260.0f;
 	float skyZ = -40.0f;
-	float r = 2.0f;
-	float g = 2.0f;
-	float b = 2.0f;
+	float primaryColour = 2.0f;
 	Vector3 LeftPos, RightPos;
 	int bgmIndex, bgmPrev;
 
@@ -52,18 +44,10 @@ public partial class Start : StaticBody3D
 
 	public override void _Process(double delta)
 	{
-		/*
-		GetNode<Label>("%FPSCounter").Text = Math.Truncate((1000 / delta) / 1000).ToString(); 
-		dont have this run every frame, every second will be fine
-		FPS = (1000 / delta) / 1000
-		*/
-
 		if (Controller.Game_Over)
 		{
-			r -= 0.575f * (float)delta;
-			g -= 0.575f * (float)delta;
-			b -= 0.575f * (float)delta;
-			light.LightColor = new Color(r, g, b);
+			primaryColour -= 0.575f * (float)delta;
+			light.LightColor = new Color(primaryColour, primaryColour, primaryColour);
 		}
 
 		if (!SkyMoveDone)
@@ -86,6 +70,7 @@ public partial class Start : StaticBody3D
 	{
 		rng = new Random();
 		Controller = (Globals)GetNode("/root/Globals");
+		Transition = GetNode<Timer>("TransitionTimer");
 		Reset = GetNode<Timer>("ResetTimer");
 		Sky = GetNode<WorldEnvironment>("WorldEnvironment");
 		SkyMoveDone = true;
@@ -105,7 +90,7 @@ public partial class Start : StaticBody3D
 		BGMusic = GetNode<AudioStreamPlayer>("BGM");
 
 		title = GetNode<AnimatedSprite3D>("2DStuff/AnimatedTitle");
-		title.Play("default");
+		title.Play("Classic");
 
 		transitionAnimation = GetNode<AnimationPlayer>("2DStuff/AnimationPlayer");
 
@@ -157,6 +142,7 @@ public partial class Start : StaticBody3D
 			shockwaveAnimation.GetAnimation("shockwave").TrackSetKeyTime(0, 1, 1);			
 			shockwaveAnimation.Play("shockwave");
 
+			Transition.Start();
 			Reset.Start();
 			best.ReplaceHighScore(Controller.score);
 
@@ -278,10 +264,13 @@ public partial class Start : StaticBody3D
 		}
 	}
 
-	public void _on_reset_timer_timeout()
+	public void _on_transition_timer_timeout()
 	{
 		transitionAnimation.Play("FadeOut");
+	}
 
+	public void _on_reset_timer_timeout()
+	{
 		Controller.clearLevel();
 		Controller.spikes.Clear();
 		Controller.playing = false;
@@ -297,10 +286,8 @@ public partial class Start : StaticBody3D
 		PlayerRight.Dispose();
 		//no clue if the .Dispose is really doing anything since QueueFree is there...but it's there anyway idek
 
-		r = 2.0f;
-		g = 2.0f;
-		b = 2.0f;
-		light.LightColor = new Color(r, g, b);
+		primaryColour = 2.0f;
+		light.LightColor = new Color(primaryColour, primaryColour, primaryColour);
 		
 		highScore.Text = "High Score: " + aes.DecryptString(best.ReadHighScoreFile()[0]);
 		
@@ -334,7 +321,7 @@ public partial class Start : StaticBody3D
 			shockwaveAnimation.Play("shockwave");
 		}
 	}
-	//=====================RNG AND START PLAYING METALLIC SOUND===============================
+	//=====================START PLAYING METALLIC SOUND=========================
 	public void LeftMetallic(Area3D area)
 	{
 		if (area.IsInGroup("Player"))
@@ -354,7 +341,7 @@ public partial class Start : StaticBody3D
 			sfxCrackleRight.Play();
 		}
 	}
-	//=======================STOP PLAYING METALLIC SOUND==============================
+	//=======================STOP PLAYING METALLIC SOUND===========================
 	public void LeftMetallicStop(Area3D area)
 	{
 		sfxMetallicLeft.Stop();
@@ -411,5 +398,10 @@ public partial class Start : StaticBody3D
 	private void CalculateFPS()
 	{
 		fps.Text = Math.Truncate(1 / GetProcessDeltaTime()).ToString();
+	}
+
+	private void _on_check_box_toggled(bool state)
+	{
+		Sky.Environment.GlowEnabled = state;
 	}
 }

@@ -1,3 +1,7 @@
+Timer
+HSlider
+CheckBox
+Control
 ColorRect
 SoftBody3D
 TouchScreenButton
@@ -8,7 +12,3 @@ AnimationPlayer
 TextureRect
 WorldEnvironment
 DirectionalLight3D
-Timer
-Label
-OccluderInstance3D
-LightmapGI

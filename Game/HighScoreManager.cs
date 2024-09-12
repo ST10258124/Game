@@ -1,7 +1,4 @@
-using System;
 using System.IO;
-using System.Text;
-using Godot;
 
 public class HighScoreManager
 {
@@ -10,7 +7,8 @@ public class HighScoreManager
     static byte[] key = new byte[32];
     static byte[] iv = new byte[16];
 
-    //line 10 and 11. . .don't even ask. hopefully nash covers this sometime
+    //hopefully nash covers this sometime
+    //so she covered hashing but we stayed away on that day :(
 
     StringEncryptor aes;
 
@@ -32,13 +30,11 @@ public class HighScoreManager
 
         lines[0] = aes.EncryptString(lines[0]);
         WriteHighScoreFile(lines);
-        //score is 32 bit integer so max score will never exceed 2 147 483 647
     }
 
     // Reads the high score file and returns all lines
     public string[] ReadHighScoreFile()
     {
-        // Ensure the file exists
         if (!File.Exists(_filePath))
         {
             string defaultScore = aes.EncryptString("0") + "\nnice try";
