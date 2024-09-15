@@ -8,10 +8,3 @@ res://New folder/GateMiddle.gdshader
 res://Splash_Screen.tscn
 res://player_Right.tscn
 res://Gate.tscn
-res://Detect_Avoid.cs
-res://Explode.cs
-res://Globals.cs
-res://playerLeft.cs
-res://playerRight.cs
-res://Splash.cs
-res://Start.cs

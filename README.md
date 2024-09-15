@@ -44,6 +44,7 @@ module_webrtc_enabled = "no"
 module_websocket_enabled = "no"
 module_webxr_enabled = "no"
 module_zip_enabled = "no"
+opengl3 = "no"
 
 How to play
 ===========

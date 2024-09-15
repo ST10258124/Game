@@ -399,9 +399,14 @@ public partial class Start : StaticBody3D
 	{
 		fps.Text = Math.Truncate(1 / GetProcessDeltaTime()).ToString();
 	}
-
+//==============================GRAPHICS SSETTINGS====================================
 	private void _on_check_box_toggled(bool state)
 	{
 		Sky.Environment.GlowEnabled = state;
+	}
+
+	private void _on_h_slider_value_changed(float value)
+	{
+		Sky.Environment.Sky.RadianceSize = (Sky.RadianceSizeEnum)value;
 	}
 }

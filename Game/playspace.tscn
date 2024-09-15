@@ -1,4 +1,4 @@
-[gd_scene load_steps=186 format=3 uid="uid://3qlfhxae8rjg"]
+[gd_scene load_steps=189 format=3 uid="uid://3qlfhxae8rjg"]
 
 [ext_resource type="Script" path="res://Start.cs" id="1_ian6e"]
 [ext_resource type="Texture2D" uid="uid://bb06ux6jkykav" path="res://panorama_image.png" id="2_851rm"]
@@ -150,7 +150,6 @@ panorama = ExtResource("2_851rm")
 
 [sub_resource type="Sky" id="Sky_cknos"]
 sky_material = SubResource("PanoramaSkyMaterial_ouape")
-radiance_size = 4
 
 [sub_resource type="Environment" id="Environment_c13pl"]
 background_mode = 2
@@ -166,8 +165,15 @@ glow_intensity = 0.05
 glow_bloom = 0.25
 glow_blend_mode = 1
 fog_enabled = true
-fog_light_color = Color(0, 0, 0.196078, 1)
+fog_light_color = Color(0, 0, 0.294118, 1)
 fog_density = 0.0
+
+[sub_resource type="Curve" id="Curve_33cbn"]
+_data = [Vector2(0.252475, 1), 0.0, 0.0, 0, 0, Vector2(0.846535, 0.00377357), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_0ggc0"]
+curve = SubResource("Curve_33cbn")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7vlgm"]
 particle_flag_rotate_y = true
@@ -180,8 +186,14 @@ linear_accel_min = -4.0
 linear_accel_max = 8.0
 scale_min = 0.75
 scale_max = 1.4
+alpha_curve = SubResource("CurveTexture_0ggc0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8erpg"]
+transparency = 1
+vertex_color_use_as_albedo = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_ox6mg"]
+material = SubResource("StandardMaterial3D_8erpg")
 size = Vector3(1.5, 1.5, 1.5)
 
 [sub_resource type="Curve" id="Curve_bah7o"]
@@ -859,8 +871,8 @@ environment = SubResource("Environment_c13pl")
 [node name="Blocks" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 13)
 layers = 8
-amount = 300
-lifetime = 4.0
+amount = 384
+lifetime = 3.0
 preprocess = 2.25
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_7vlgm")
@@ -869,7 +881,7 @@ draw_pass_1 = SubResource("BoxMesh_ox6mg")
 [node name="MetalSparksLeft" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75, 0.5, 6.5)
 emitting = false
-amount = 500
+amount = 448
 preprocess = 0.1
 randomness = 0.5
 fixed_fps = 60
@@ -881,7 +893,7 @@ draw_pass_1 = SubResource("RibbonTrailMesh_ugweh")
 [node name="MetalSparksRight" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75, 0.5, 6.5)
 emitting = false
-amount = 500
+amount = 448
 preprocess = 0.1
 randomness = 0.5
 fixed_fps = 60
@@ -891,12 +903,13 @@ process_material = SubResource("ParticleProcessMaterial_ju0ch")
 draw_pass_1 = SubResource("RibbonTrailMesh_cie2m")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.574863, 0.81825, 0, -0.81825, 0.574863, 0, 0, 10.1094)
-light_color = Color(0, 2, 4, 1)
+transform = Transform3D(1, 0, 0, 0, 0.621189, 0.783661, 0, -0.783661, 0.621189, 0, 0, 12.4683)
+light_color = Color(0, 1, 2, 1)
+light_energy = 2.25
 light_bake_mode = 1
 light_cull_mask = 4294966280
-spot_range = 27.9769
-spot_angle = 66.4106
+spot_range = 26.4638
+spot_angle = 67.0046
 
 [node name="Beam" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 6.5)
@@ -922,11 +935,11 @@ stream = SubResource("AudioStreamRandomizer_5ihee")
 [node name="SparksGateBlue" type="GPUParticles3D" parent="Beam"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, -1, 0.5)
 emitting = false
-amount = 300
+amount = 384
 lifetime = 1.4
 one_shot = true
 preprocess = 0.1
-explosiveness = 0.8
+explosiveness = 0.75
 randomness = 0.25
 fixed_fps = 60
 trail_enabled = true
@@ -937,11 +950,11 @@ draw_pass_1 = SubResource("RibbonTrailMesh_8jfib")
 [node name="SparksGatePink" type="GPUParticles3D" parent="Beam"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, -1, 0.5)
 emitting = false
-amount = 300
+amount = 384
 lifetime = 1.4
 one_shot = true
 preprocess = 0.1
-explosiveness = 0.8
+explosiveness = 0.75
 randomness = 0.25
 fixed_fps = 60
 trail_enabled = true
@@ -1096,6 +1109,14 @@ offset_right = 72.0
 offset_bottom = 719.0
 text = "Glow"
 
+[node name="HSlider" type="HSlider" parent="2DStuff/AnimatedTitle/Control"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 62.0
+offset_right = 160.0
+offset_bottom = 78.0
+max_value = 6.0
+
 [node name="Score" type="Label3D" parent="2DStuff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 8.2)
 visible = false
@@ -1140,3 +1161,4 @@ libraries = {
 [connection signal="timeout" from="2DStuff/FPSCounterTimer" to="." method="CalculateFPS"]
 [connection signal="animation_finished" from="2DStuff/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="toggled" from="2DStuff/AnimatedTitle/Control/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="value_changed" from="2DStuff/AnimatedTitle/Control/HSlider" to="." method="_on_h_slider_value_changed"]

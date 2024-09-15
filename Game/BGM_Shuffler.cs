@@ -26,7 +26,7 @@ public class BGM_Shuffler
         if (array[0] == lastElement)
         {
             // Swap the first element with the something else
-            swap = _random.Next(3);
+            swap = _random.Next(1, 4);
             temp = array[0];
             array[0] = array[swap];
             array[swap] = temp;
