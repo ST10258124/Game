@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb06ux6jkykav"
+uid="uid://buk5ca0560kr2"
 path.bptc="res://.godot/imported/panorama_image.png-dc754b58f8837ad6d82485f39c8f4d1c.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -22,7 +22,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

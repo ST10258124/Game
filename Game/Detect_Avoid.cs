@@ -1,27 +1,26 @@
 using Godot;
-using System;
 
 public partial class Detect_Avoid : RayCast3D
 {
+	[Signal]
+    public delegate void ScoreChangedEventHandler();
+
 	bool avoided;
 	Globals Controller;
-	RigidBody3D spike;
 	public override void _Ready()
 	{
 		avoided = false;
 		Controller = (Globals)GetNode("/root/Globals");
-		spike = GetParent() as RigidBody3D;
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
 		if (avoided && !IsColliding()){
 			Controller.score++;
-			// if (Controller.score % 10 == 0) Controller.nextLevel();
-		}
+			EmitSignal(SignalName.ScoreChanged);
 
-		if (spike.IsQueuedForDeletion()){
-			QueueFree();
+			//+1 to score when ray cast collided with player in prev frame and is not colliding in current frame
+			// if (Controller.score % 10 == 0) Controller.nextLevel();
 		}
 
 		avoided = IsColliding();

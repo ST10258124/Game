@@ -2,7 +2,7 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://cnyifsya47pvy"
+uid="uid://c2sem6hxm4p5t"
 path="res://.godot/imported/Metallic2.ogg-b0e711be75dc1f3b37cdace6d340a83d.oggvorbisstr"
 
 [deps]
@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Metallic2.ogg-b0e711be75dc1f3b37cdace6d340a83
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

@@ -4,7 +4,7 @@ using Godot;
 public partial class playerRight : CharacterBody3D
 {
 	[Export]
-	private static float Speed = 6f;
+	private float Speed = 6f;
 	Globals Controller;
 	Timer Reset;
 	MeshInstance3D playerRightMesh;

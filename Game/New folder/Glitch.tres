@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://d3kgljg5nlmoq"]
 
 [ext_resource type="Shader" path="res://New folder/Glitch.gdshader" id="1"]
-[ext_resource type="Texture2D" uid="uid://cctokb437welc" path="res://New folder/Glitch_texture_1.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://b3tabjyovmn3i" path="res://New folder/Glitch_texture_1.png" id="2"]
 
 [resource]
 render_priority = 0

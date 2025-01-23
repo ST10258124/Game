@@ -58,7 +58,7 @@ vec2 transform2(vec2 uv, vec2 translate, float rotate, vec2 scale) {
 	rv.y = -sin(rotate)*uv.x + cos(rotate)*uv.y;
 	rv /= scale;
 	rv += vec2(0.5);
-	return rv;	
+	return rv;
 }
 float pingpong(float a, float b)
 {
@@ -230,6 +230,3 @@ vec4 o88535_0_2_rgba = o88535_0_b;
 	ALPHA = color_tex.a;
 
 }
-
-
-

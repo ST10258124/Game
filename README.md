@@ -49,6 +49,7 @@ opengl3 = "no"
 How to play
 ===========
 Use the A and D keys, or the left and right arrow keys, to move left or right. Press them at the same time to split.
+R1/RB and L1/LB for controller.
 
 Original Game
 =============

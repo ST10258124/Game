@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://playerLeft.cs" id="1_cq4b5"]
 [ext_resource type="Material" uid="uid://d3kgljg5nlmoq" path="res://New folder/Glitch.tres" id="2_fygsc"]
-[ext_resource type="Texture2D" uid="uid://bt62skx5twl8b" path="res://New folder/Flare01.png" id="3_pfp13"]
+[ext_resource type="Texture2D" uid="uid://bdqsqgra16otm" path="res://New folder/Flare01.png" id="3_pfp13"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8jr3e"]
 size = Vector3(0.75, 0.75, 0.75)

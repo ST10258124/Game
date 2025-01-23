@@ -2,7 +2,7 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://u862by6qprqc"
+uid="uid://t4d73sd3e2y7"
 path="res://.godot/imported/Crackle.ogg-3fd0167885937ab356e7c8baf3ce2ba0.oggvorbisstr"
 
 [deps]
@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Crackle.ogg-3fd0167885937ab356e7c8baf3ce2ba0.
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

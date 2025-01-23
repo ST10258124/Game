@@ -2,7 +2,7 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://degugywe03hqk"
+uid="uid://dmyec37rcravw"
 path="res://.godot/imported/Menu Variation3.ogg-64d7d885166cb9a48115feae375fb739.oggvorbisstr"
 
 [deps]
@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Menu Variation3.ogg-64d7d885166cb9a48115feae3
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

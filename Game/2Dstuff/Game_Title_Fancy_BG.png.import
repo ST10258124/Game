@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://y6vby5iwiogg"
-path.s3tc="res://.godot/imported/Game_Title_Fancy_BG.png-42d309c4bbb09c0a3c19670fcab33195.s3tc.ctex"
+uid="uid://cjoa2djgobdkg"
+path.bptc="res://.godot/imported/Game_Title_Fancy_BG.png-42d309c4bbb09c0a3c19670fcab33195.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,17 +12,17 @@ metadata={
 [deps]
 
 source_file="res://2Dstuff/Game_Title_Fancy_BG.png"
-dest_files=["res://.godot/imported/Game_Title_Fancy_BG.png-42d309c4bbb09c0a3c19670fcab33195.s3tc.ctex"]
+dest_files=["res://.godot/imported/Game_Title_Fancy_BG.png-42d309c4bbb09c0a3c19670fcab33195.bptc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=false
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
-compress/channel_pack=0
-mipmaps/generate=true
+compress/channel_pack=1
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

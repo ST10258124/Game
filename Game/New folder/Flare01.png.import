@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bt62skx5twl8b"
-path.s3tc="res://.godot/imported/Flare01.png-1f822884bc2fa2f365bf6c8a5fe98157.s3tc.ctex"
+uid="uid://bdqsqgra16otm"
+path.bptc="res://.godot/imported/Flare01.png-1f822884bc2fa2f365bf6c8a5fe98157.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,16 +12,16 @@ metadata={
 [deps]
 
 source_file="res://New folder/Flare01.png"
-dest_files=["res://.godot/imported/Flare01.png-1f822884bc2fa2f365bf6c8a5fe98157.s3tc.ctex"]
+dest_files=["res://.godot/imported/Flare01.png-1f822884bc2fa2f365bf6c8a5fe98157.bptc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=false
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
-compress/channel_pack=0
+compress/channel_pack=1
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0

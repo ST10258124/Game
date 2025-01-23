@@ -1,8 +1,11 @@
+FogVolume
+RayCast3D
+VideoStreamPlayer
 HSlider
+ColorRect
 Timer
 CheckBox
 Control
-ColorRect
 SoftBody3D
 TouchScreenButton
 VoxelGI
@@ -10,5 +13,3 @@ StaticBody3D
 CanvasLayer
 AnimationPlayer
 TextureRect
-WorldEnvironment
-DirectionalLight3D

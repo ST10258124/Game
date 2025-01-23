@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bg4iuiel3lr3y"]
+[gd_scene load_steps=4 format=3 uid="uid://bg4iuiel3lr3y"]
 
-[ext_resource type="ArrayMesh" uid="uid://dpposqh186os1" path="res://Blender/Left_Spike.obj" id="1_l5rs0"]
-[ext_resource type="Script" path="res://Detect_Avoid.cs" id="2_puupk"]
+[ext_resource type="ArrayMesh" uid="uid://c6k482fpopcgg" path="res://Blender/Left_Spike.obj" id="1_l5rs0"]
 [ext_resource type="Material" uid="uid://dtb3sf4taa6hh" path="res://New folder/Walls_Spikes.tres" id="2_vn4lf"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_afq30"]
@@ -21,12 +20,6 @@ surface_material_override/0 = ExtResource("2_vn4lf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_afq30")
-
-[node name="Detector" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -4)
-target_position = Vector3(2, 0, 0)
-collision_mask = 4
-script = ExtResource("2_puupk")
 
 [node name="Area3D" type="Area3D" parent="." groups=["Spike"]]
 

@@ -1,12 +1,7 @@
 using Godot;
-using System;
 
 public partial class Splash : VideoStreamPlayer
 {
-
-	public override void _Ready(){
-		
-	}
 	void _on_finished(){
 		var sceneTree = GetTree();
 
@@ -27,6 +22,5 @@ public partial class Splash : VideoStreamPlayer
 
 		i've learned alot but i know nothing
 		*/
-		
 	}
 }

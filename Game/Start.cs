@@ -16,6 +16,7 @@ public partial class Start : StaticBody3D
 	AudioStreamPlayer3D sfxGate, sfxGateSecondary, sfxHumLeft, sfxHumRight, sfxHumMiddle, sfxMetallicLeft, sfxMetallicRight, sfxCrackleLeft, sfxCrackleRight;
 	GpuParticles3D sparksGateBlue, sparksGatePink, metalSparksLeft, metalSparksRight;
 	AnimatedSprite3D title;
+	ColorRect screenTransition;
 	AnimationPlayer transitionAnimation;
 	Label3D highScore, currentScore;
 	Label fps;
@@ -92,7 +93,9 @@ public partial class Start : StaticBody3D
 		title = GetNode<AnimatedSprite3D>("2DStuff/AnimatedTitle");
 		title.Play("Classic");
 
+		screenTransition = GetNode<ColorRect>("2DStuff/AnimationPlayer/Transition");
 		transitionAnimation = GetNode<AnimationPlayer>("2DStuff/AnimationPlayer");
+		screenTransition.Size = new Vector2(DisplayServer.WindowGetSize().X, DisplayServer.WindowGetSize().Y);
 
 		fps = GetNode<Label>("2DStuff/FPS");
 		fps.Text = Math.Truncate(1 / GetProcessDeltaTime()).ToString();
@@ -120,6 +123,7 @@ public partial class Start : StaticBody3D
 		highScore.Text = "High Score: " + aes.DecryptString(best.ReadHighScoreFile()[0]);
 
 		SetPhysicsProcess(false);
+
 		/*I THINK IT BE LIKE:
 		  NAME_OF_CLASS VAR_NAME
 		  VAR_NAME = (NAME_OF_CLASS)GETNODE("/ROOT/NAME_GIVEN_IN_AUTOLOAD");*/
@@ -159,15 +163,6 @@ public partial class Start : StaticBody3D
 
 			SetPhysicsProcess(false);
 		}
-
-		currentScore.Text = Controller.score.ToString();
-		/*shitty way to go about doing this
-		woulda worked fine with a signal but some wanker changed the syntax
-		and didn't update it in the documentation.
-		dunno if that only affects c# or GD script too but am not changing the language
-		of a whole ass script for a signal :/
-
-		works perfectly like this but look into a more resource efficient way of doing this*/
 
 		LeftPos = PlayerLeft.Position;
 		RightPos = PlayerRight.Position;
@@ -232,6 +227,7 @@ public partial class Start : StaticBody3D
 			BeamInner.Visible = true;
 
 			Controller.score = 0;
+			UpdateScore();
 			Controller.playing = true;
 			Controller.SetPhysicsProcess(Controller.playing);
 			if (Controller.spikes.Count == 0)
@@ -298,11 +294,6 @@ public partial class Start : StaticBody3D
 		}
 
 		bgmIndex++;
-		_on_bgm_finished();
-	}
-
-	public void _on_bgm_finished()
-	{
 		BGMusic.Play();
 	}
 
@@ -326,7 +317,7 @@ public partial class Start : StaticBody3D
 	{
 		if (area.IsInGroup("Player"))
 		{
-			LeftMetallicLoop();
+			sfxMetallicLeft.Play();
 			metalSparksLeft.Emitting = true;
 			sfxCrackleLeft.Play();
 		}
@@ -336,7 +327,7 @@ public partial class Start : StaticBody3D
 	{
 		if (area.IsInGroup("Player"))
 		{
-			RightMetallicLoop();
+			sfxMetallicRight.Play();
 			metalSparksRight.Emitting = true;
 			sfxCrackleRight.Play();
 		}
@@ -355,33 +346,10 @@ public partial class Start : StaticBody3D
 		metalSparksRight.Emitting = false;
 		sfxCrackleRight.Stop();
 	}
-
-	//==========================LOOP THE METALLIC SOUND============================
-	public void LeftMetallicLoop()
-	{
-		sfxMetallicLeft.Play();
-	}
-
-	public void RightMetallicLoop()
-	{
-		sfxMetallicRight.Play();
-	}
-
-	public void LeftCrackleLoop()
-	{
-		sfxCrackleLeft.Play();
-	}
-
-	public void RightCrackleLoop()
-	{
-		sfxCrackleRight.Play();
-	}
 //============================================================
 	private void _on_animation_player_animation_finished(string anim)
 	{
-		Sprite2D screen = GetNode<Sprite2D>("2DStuff/AnimationPlayer/BlackBG");
-		screen.Texture.Dispose();
-		screen.Texture = (Texture2D)ResourceLoader.Load("res://2DStuff/Transition.png");
+		screenTransition.Color = new Color(1, 1, 1, 1);
 
 		transitionAnimation.GetAnimation("FadeOut").TrackSetKeyTime(0, 0, 0.0);
 		transitionAnimation.GetAnimation("FadeOut").TrackSetKeyTime(0, 1, 1.0);
@@ -399,14 +367,24 @@ public partial class Start : StaticBody3D
 	{
 		fps.Text = Math.Truncate(1 / GetProcessDeltaTime()).ToString();
 	}
+
+	private void UpdateScore()
+	{
+		currentScore.Text = Controller.score.ToString();
+	}
 //==============================GRAPHICS SSETTINGS====================================
 	private void _on_check_box_toggled(bool state)
-	{
+	{//has FPS benefit
 		Sky.Environment.GlowEnabled = state;
 	}
 
 	private void _on_h_slider_value_changed(float value)
-	{
+	{//doesn't seem to have FPS benefit but affects RAM usage
 		Sky.Environment.Sky.RadianceSize = (Sky.RadianceSizeEnum)value;
+	}
+
+	private void _on_msaa_value_changed(float value)
+	{//has FPS benefit
+		RenderingServer.ViewportSetMsaa3D(GetViewport().GetViewportRid(), (RenderingServer.ViewportMsaa)value);
 	}
 }
