@@ -10,6 +10,8 @@ public partial class Globals : Node
 	const float BASE_ACCELARATION = 12.0f; //metres/s
 	const float BASE_SPACING = 5.5f; //metres
 
+	static StringName pause = new StringName("Pause");
+
 	public int score;
 	public float spikeSpacing = BASE_SPACING;
 	public float accelaration = BASE_ACCELARATION;
@@ -127,5 +129,22 @@ public partial class Globals : Node
 		spikeSpacing = BASE_SPACING;
 
 		spawnSpikes(spikeSpacing);
+	}
+
+	public override void _UnhandledInput(InputEvent @event)
+	{
+		if (Input.IsActionJustPressed(pause) && !IsPhysicsProcessing() && playing && !Game_Over)
+		{
+			SetPhysicsProcess(true);
+		}
+		else if (Input.IsActionJustPressed(pause) && playing && !Game_Over)
+		{
+			SetPhysicsProcess(false);
+
+			foreach (RigidBody3D Spike in spikes)
+			{
+				Spike.LinearVelocity = new Vector3(0, 0, 0);
+			}
+		}
 	}
 }

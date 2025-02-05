@@ -20,24 +20,19 @@
             "related": ".xml"
           }
         }
-      }
-    },
-    "net6.0/win-x64": {
-      "Godot.SourceGenerators/4.3.0": {
-        "type": "package",
-        "build": {
-          "build/Godot.SourceGenerators.props": {}
-        }
       },
-      "GodotSharp/4.3.0": {
+      "GodotSharpEditor/4.3.0": {
         "type": "package",
+        "dependencies": {
+          "GodotSharp": "4.3.0"
+        },
         "compile": {
-          "lib/net6.0/GodotSharp.dll": {
+          "lib/net6.0/GodotSharpEditor.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/GodotSharp.dll": {
+          "lib/net6.0/GodotSharpEditor.dll": {
             "related": ".xml"
           }
         }
@@ -70,12 +65,26 @@
         "lib/net6.0/GodotSharp.dll",
         "lib/net6.0/GodotSharp.xml"
       ]
+    },
+    "GodotSharpEditor/4.3.0": {
+      "sha512": "r7A3lszHS9/gIWoOb7w+MNtEjrD/NRX+9ACHq01GD2+lctu6eHsmlSTA0Ah1bjJDKs9rDZeSq+42zwXvtBsPzQ==",
+      "type": "package",
+      "path": "godotsharpeditor/4.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "godotsharpeditor.4.3.0.nupkg.sha512",
+        "godotsharpeditor.nuspec",
+        "lib/net6.0/GodotSharpEditor.dll",
+        "lib/net6.0/GodotSharpEditor.xml"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "Godot.SourceGenerators >= 4.3.0",
-      "GodotSharp >= 4.3.0"
+      "GodotSharp >= 4.3.0",
+      "GodotSharpEditor >= 4.3.0"
     ]
   },
   "packageFolders": {
@@ -85,11 +94,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Vivek\\Documents\\Game\\Game.csproj",
+      "projectUniqueName": "c:\\Users\\Vivek\\Documents\\Game\\Game.csproj",
       "projectName": "Game",
-      "projectPath": "C:\\Users\\Vivek\\Documents\\Game\\Game.csproj",
+      "projectPath": "c:\\Users\\Vivek\\Documents\\Game\\Game.csproj",
       "packagesPath": "C:\\Users\\Vivek\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Vivek\\Documents\\Game\\.godot\\mono\\temp\\obj\\",
+      "outputPath": "c:\\Users\\Vivek\\Documents\\Game\\.godot\\mono\\temp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -135,6 +144,10 @@
           "GodotSharp": {
             "target": "Package",
             "version": "[4.3.0, )"
+          },
+          "GodotSharpEditor": {
+            "target": "Package",
+            "version": "[4.3.0, )"
           }
         },
         "imports": [
@@ -154,23 +167,11 @@
             "version": "[6.0.27, 6.0.27]"
           },
           {
-            "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-            "version": "[6.0.27, 6.0.27]"
-          },
-          {
             "name": "Microsoft.NETCore.App.Ref",
             "version": "[6.0.27, 6.0.27]"
           },
           {
-            "name": "Microsoft.NETCore.App.Runtime.win-x64",
-            "version": "[6.0.27, 6.0.27]"
-          },
-          {
             "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[6.0.27, 6.0.27]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
             "version": "[6.0.27, 6.0.27]"
           }
         ],
@@ -180,11 +181,6 @@
           }
         },
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
-      }
-    },
-    "runtimes": {
-      "win-x64": {
-        "#import": []
       }
     }
   }

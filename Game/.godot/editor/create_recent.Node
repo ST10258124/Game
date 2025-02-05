@@ -1,9 +1,9 @@
+Timer
 FogVolume
 RayCast3D
 VideoStreamPlayer
 HSlider
 ColorRect
-Timer
 CheckBox
 Control
 SoftBody3D
@@ -12,4 +12,3 @@ VoxelGI
 StaticBody3D
 CanvasLayer
 AnimationPlayer
-TextureRect

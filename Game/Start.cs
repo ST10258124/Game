@@ -34,10 +34,13 @@ public partial class Start : StaticBody3D
 	static StringName left = new StringName("MoveLeft");
 	static StringName right = new StringName("MoveRight");
 	static StringName start = new StringName("Start");
+	static StringName pause = new StringName("Pause");
 	float skyX = -156.0f;
 	float skyY = 260.0f;
 	float skyZ = -40.0f;
 	float primaryColour = 2.0f;
+	float gameSpeed = 1;
+	float bgmStartPos = 0; //the point at which the bgm will start playing from
 	Vector3 LeftPos, RightPos;
 	int bgmIndex, bgmPrev;
 
@@ -131,8 +134,22 @@ public partial class Start : StaticBody3D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if (Engine.TimeScale != 1)
+		{
+			Engine.TimeScale = gameSpeed;
+			AudioServer.PlaybackSpeedScale = gameSpeed;
+		}
+
 		if (Controller.Game_Over)
 		{
+			gameSpeed = 1.0f;
+			Engine.TimeScale = gameSpeed;
+			AudioServer.PlaybackSpeedScale = gameSpeed;
+			bgmStartPos = BGMusic.GetPlaybackPosition();
+
+			BGMusic.Stop();
+			BGMusic.Stream.Dispose();
+
 			shockwaveShader.SetShaderParameter("strength", 0.2);
 			shockwaveShader.SetShaderParameter("abberation", 1);
 			shockwaveShader.SetShaderParameter("width", 0.1);
@@ -140,9 +157,7 @@ public partial class Start : StaticBody3D
 			
 			shockwave.Visible = true;
 			shockwaveAnimation.GetAnimation("shockwave").TrackSetKeyValue(0, 0, 0.25);
-
 			shockwaveAnimation.GetAnimation("shockwave").TrackSetKeyValue(0, 1, 1.1);
-
 			shockwaveAnimation.GetAnimation("shockwave").TrackSetKeyTime(0, 1, 1);			
 			shockwaveAnimation.Play("shockwave");
 
@@ -206,6 +221,38 @@ public partial class Start : StaticBody3D
 
 	public override void _UnhandledInput(InputEvent @event) //prolly a better way to do the "left click to start" bit
 	{
+		if (Input.IsActionJustPressed(pause)&& !IsProcessing() && Controller.playing && !Controller.Game_Over)
+		{
+			gameSpeed = 0.1f;
+			AudioServer.PlaybackSpeedScale = gameSpeed;
+
+			SetPhysicsProcess(true);
+			SetProcess(true);
+
+			var tween = GetTree().CreateTween(); //add .dispose when done
+			tween.TweenProperty(this, "gameSpeed", 1.0, 0.375);
+
+			PlayerLeft.SetPhysicsProcess(true);
+			PlayerRight.SetPhysicsProcess(true);
+
+			BGMusic.Play(bgmStartPos);
+		}
+		else if (Input.IsActionJustPressed(pause) && Controller.playing && !Controller.Game_Over)
+		{
+			bgmStartPos = BGMusic.GetPlaybackPosition();
+			BGMusic.Stop();
+
+			SetPhysicsProcess(false);
+			SetProcess(false);
+
+			PlayerLeft.SetPhysicsProcess(false);
+			PlayerRight.SetPhysicsProcess(false);
+			
+			gameSpeed = 0.00001f;
+			Engine.TimeScale = gameSpeed;
+			AudioServer.PlaybackSpeedScale = gameSpeed;
+		}
+
 		if (Input.IsActionJustReleased(start) && !Controller.playing && splashDone)
 		{
 			PlayerLeft = (CharacterBody3D)leftCube.Instantiate();
@@ -220,6 +267,8 @@ public partial class Start : StaticBody3D
 
 			BGMusic.Stop();
 			BGMusic.Stream.Dispose();
+			BGMusic.Stream = (AudioStream)ResourceLoader.Load("res://Music/CELESTIAL (Nightcore Remix) - Instrumental.wav");
+			BGMusic.Play(bgmStartPos);
 			sfxGateSecondary.Play();
 			sfxHumMiddle.Play();
 
@@ -250,10 +299,9 @@ public partial class Start : StaticBody3D
 			shockwaveShader.SetShaderParameter("abberation", 0.1);
 			shockwaveShader.SetShaderParameter("width", 0.1);
 			shockwaveShader.SetShaderParameter("feather", 0.2);
+
 			shockwaveAnimation.GetAnimation("shockwave").TrackSetKeyValue(0, 0, 0.001);
-
 			shockwaveAnimation.GetAnimation("shockwave").TrackSetKeyValue(0, 1, 1.0);
-
 			shockwaveAnimation.GetAnimation("shockwave").TrackSetKeyTime(0, 1, 0.5);
 
 			SetPhysicsProcess(true);
@@ -372,7 +420,7 @@ public partial class Start : StaticBody3D
 	{
 		currentScore.Text = Controller.score.ToString();
 	}
-//==============================GRAPHICS SSETTINGS====================================
+//==============================GRAPHICS SETTINGS====================================
 	private void _on_check_box_toggled(bool state)
 	{//has FPS benefit
 		Sky.Environment.GlowEnabled = state;
