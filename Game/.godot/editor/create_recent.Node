@@ -1,3 +1,4 @@
+Area3D
 Timer
 FogVolume
 RayCast3D
@@ -11,4 +12,3 @@ TouchScreenButton
 VoxelGI
 StaticBody3D
 CanvasLayer
-AnimationPlayer

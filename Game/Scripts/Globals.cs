@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Godot;
 
 public partial class Globals : Node
@@ -12,7 +13,8 @@ public partial class Globals : Node
 
 	static StringName pause = new StringName("Pause");
 
-	public int score;
+	public int score = 0;
+	private string scoreHash;
 	public float spikeSpacing = BASE_SPACING;
 	public float accelaration = BASE_ACCELARATION;
 	//also refers to the spike, just added "spike" to "Spacing" because "spacing" is a parameter in spawnSpikes()
@@ -33,9 +35,14 @@ public partial class Globals : Node
 
 	PackedScene Gate = GD.Load<PackedScene>("res://Gate.tscn");
 	Node3D gate;
+	StringEncryptor hash = new StringEncryptor(new byte[32], new byte[16]);
+	string salt;
 
 	public override void _Ready()
 	{
+		salt = $"{(char)rng.Next(33, 127)}{(char)rng.Next(33, 127)}{(char)rng.Next(33, 127)}";
+		scoreHash = hash.EncryptString($"{salt}{score}");
+
 		playing = false;
 		Game_Over = false;
 		SetPhysicsProcess(playing);
@@ -116,6 +123,12 @@ public partial class Globals : Node
 		Game_Over = true;
 		SetPhysicsProcess(false);
 
+		/*score = 0;
+		salt = $"{(char)rng.Next(33, 127)}{(char)rng.Next(33, 127)}{(char)rng.Next(33, 127)}";
+		scoreHash = hash.EncryptString($"{salt}{score}");*/
+		//TEMP COMMENTED OUT, WILL PUT BACK LATER
+
+
 		foreach (RigidBody3D Spike in spikes)
 		{
 			Spike.LinearVelocity = new Vector3(0, 0, 0);
@@ -129,6 +142,21 @@ public partial class Globals : Node
 		spikeSpacing = BASE_SPACING;
 
 		spawnSpikes(spikeSpacing);
+	}
+	//===============================================================
+
+	public void RefreshHash()
+	{
+		salt = $"{(char)rng.Next(33, 127)}{(char)rng.Next(33, 127)}{(char)rng.Next(33, 127)}";
+		string plainText = hash.DecryptString(scoreHash);
+		int prevScore = plainText.Substr(3, hash.DecryptString(scoreHash).Length - 1).ToInt();
+
+		if (score != prevScore + 1)
+		{
+			score = prevScore + 1;
+		}
+
+		scoreHash = hash.EncryptString($"{salt}{score}");
 	}
 
 	public override void _UnhandledInput(InputEvent @event)

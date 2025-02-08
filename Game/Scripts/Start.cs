@@ -5,7 +5,7 @@ public partial class Start : StaticBody3D
 {
 	PackedScene leftCube = GD.Load<PackedScene>("res://player_Left.tscn");
 	PackedScene rightCube = GD.Load<PackedScene>("res://player_Right.tscn");
-	Timer Reset, Transition;
+	Timer Reset, Transition, InternalClock, ResetExtra;
 	Globals Controller;
 	WorldEnvironment Sky;
 	CharacterBody3D PlayerLeft;
@@ -43,6 +43,8 @@ public partial class Start : StaticBody3D
 	float bgmStartPos = 0; //the point at which the bgm will start playing from
 	Vector3 LeftPos, RightPos;
 	int bgmIndex, bgmPrev;
+	DateTime timeCheck;
+	double timeDelta; //store time difference between current time and timeCheck
 
 	private static string[] Menuloops = { "Menu Variation0", "Menu Variation1", "Menu Variation2", "Menu Variation3" };
 
@@ -76,6 +78,8 @@ public partial class Start : StaticBody3D
 		Controller = (Globals)GetNode("/root/Globals");
 		Transition = GetNode<Timer>("TransitionTimer");
 		Reset = GetNode<Timer>("ResetTimer");
+		ResetExtra = GetNode<Timer>("ResetTimerExtra");
+		InternalClock = GetNode<Timer>("InternalClock");
 		Sky = GetNode<WorldEnvironment>("WorldEnvironment");
 		SkyMoveDone = true;
 
@@ -138,6 +142,7 @@ public partial class Start : StaticBody3D
 		{
 			Engine.TimeScale = gameSpeed;
 			AudioServer.PlaybackSpeedScale = gameSpeed;
+			timeCheck = DateTime.Now;
 		}
 
 		if (Controller.Game_Over)
@@ -230,6 +235,7 @@ public partial class Start : StaticBody3D
 			SetProcess(true);
 
 			var tween = GetTree().CreateTween(); //add .dispose when done
+			tween.SetEase(Tween.EaseType.Out);
 			tween.TweenProperty(this, "gameSpeed", 1.0, 0.375);
 
 			PlayerLeft.SetPhysicsProcess(true);
@@ -305,20 +311,26 @@ public partial class Start : StaticBody3D
 			shockwaveAnimation.GetAnimation("shockwave").TrackSetKeyTime(0, 1, 0.5);
 
 			SetPhysicsProcess(true);
+			timeCheck = DateTime.Now;
+			InternalClock.Start();
 		}
 	}
 
 	public void _on_transition_timer_timeout()
 	{
+		Transition.WaitTime = 3.475;
 		transitionAnimation.Play("FadeOut");
 	}
 
 	public void _on_reset_timer_timeout()
 	{
-		Controller.clearLevel();
-		Controller.spikes.Clear();
+		Reset.WaitTime = 3.5;
+		InternalClock.Stop();
+
 		Controller.playing = false;
 		Controller.Game_Over = false;
+		Controller.clearLevel();
+		Controller.spikes.Clear();
 		title.Visible = true;
 
 		currentScore.Visible = false;
@@ -332,6 +344,7 @@ public partial class Start : StaticBody3D
 
 		primaryColour = 2.0f;
 		light.LightColor = new Color(primaryColour, primaryColour, primaryColour);
+		
 		
 		highScore.Text = "High Score: " + aes.DecryptString(best.ReadHighScoreFile()[0]);
 		
@@ -409,6 +422,22 @@ public partial class Start : StaticBody3D
 		transitionAnimation.Disconnect("animation_finished", callable);
 
 		splashDone = true;
+	}
+
+	private void InternalClockReset()
+	{
+		timeDelta = (DateTime.Now - timeCheck).TotalSeconds;
+
+		if (decimal.Round((decimal)timeDelta, 1) > 1) //when true, prolly means user is using speed hack
+		{
+			Reset.WaitTime = 0.026;
+			Transition.WaitTime = 0.001;
+			Controller.gameOver();
+		}
+		else
+		{
+			timeCheck = DateTime.Now;
+		}
 	}
 
 	private void CalculateFPS()

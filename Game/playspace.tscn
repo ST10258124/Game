@@ -1,10 +1,10 @@
 [gd_scene load_steps=188 format=3 uid="uid://3qlfhxae8rjg"]
 
-[ext_resource type="Script" path="res://Start.cs" id="1_ian6e"]
+[ext_resource type="Script" path="res://Scripts/Start.cs" id="1_ian6e"]
 [ext_resource type="Texture2D" uid="uid://buk5ca0560kr2" path="res://panorama_image.png" id="2_4o08q"]
 [ext_resource type="Material" uid="uid://dtb3sf4taa6hh" path="res://New folder/Walls_Spikes.tres" id="3_65cke"]
 [ext_resource type="Material" uid="uid://64mdpovifjk" path="res://New folder/BeamOuter.tres" id="4_0wbbn"]
-[ext_resource type="Script" path="res://Detect_Avoid.cs" id="4_5k10i"]
+[ext_resource type="Script" path="res://Scripts/Detect_Avoid.cs" id="4_5k10i"]
 [ext_resource type="Material" uid="uid://dke1o3w1dway0" path="res://New folder/BeamInner.tres" id="4_u3s02"]
 [ext_resource type="AudioStream" uid="uid://dd4q0el5v407b" path="res://SFX/Gate.wav" id="6_c7twy"]
 [ext_resource type="AudioStream" uid="uid://bt3gj3hfs3a37" path="res://SFX/Hum1.wav" id="6_ot6h3"]
@@ -1167,6 +1167,13 @@ libraries = {
 "": SubResource("AnimationLibrary_wus5n")
 }
 
+[node name="ResetTimerExtra" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="InternalClock" type="Timer" parent="."]
+process_callback = 0
+
 [connection signal="ScoreChanged" from="DetectAvoid" to="." method="UpdateScore"]
 [connection signal="area_entered" from="Beam/Area3D" to="." method="Level_Cleared"]
 [connection signal="finished" from="WallLeft/CrackleLeft" to="." method="LeftCrackleLoop"]
@@ -1185,3 +1192,5 @@ libraries = {
 [connection signal="toggled" from="2DStuff/AnimatedTitle/Control/CheckBox" to="." method="_on_check_box_toggled"]
 [connection signal="value_changed" from="2DStuff/AnimatedTitle/Control/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="2DStuff/AnimatedTitle/Control/MSAA" to="." method="_on_msaa_value_changed"]
+[connection signal="timeout" from="ResetTimerExtra" to="." method="ForceGameOver"]
+[connection signal="timeout" from="InternalClock" to="." method="InternalClockReset"]

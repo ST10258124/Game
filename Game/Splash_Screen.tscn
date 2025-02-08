@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bumcuwdbkn5b2"]
 
 [ext_resource type="VideoStream" path="res://2Dstuff/Splash.ogv" id="1_4wwc2"]
-[ext_resource type="Script" path="res://Splash.cs" id="1_q61if"]
+[ext_resource type="Script" path="res://Scripts/Splash.cs" id="1_q61if"]
 
 [node name="Node2D" type="Node2D"]
 

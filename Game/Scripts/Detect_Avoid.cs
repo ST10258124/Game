@@ -16,8 +16,12 @@ public partial class Detect_Avoid : RayCast3D
 	public override void _PhysicsProcess(double delta)
 	{
 		if (avoided && !IsColliding()){
-			Controller.score++;
-			EmitSignal(SignalName.ScoreChanged);
+			if (Controller.playing && !Controller.Game_Over)
+			{
+				Controller.score++;
+				Controller.RefreshHash();
+				EmitSignal(SignalName.ScoreChanged);
+			}
 
 			//+1 to score when ray cast collided with player in prev frame and is not colliding in current frame
 			// if (Controller.score % 10 == 0) Controller.nextLevel();

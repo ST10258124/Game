@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ba7wreymqoynv"]
 
-[ext_resource type="Script" path="res://Explode.cs" id="1_2c4n6"]
+[ext_resource type="Script" path="res://Scripts/Explode.cs" id="1_2c4n6"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_k1bmx"]
 size = Vector3(0.15, 0.15, 0.15)

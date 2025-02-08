@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://cp3lii1467a5m"]
 
-[ext_resource type="Script" path="res://playerLeft.cs" id="1_cq4b5"]
+[ext_resource type="Script" path="res://Scripts/playerLeft.cs" id="1_cq4b5"]
 [ext_resource type="Material" uid="uid://d3kgljg5nlmoq" path="res://New folder/Glitch.tres" id="2_fygsc"]
 [ext_resource type="Texture2D" uid="uid://bdqsqgra16otm" path="res://New folder/Flare01.png" id="3_pfp13"]
 
@@ -77,11 +77,6 @@ mesh = SubResource("BoxMesh_ap5mr")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("2_fygsc")
 
-[node name="Area3D" type="Area3D" parent="." groups=["Player"]]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("BoxShape3D_8jr3e")
-
 [node name="ResetTimer" type="Timer" parent="."]
 wait_time = 3.5
 one_shot = true
@@ -97,5 +92,10 @@ trail_lifetime = 0.2
 process_material = SubResource("ParticleProcessMaterial_k70rq")
 draw_pass_1 = SubResource("QuadMesh_15atm")
 
-[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[node name="Area3D" type="Area3D" parent="." groups=["Player"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_8jr3e")
+
 [connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
