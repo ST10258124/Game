@@ -10,8 +10,9 @@ public partial class Start : StaticBody3D
 	WorldEnvironment Sky;
 	CharacterBody3D PlayerLeft;
 	CharacterBody3D PlayerRight;
-	MeshInstance3D BeamOuter;
-	MeshInstance3D BeamInner;
+	MeshInstance3D BeamOuter, BeamInner;
+	MeshInstance3D LeftVisualiserOne, LeftVisualiserTwo, LeftVisualiserThree;
+	MeshInstance3D RightVisualiserOne, RightVisualiserTwo, RightVisualiserThree;
 	AudioStreamPlayer BGMusic;
 	AudioStreamPlayer3D sfxGate, sfxGateSecondary, sfxHumLeft, sfxHumRight, sfxHumMiddle, sfxMetallicLeft, sfxMetallicRight, sfxCrackleLeft, sfxCrackleRight;
 	GpuParticles3D sparksGateBlue, sparksGatePink, metalSparksLeft, metalSparksRight;
@@ -43,13 +44,22 @@ public partial class Start : StaticBody3D
 	float bgmStartPos = 0; //the point at which the bgm will start playing from
 	Vector3 LeftPos, RightPos;
 	int bgmIndex, bgmPrev;
-	DateTime timeCheck;
+	DateTime timeCheck; 
 	double timeDelta; //store time difference between current time and timeCheck
 
 	private static string[] Menuloops = { "Menu Variation0", "Menu Variation1", "Menu Variation2", "Menu Variation3" };
 
 	public override void _Process(double delta)
 	{
+		//VISUALISER START
+		LeftVisualiserOne.Scale = new Vector3(1, 1, (AudioServer.GetBusPeakVolumeLeftDb(0, 0) + AudioServer.GetBusPeakVolumeRightDb(0, 0) + 60) * 1.5f / 100);
+		LeftVisualiserTwo.Scale = new Vector3(1, 1, (AudioServer.GetBusPeakVolumeLeftDb(0, 0) + 60) * 1.5f / 100);
+		LeftVisualiserThree.Scale = new Vector3(1, 1, (AudioServer.GetBusPeakVolumeRightDb(0, 0) + 60) * 1.5f / 100);
+		RightVisualiserOne.Scale = new Vector3(1, 1, (AudioServer.GetBusPeakVolumeLeftDb(0, 0) + AudioServer.GetBusPeakVolumeRightDb(0, 0) + 60) * 1.5f / 100);
+		RightVisualiserTwo.Scale = new Vector3(1, 1, (AudioServer.GetBusPeakVolumeRightDb(0, 0) + 60) * 1.5f / 100);
+		RightVisualiserThree.Scale = new Vector3(1, 1, (AudioServer.GetBusPeakVolumeLeftDb(0, 0) + 60) * 1.5f / 100);
+		//VISUALISER END
+		
 		if (Controller.Game_Over)
 		{
 			primaryColour -= 0.575f * (float)delta;
@@ -87,6 +97,13 @@ public partial class Start : StaticBody3D
 		BeamOuter.Visible = false;
 		BeamInner = GetNode<MeshInstance3D>("Beam/Inner");
 		BeamInner.Visible = false;
+
+		LeftVisualiserOne = GetNode<MeshInstance3D>("Visualiser/LeftOne");
+		LeftVisualiserTwo = GetNode<MeshInstance3D>("Visualiser/LeftTwo");
+		LeftVisualiserThree = GetNode<MeshInstance3D>("Visualiser/LeftThree");
+		RightVisualiserOne = GetNode<MeshInstance3D>("Visualiser/RightOne");
+		RightVisualiserTwo = GetNode<MeshInstance3D>("Visualiser/RightTwo");
+		RightVisualiserThree = GetNode<MeshInstance3D>("Visualiser/RightThree");
 
 		sparksGateBlue = GetNode<GpuParticles3D>("Beam/SparksGateBlue");
 		sparksGatePink = GetNode<GpuParticles3D>("Beam/SparksGatePink");
@@ -169,6 +186,7 @@ public partial class Start : StaticBody3D
 			Transition.Start();
 			Reset.Start();
 			best.ReplaceHighScore(Controller.score);
+			Controller.ResetHash();
 
 			BeamOuter.Visible = false;
 			BeamInner.Visible = false;
@@ -273,7 +291,7 @@ public partial class Start : StaticBody3D
 
 			BGMusic.Stop();
 			BGMusic.Stream.Dispose();
-			BGMusic.Stream = (AudioStream)ResourceLoader.Load("res://Music/CELESTIAL (Nightcore Remix) - Instrumental.wav");
+			BGMusic.Stream = (AudioStream)ResourceLoader.Load("res://Music/Fragile.mp3");
 			BGMusic.Play(bgmStartPos);
 			sfxGateSecondary.Play();
 			sfxHumMiddle.Play();
@@ -312,7 +330,7 @@ public partial class Start : StaticBody3D
 
 			SetPhysicsProcess(true);
 			timeCheck = DateTime.Now;
-			InternalClock.Start();
+			//InternalClock.Start(); SPEEDHACK DETECTION NEEDS REWORKING
 		}
 	}
 
@@ -325,7 +343,7 @@ public partial class Start : StaticBody3D
 	public void _on_reset_timer_timeout()
 	{
 		Reset.WaitTime = 3.5;
-		InternalClock.Stop();
+		//InternalClock.Stop(); SPEEDHACK DETECTION NEEDS REWORKING
 
 		Controller.playing = false;
 		Controller.Game_Over = false;
@@ -424,7 +442,7 @@ public partial class Start : StaticBody3D
 		splashDone = true;
 	}
 
-	private void InternalClockReset()
+	/*private void InternalClockReset()
 	{
 		timeDelta = (DateTime.Now - timeCheck).TotalSeconds;
 
@@ -438,7 +456,7 @@ public partial class Start : StaticBody3D
 		{
 			timeCheck = DateTime.Now;
 		}
-	}
+	} SPEEDHACK DETECTION NEEDS REWORKING*/
 
 	private void CalculateFPS()
 	{

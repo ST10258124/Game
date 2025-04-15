@@ -13,7 +13,7 @@ public partial class Globals : Node
 
 	static StringName pause = new StringName("Pause");
 
-	public int score = 0;
+	public int score;
 	private string scoreHash;
 	public float spikeSpacing = BASE_SPACING;
 	public float accelaration = BASE_ACCELARATION;
@@ -40,8 +40,7 @@ public partial class Globals : Node
 
 	public override void _Ready()
 	{
-		salt = $"{(char)rng.Next(33, 127)}{(char)rng.Next(33, 127)}{(char)rng.Next(33, 127)}";
-		scoreHash = hash.EncryptString($"{salt}{score}");
+		ResetHash();
 
 		playing = false;
 		Game_Over = false;
@@ -123,12 +122,6 @@ public partial class Globals : Node
 		Game_Over = true;
 		SetPhysicsProcess(false);
 
-		/*score = 0;
-		salt = $"{(char)rng.Next(33, 127)}{(char)rng.Next(33, 127)}{(char)rng.Next(33, 127)}";
-		scoreHash = hash.EncryptString($"{salt}{score}");*/
-		//TEMP COMMENTED OUT, WILL PUT BACK LATER
-
-
 		foreach (RigidBody3D Spike in spikes)
 		{
 			Spike.LinearVelocity = new Vector3(0, 0, 0);
@@ -156,6 +149,13 @@ public partial class Globals : Node
 			score = prevScore + 1;
 		}
 
+		scoreHash = hash.EncryptString($"{salt}{score}");
+	}
+
+	public void ResetHash()
+	{
+		score = 0;
+		salt = $"{(char)rng.Next(33, 127)}{(char)rng.Next(33, 127)}{(char)rng.Next(33, 127)}";
 		scoreHash = hash.EncryptString($"{salt}{score}");
 	}
 

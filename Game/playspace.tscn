@@ -1,4 +1,4 @@
-[gd_scene load_steps=188 format=3 uid="uid://3qlfhxae8rjg"]
+[gd_scene load_steps=201 format=3 uid="uid://3qlfhxae8rjg"]
 
 [ext_resource type="Script" path="res://Scripts/Start.cs" id="1_ian6e"]
 [ext_resource type="Texture2D" uid="uid://buk5ca0560kr2" path="res://panorama_image.png" id="2_4o08q"]
@@ -138,6 +138,7 @@
 [ext_resource type="Texture2D" uid="uid://kxctor07xa7b" path="res://2Dstuff/Title Frames/Classic/Game_Fancy_1_00117.png" id="134_05n6i"]
 [ext_resource type="Texture2D" uid="uid://b7qn2kpqge3rd" path="res://2Dstuff/Title Frames/Classic/Game_Fancy_1_00118.png" id="135_0tm8j"]
 [ext_resource type="Texture2D" uid="uid://bn5u4aeoiswvn" path="res://2Dstuff/Title Frames/Classic/Game_Fancy_1_00119.png" id="136_a44da"]
+[ext_resource type="FontFile" uid="uid://b5rnrge2p1j7j" path="res://sprintura-demo.regular.otf" id="138_nf4he"]
 
 [sub_resource type="QuadOccluder3D" id="QuadOccluder3D_itepa"]
 size = Vector2(12, 8)
@@ -846,6 +847,75 @@ _data = {
 "shockwave": SubResource("Animation_0wyjh")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_raqma"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.501961)
+emission_enabled = true
+emission = Color(0, 0.501961, 1, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_fcnw1"]
+material = SubResource("StandardMaterial3D_raqma")
+size = Vector2(28, 0.2)
+orientation = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yypa2"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.501961)
+emission_enabled = true
+emission = Color(0, 0.501961, 1, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_8e335"]
+material = SubResource("StandardMaterial3D_yypa2")
+size = Vector2(22, 0.2)
+orientation = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jig1p"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.501961)
+emission_enabled = true
+emission = Color(0, 0.501961, 1, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_i6sub"]
+material = SubResource("StandardMaterial3D_jig1p")
+size = Vector2(16, 0.2)
+orientation = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pcfa2"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.501961)
+emission_enabled = true
+emission = Color(0, 0.501961, 1, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_soiew"]
+material = SubResource("StandardMaterial3D_pcfa2")
+flip_faces = true
+size = Vector2(28, 0.2)
+orientation = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig2yy"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.501961)
+emission_enabled = true
+emission = Color(0, 0.501961, 1, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_0t3wt"]
+material = SubResource("StandardMaterial3D_ig2yy")
+flip_faces = true
+size = Vector2(22, 0.2)
+orientation = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d50m6"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.501961)
+emission_enabled = true
+emission = Color(0, 0.501961, 1, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_lotx1"]
+material = SubResource("StandardMaterial3D_d50m6")
+flip_faces = true
+size = Vector2(16, 0.2)
+orientation = 0
+
 [node name="StaticBody3D" type="StaticBody3D"]
 collision_layer = 2
 collision_mask = 0
@@ -1094,14 +1164,22 @@ texture = ExtResource("132_g102n")
 [node name="Prompt" type="Label3D" parent="2DStuff/AnimatedTitle"]
 transform = Transform3D(2.85714, 0, 0, 0, 2.85714, 0, 0, 0, 2.85714, 0, -7.85714, 8.57143)
 billboard = 1
+modulate = Color(1, 0, 1, 1)
+outline_modulate = Color(0, 1, 1, 1)
 text = "-Spacebar to Start-"
+font = ExtResource("138_nf4he")
 font_size = 128
+outline_size = 16
 
 [node name="HighScore" type="Label3D" parent="2DStuff/AnimatedTitle"]
 transform = Transform3D(1.857, 0, 0, 0, 1.857, 0, 0, 0, 1.857, 0, -4, 5)
 billboard = 1
-text = "High Score: "
+modulate = Color(0, 1, 1, 1)
+outline_modulate = Color(1, 0, 1, 1)
+text = "High Score:"
+font = ExtResource("138_nf4he")
 font_size = 200
+outline_size = 16
 
 [node name="Control" type="Control" parent="2DStuff/AnimatedTitle"]
 layout_mode = 3
@@ -1142,7 +1220,10 @@ value = 2.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 8.2)
 visible = false
 billboard = 1
+modulate = Color(0.501961, 0, 1, 1)
+outline_modulate = Color(1, 1, 1, 1)
 text = "0"
+font = ExtResource("138_nf4he")
 font_size = 100
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -1173,6 +1254,38 @@ one_shot = true
 
 [node name="InternalClock" type="Timer" parent="."]
 process_callback = 0
+
+[node name="Visualiser" type="Node3D" parent="."]
+
+[node name="LeftOne" type="MeshInstance3D" parent="Visualiser"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 1.5, 8.5)
+layers = 16
+mesh = SubResource("QuadMesh_fcnw1")
+
+[node name="LeftTwo" type="MeshInstance3D" parent="Visualiser"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 2, 8.5)
+layers = 16
+mesh = SubResource("QuadMesh_8e335")
+
+[node name="LeftThree" type="MeshInstance3D" parent="Visualiser"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 2.5, 8.5)
+layers = 16
+mesh = SubResource("QuadMesh_i6sub")
+
+[node name="RightOne" type="MeshInstance3D" parent="Visualiser"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1.5, 8.5)
+layers = 16
+mesh = SubResource("QuadMesh_soiew")
+
+[node name="RightTwo" type="MeshInstance3D" parent="Visualiser"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 2, 8.5)
+layers = 16
+mesh = SubResource("QuadMesh_0t3wt")
+
+[node name="RightThree" type="MeshInstance3D" parent="Visualiser"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 2.5, 8.5)
+layers = 16
+mesh = SubResource("QuadMesh_lotx1")
 
 [connection signal="ScoreChanged" from="DetectAvoid" to="." method="UpdateScore"]
 [connection signal="area_entered" from="Beam/Area3D" to="." method="Level_Cleared"]

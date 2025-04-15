@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dl8s5r30cpnm"
+path="res://.godot/imported/spike_guy_ig.obj-172e8e53d70e92790ddb994034fb6a46.mesh"
+
+[deps]
+
+files=["res://.godot/imported/spike_guy_ig.obj-172e8e53d70e92790ddb994034fb6a46.mesh"]
+
+source_file="res://Blender/spike_guy_ig.obj"
+dest_files=["res://.godot/imported/spike_guy_ig.obj-172e8e53d70e92790ddb994034fb6a46.mesh", "res://.godot/imported/spike_guy_ig.obj-172e8e53d70e92790ddb994034fb6a46.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dfse0xt3f6rae"
+path="res://.godot/imported/beeg_square.obj-6187a151595813c70b91a122a7c9ee45.mesh"
+
+[deps]
+
+files=["res://.godot/imported/beeg_square.obj-6187a151595813c70b91a122a7c9ee45.mesh"]
+
+source_file="res://Blender/beeg_square.obj"
+dest_files=["res://.godot/imported/beeg_square.obj-6187a151595813c70b91a122a7c9ee45.mesh", "res://.godot/imported/beeg_square.obj-6187a151595813c70b91a122a7c9ee45.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

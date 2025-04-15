@@ -1,13 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://c15smftwgcyho"]
+[gd_scene load_steps=8 format=3 uid="uid://c15smftwgcyho"]
 
 [ext_resource type="ArrayMesh" uid="uid://cmb7yucv0mej1" path="res://Blender/Side_Spike.obj" id="1_nyscm"]
 [ext_resource type="Material" uid="uid://dtb3sf4taa6hh" path="res://New folder/Walls_Spikes.tres" id="2_dwdk4"]
+[ext_resource type="ArrayMesh" uid="uid://dl8s5r30cpnm" path="res://Blender/spike_guy_ig.obj" id="3_bvf3l"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1al7y"]
+points = PackedVector3Array(-1, -0.375, -2, -5, -0.375, 0, -5, -0.375, -1.0002, -1, 0.374999, -2, -5, 0.374999, 0, -5, 0.374999, -1.0002)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_710ob"]
 points = PackedVector3Array(-1, -0.375, -2, -5, -0.375, 0, -5, -0.375, -1.0002, -1, 0.374999, -2, -5, 0.374999, 0, -5, 0.374999, -1.0002)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1al7y"]
-points = PackedVector3Array(-1, -0.375, -2, -5, -0.375, 0, -5, -0.375, -1.0002, -1, 0.374999, -2, -5, 0.374999, 0, -5, 0.374999, -1.0002)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_v35ki"]
+points = PackedVector3Array(4, 0.377606, 1e-06, -3.99999, 0.377606, 4, 5.00679e-06, 0.190104, 1.49961, 5.00679e-06, 0.377606, 0.999609, -3.99999, 0.749757, 3, -3.99999, 0.002676, 2.99922, -3.99999, 0.377606, 2)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6hi14"]
+points = PackedVector3Array(4, 0.377606, 1e-06, -3.99999, 0.377606, 4, 5.00679e-06, 0.190104, 1.49961, 5.00679e-06, 0.377606, 0.999609, -3.99999, 0.749757, 3, -3.99999, 0.002676, 2.99922, -3.99999, 0.377606, 2)
 
 [node name="RigidBody3D" type="RigidBody3D"]
 axis_lock_linear_x = true
@@ -19,21 +26,15 @@ gravity_scale = 0.0
 
 [node name="Left" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, 0)
+visible = false
 mesh = ExtResource("1_nyscm")
 surface_material_override/0 = ExtResource("2_dwdk4")
-
-[node name="LeftCollider" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_710ob")
 
 [node name="Right" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0.25, 0, 0)
+visible = false
 mesh = ExtResource("1_nyscm")
 surface_material_override/0 = ExtResource("2_dwdk4")
-
-[node name="RightCollider" type="CollisionShape3D" parent="."]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0.25, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_1al7y")
 
 [node name="Area3D" type="Area3D" parent="." groups=["Spike"]]
 
@@ -44,3 +45,21 @@ shape = SubResource("ConvexPolygonShape3D_1al7y")
 [node name="LeftCollider" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_710ob")
+
+[node name="Left_New" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 1.003, 0, 0, 0, 0.5, -3.25, -0.377, -2)
+mesh = ExtResource("3_bvf3l")
+surface_material_override/0 = ExtResource("2_dwdk4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 1.003, 0, 0, 0, 0.5, -3.25, -0.377, -2)
+shape = SubResource("ConvexPolygonShape3D_v35ki")
+
+[node name="Right_New" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.5, 8.7685e-08, 0, -4.37114e-08, -1.003, 0, 0, 0, 0.5, 3.25, 0.377, -2)
+mesh = ExtResource("3_bvf3l")
+surface_material_override/0 = ExtResource("2_dwdk4")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.5, 8.7685e-08, 0, -4.37114e-08, -1.003, 0, 0, 0, 0.5, 3.25, 0.377, -2)
+shape = SubResource("ConvexPolygonShape3D_6hi14")

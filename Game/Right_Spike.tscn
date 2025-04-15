@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfgr8r5f875a6"]
+[gd_scene load_steps=6 format=3 uid="uid://bfgr8r5f875a6"]
 
 [ext_resource type="ArrayMesh" uid="uid://ct6g1101nys4s" path="res://Blender/Right_Spike.obj" id="1_6dufh"]
+[ext_resource type="ArrayMesh" uid="uid://dl8s5r30cpnm" path="res://Blender/spike_guy_ig.obj" id="1_ey1v3"]
 [ext_resource type="Material" uid="uid://dtb3sf4taa6hh" path="res://New folder/Walls_Spikes.tres" id="2_h1725"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_g7183"]
+points = PackedVector3Array(4, 0.377606, 1e-06, -3.99999, 0.377606, 4, 5.00679e-06, 0.190104, 1.49961, 5.00679e-06, 0.377606, 0.999609, -3.99999, 0.749757, 3, -3.99999, 0.002676, 2.99922, -3.99999, 0.377606, 2)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_axyk0"]
 points = PackedVector3Array(-3, -0.375001, -4, -3, 0.374927, -4, 4.99989, -0.375001, -2.00039, 4.99989, -0.375001, 0, 4.99989, 0.375, 0, 4.99989, 0.375, -2.00039)
@@ -14,12 +18,19 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 gravity_scale = 0.0
 
-[node name="RightSpike" type="MeshInstance3D" parent="."]
-mesh = ExtResource("1_6dufh")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 8.7685e-08, 0, -8.74228e-08, -1.003, 0, 0, 0, 1, 1, 0.377, -4)
+mesh = ExtResource("1_ey1v3")
 surface_material_override/0 = ExtResource("2_h1725")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("ConvexPolygonShape3D_axyk0")
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1, 8.7685e-08, 0, -8.74228e-08, -1.003, 0, 0, 0, 1, 1, 0.377, -4)
+shape = SubResource("ConvexPolygonShape3D_g7183")
+
+[node name="RightSpike" type="MeshInstance3D" parent="."]
+visible = false
+mesh = ExtResource("1_6dufh")
+surface_material_override/0 = ExtResource("2_h1725")
 
 [node name="Area3D" type="Area3D" parent="." groups=["Spike"]]
 

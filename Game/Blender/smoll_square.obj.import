@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dnl2u5ejltqp"
+path="res://.godot/imported/smoll_square.obj-37810c2b3b4bf5a9763c6139473e8a3b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/smoll_square.obj-37810c2b3b4bf5a9763c6139473e8a3b.mesh"]
+
+source_file="res://Blender/smoll_square.obj"
+dest_files=["res://.godot/imported/smoll_square.obj-37810c2b3b4bf5a9763c6139473e8a3b.mesh", "res://.godot/imported/smoll_square.obj-37810c2b3b4bf5a9763c6139473e8a3b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

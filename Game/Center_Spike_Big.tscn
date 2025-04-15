@@ -1,6 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbchtigmsr1d1"]
+[gd_scene load_steps=6 format=3 uid="uid://cbchtigmsr1d1"]
 
+[ext_resource type="ArrayMesh" uid="uid://dfse0xt3f6rae" path="res://Blender/beeg_square.obj" id="1_51rkg"]
 [ext_resource type="Material" uid="uid://dtb3sf4taa6hh" path="res://New folder/Walls_Spikes.tres" id="1_cre1b"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ofijp"]
+points = PackedVector3Array(-2.828, 1.18743, -2.828, -2.828, 1.18743, 2.828, -0.000553608, 1.5625, -0.000553608, 2.828, 1.18743, -2.828, -0.000553608, 0.8125, -0.000553608, 2.828, 1.18743, 2.828)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ucd6u"]
 size = Vector3(5.656, 0.75, 5.656)
@@ -16,14 +20,20 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 gravity_scale = 0.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, -4)
-mesh = SubResource("BoxMesh_ucd6u")
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, -1.188, -4)
+mesh = ExtResource("1_51rkg")
 surface_material_override/0 = ExtResource("1_cre1b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, -1.188, -4)
+shape = SubResource("ConvexPolygonShape3D_ofijp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, -4)
-shape = SubResource("ConvexPolygonShape3D_1sl0g")
+visible = false
+mesh = SubResource("BoxMesh_ucd6u")
+surface_material_override/0 = ExtResource("1_cre1b")
 
 [node name="Area3D" type="Area3D" parent="." groups=["Spike"]]
 

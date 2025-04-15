@@ -1,14 +1,13 @@
-res://Splash_Screen.tscn
+res://playspace.tscn
 res://New folder/Walls_Spikes.tres
 res://New folder/BeamInner.tres
 res://New folder/shockwave.gdshader
-res://New folder/Glitch.gdshader
 res://New folder/GateInner.gdshader
 res://New folder/GateOuter.gdshader
 res://New folder/GateMiddle.gdshader
-res://playspace.tscn
-res://player_Left.tscn
-res://player_Right.tscn
+res://New folder/Glitch.gdshader
+res://Splash_Screen.tscn
+res://New folder/Visualiser.gdshader
 res://Scripts/Explode.cs
 res://Scripts/Start.cs
 res://Scripts/playerLeft.cs

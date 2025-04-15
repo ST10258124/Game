@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bg4iuiel3lr3y"]
+[gd_scene load_steps=6 format=3 uid="uid://bg4iuiel3lr3y"]
 
+[ext_resource type="ArrayMesh" uid="uid://dl8s5r30cpnm" path="res://Blender/spike_guy_ig.obj" id="1_77cwo"]
 [ext_resource type="ArrayMesh" uid="uid://c6k482fpopcgg" path="res://Blender/Left_Spike.obj" id="1_l5rs0"]
 [ext_resource type="Material" uid="uid://dtb3sf4taa6hh" path="res://New folder/Walls_Spikes.tres" id="2_vn4lf"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_alwcr"]
+points = PackedVector3Array(4, 0.377606, 1e-06, -3.99999, 0.377606, 4, 5.00679e-06, 0.190104, 1.49961, 5.00679e-06, 0.377606, 0.999609, -3.99999, 0.749757, 3, -3.99999, 0.002676, 2.99922, -3.99999, 0.377606, 2)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_afq30"]
 points = PackedVector3Array(3, -0.375, -4, -5, -0.375, 0, -5, -0.375, -2.00039, 3, 0.374999, -4, -5, 0.374999, 0, -5, 0.374999, -2.00039)
@@ -14,12 +18,19 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 gravity_scale = 0.0
 
-[node name="LeftSpike" type="MeshInstance3D" parent="."]
-mesh = ExtResource("1_l5rs0")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.003, 0, 0, 0, 1, -1, -0.377, -4)
+mesh = ExtResource("1_77cwo")
 surface_material_override/0 = ExtResource("2_vn4lf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("ConvexPolygonShape3D_afq30")
+transform = Transform3D(1, 0, 0, 0, 1.003, 0, 0, 0, 1, -1, -0.377, -4)
+shape = SubResource("ConvexPolygonShape3D_alwcr")
+
+[node name="LeftSpike" type="MeshInstance3D" parent="."]
+visible = false
+mesh = ExtResource("1_l5rs0")
+surface_material_override/0 = ExtResource("2_vn4lf")
 
 [node name="Area3D" type="Area3D" parent="." groups=["Spike"]]
 

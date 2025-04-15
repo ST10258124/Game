@@ -1,3 +1,5 @@
+MeshInstance3D
+Node3D
 Area3D
 Timer
 FogVolume
@@ -10,5 +12,3 @@ Control
 SoftBody3D
 TouchScreenButton
 VoxelGI
-StaticBody3D
-CanvasLayer
