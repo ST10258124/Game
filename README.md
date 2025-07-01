@@ -54,3 +54,7 @@ R1/RB and L1/LB for controller. Esc/Start/Options to pause.
 Original Game
 =============
 https://apps.apple.com/us/app/shredd/id844153422
+
+Download
+========
+[Here](https://github.com/ST10258124/Game/releases/tag/Build_01072025)
