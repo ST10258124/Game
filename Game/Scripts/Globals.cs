@@ -99,7 +99,7 @@ public partial class Globals : Node
 		
 		gate = (Node3D)Gate.Instantiate();
 		
-		spikes[0].Position = new Vector3(0, 0.5f, -20);
+		spikes[0].Position = new Vector3(0, 0.5f, -20); //FOR FUTURE ME, Z VAL MAY NEEDA CHANGE HERE TO GIVE PARTICLE EFFECT TIME TO CLEAR BEFORE SPIKES ARE IN FRAME
 		for (int i = 1; i < 10; i++)
 		{
 			spikes[i].Position = new Vector3(0, 0.5f, spikes[i - 1].Position.Z - int.Parse(spikesSpawn[1, i - 1]) - spacing);

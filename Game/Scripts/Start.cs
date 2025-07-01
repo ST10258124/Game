@@ -3,14 +3,11 @@ using System;
 
 public partial class Start : StaticBody3D
 {
-	PackedScene leftCube = GD.Load<PackedScene>("res://player_Left.tscn");
-	PackedScene rightCube = GD.Load<PackedScene>("res://player_Right.tscn");
+	PackedScene player = GD.Load<PackedScene>("res://playerBoth.tscn");
 	Timer Reset, Transition, InternalClock, ResetExtra;
 	Globals Controller;
 	WorldEnvironment Sky;
-	CharacterBody3D PlayerLeft;
-	CharacterBody3D PlayerRight;
-	MeshInstance3D BeamOuter, BeamInner;
+	Node3D playerBoth;
 	MeshInstance3D LeftVisualiserOne, LeftVisualiserTwo, LeftVisualiserThree;
 	MeshInstance3D RightVisualiserOne, RightVisualiserTwo, RightVisualiserThree;
 	AudioStreamPlayer BGMusic;
@@ -42,7 +39,6 @@ public partial class Start : StaticBody3D
 	float primaryColour = 2.0f;
 	float gameSpeed = 1;
 	float bgmStartPos = 0; //the point at which the bgm will start playing from
-	Vector3 LeftPos, RightPos;
 	int bgmIndex, bgmPrev;
 	DateTime timeCheck; 
 	double timeDelta; //store time difference between current time and timeCheck
@@ -92,11 +88,6 @@ public partial class Start : StaticBody3D
 		InternalClock = GetNode<Timer>("InternalClock");
 		Sky = GetNode<WorldEnvironment>("WorldEnvironment");
 		SkyMoveDone = true;
-
-		BeamOuter = GetNode<MeshInstance3D>("Beam/Outer");
-		BeamOuter.Visible = false;
-		BeamInner = GetNode<MeshInstance3D>("Beam/Inner");
-		BeamInner.Visible = false;
 
 		LeftVisualiserOne = GetNode<MeshInstance3D>("Visualiser/LeftOne");
 		LeftVisualiserTwo = GetNode<MeshInstance3D>("Visualiser/LeftTwo");
@@ -176,20 +167,17 @@ public partial class Start : StaticBody3D
 			shockwaveShader.SetShaderParameter("abberation", 1);
 			shockwaveShader.SetShaderParameter("width", 0.1);
 			shockwaveShader.SetShaderParameter("feather", 0.35);
-			
+
 			shockwave.Visible = true;
 			shockwaveAnimation.GetAnimation("shockwave").TrackSetKeyValue(0, 0, 0.25);
 			shockwaveAnimation.GetAnimation("shockwave").TrackSetKeyValue(0, 1, 1.1);
-			shockwaveAnimation.GetAnimation("shockwave").TrackSetKeyTime(0, 1, 1);			
+			shockwaveAnimation.GetAnimation("shockwave").TrackSetKeyTime(0, 1, 1);
 			shockwaveAnimation.Play("shockwave");
 
 			Transition.Start();
 			Reset.Start();
 			best.ReplaceHighScore(Controller.score);
 			Controller.ResetHash();
-
-			BeamOuter.Visible = false;
-			BeamInner.Visible = false;
 
 			sfxMetallicLeft.Stop();
 			sfxMetallicRight.Stop();
@@ -202,29 +190,8 @@ public partial class Start : StaticBody3D
 			SetPhysicsProcess(false);
 		}
 
-		LeftPos = PlayerLeft.Position;
-		RightPos = PlayerRight.Position;
-
-		//======================================SCALING OF THE "BEAM" BELOW=============================================
-
-		BeamOuter.GlobalPosition = new Vector3((RightPos.X + LeftPos.X) / 2, 0.5f, LeftPos.Z);
-		BeamInner.GlobalPosition = new Vector3((RightPos.X + LeftPos.X) / 2, 0.5f, LeftPos.Z);
-
-		/*X = calculated midpoint of cubes (player)
-		  Y = 0.5 because that never changes
-		  Z = Z position of any cube because of that slight offset at start of game*/
-
-		BeamOuter.Scale = new Vector3((RightPos.X - LeftPos.X) / 0.6f,
-								-(1.0f / 17.0f) * (RightPos.X - LeftPos.X) + (71.0f / 68.0f),
-								-(1.0f / 17.0f) * (RightPos.X - LeftPos.X) + (71.0f / 68.0f)); //length formula thingy here
-
-		BeamInner.Scale = new Vector3((RightPos.X - LeftPos.X) / 0.3f,
-								-(1.0f / 17.0f) * (RightPos.X - LeftPos.X) + (71.0f / 68.0f),
-								-(1.0f / 17.0f) * (RightPos.X - LeftPos.X) + (71.0f / 68.0f)); //length formula thingy here
 
 		//================================PLAYER MOVEMENT SOUND PLAYING LOGIC THINGY BELOW===================================
-
-		
 
 		if (Input.IsActionJustPressed(left) || (Input.IsActionPressed(left) && Input.IsActionJustReleased(right)))
 		{
@@ -242,7 +209,7 @@ public partial class Start : StaticBody3D
 		}
 	}
 
-	public override void _UnhandledInput(InputEvent @event) //prolly a better way to do the "left click to start" bit
+	public override void _UnhandledInput(InputEvent @event)
 	{
 		if (Input.IsActionJustPressed(pause)&& !IsProcessing() && Controller.playing && !Controller.Game_Over)
 		{
@@ -256,8 +223,7 @@ public partial class Start : StaticBody3D
 			tween.SetEase(Tween.EaseType.Out);
 			tween.TweenProperty(this, "gameSpeed", 1.0, 0.375);
 
-			PlayerLeft.SetPhysicsProcess(true);
-			PlayerRight.SetPhysicsProcess(true);
+			playerBoth.SetPhysicsProcess(true);
 
 			BGMusic.Play(bgmStartPos);
 		}
@@ -269,8 +235,7 @@ public partial class Start : StaticBody3D
 			SetPhysicsProcess(false);
 			SetProcess(false);
 
-			PlayerLeft.SetPhysicsProcess(false);
-			PlayerRight.SetPhysicsProcess(false);
+			playerBoth.SetPhysicsProcess(false);
 			
 			gameSpeed = 0.00001f;
 			Engine.TimeScale = gameSpeed;
@@ -279,25 +244,18 @@ public partial class Start : StaticBody3D
 
 		if (Input.IsActionJustReleased(start) && !Controller.playing && splashDone)
 		{
-			PlayerLeft = (CharacterBody3D)leftCube.Instantiate();
-			PlayerLeft.Position = new Vector3(-2.0f, 0.5f, 7.5f);
 			//Node3d myNode3D = (Node3D)myObjectToInstantiate.Instantiate()
-			PlayerRight = (CharacterBody3D)rightCube.Instantiate();
-			PlayerRight.Position = new Vector3(2.0f, 0.5f, 7.5f);
 
-			AddChild(PlayerLeft);
-			AddChild(PlayerRight);
+			playerBoth = (Node3D)player.Instantiate();
+			AddChild(playerBoth);
 			//^^SPAWN PLAYER^^
 
 			BGMusic.Stop();
 			BGMusic.Stream.Dispose();
-			BGMusic.Stream = (AudioStream)ResourceLoader.Load("res://Music/Fragile.mp3");
+			BGMusic.Stream = (AudioStream)ResourceLoader.Load("res://Music/emotion_engine.mp3");
 			BGMusic.Play(bgmStartPos);
 			sfxGateSecondary.Play();
 			sfxHumMiddle.Play();
-
-			BeamOuter.Visible = true;
-			BeamInner.Visible = true;
 
 			Controller.score = 0;
 			UpdateScore();
@@ -354,10 +312,8 @@ public partial class Start : StaticBody3D
 		currentScore.Visible = false;
 		shockwave.Visible = false;
 
-		PlayerLeft.QueueFree();
-		PlayerRight.QueueFree();
-		PlayerLeft.Dispose();
-		PlayerRight.Dispose();
+		playerBoth.QueueFree();
+		playerBoth.Dispose();
 		//no clue if the .Dispose is really doing anything since QueueFree is there...but it's there anyway idek
 
 		primaryColour = 2.0f;
@@ -469,17 +425,17 @@ public partial class Start : StaticBody3D
 	}
 //==============================GRAPHICS SETTINGS====================================
 	private void _on_check_box_toggled(bool state)
-	{//has FPS benefit
+	{
 		Sky.Environment.GlowEnabled = state;
 	}
 
 	private void _on_h_slider_value_changed(float value)
-	{//doesn't seem to have FPS benefit but affects RAM usage
+	{
 		Sky.Environment.Sky.RadianceSize = (Sky.RadianceSizeEnum)value;
 	}
 
 	private void _on_msaa_value_changed(float value)
-	{//has FPS benefit
+	{
 		RenderingServer.ViewportSetMsaa3D(GetViewport().GetViewportRid(), (RenderingServer.ViewportMsaa)value);
 	}
 }

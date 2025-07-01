@@ -1,15 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "SYsCvbTbqnpzUSYPeQ9yqep1ZMNiX8lJ1kA+CbCzEx9U5fTNnrgobR9oQ+M7h3hA1COb2VBqd5axXTs/grUUmg==",
+  "dgSpecHash": "B+XgGejT/BKmAb4cq3hLA6rE2lt2KpJraG+y0IahaSX8rMximsYIozJJqh+BgdjBQg3/tdQp9rtKvSjba5WuJw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Vivek\\Documents\\Game\\Game.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Vivek\\.nuget\\packages\\godot.sourcegenerators\\4.3.0\\godot.sourcegenerators.4.3.0.nupkg.sha512",
     "C:\\Users\\Vivek\\.nuget\\packages\\godotsharp\\4.3.0\\godotsharp.4.3.0.nupkg.sha512",
-    "C:\\Users\\Vivek\\.nuget\\packages\\godotsharpeditor\\4.3.0\\godotsharpeditor.4.3.0.nupkg.sha512",
     "C:\\Users\\Vivek\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.27\\microsoft.netcore.app.ref.6.0.27.nupkg.sha512",
+    "C:\\Users\\Vivek\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\6.0.27\\microsoft.netcore.app.runtime.win-x64.6.0.27.nupkg.sha512",
     "C:\\Users\\Vivek\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.27\\microsoft.windowsdesktop.app.ref.6.0.27.nupkg.sha512",
-    "C:\\Users\\Vivek\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.27\\microsoft.aspnetcore.app.ref.6.0.27.nupkg.sha512"
+    "C:\\Users\\Vivek\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\6.0.27\\microsoft.windowsdesktop.app.runtime.win-x64.6.0.27.nupkg.sha512",
+    "C:\\Users\\Vivek\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.27\\microsoft.aspnetcore.app.ref.6.0.27.nupkg.sha512",
+    "C:\\Users\\Vivek\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\6.0.27\\microsoft.aspnetcore.app.runtime.win-x64.6.0.27.nupkg.sha512"
   ],
   "logs": []
 }

@@ -4,7 +4,7 @@ just avoid the spikes. Good Luck!
 
 Compiling the game
 ==================
-Made with Godot 4.2.1
+Made with Godot 4.3 (started with 4.2.1)
 If you're compiling this yourself, be sure to use the Forward+ renderer. The default windows export template is fine but of course it has a bunch of stuff that isn't needed so that makes the executable bigger than it needs to be. Below is the contents of the 'Custom.py' file that you can use should you compile an export template for this. (pretty sure there is additional things that can be stripped out but this is what i'm using at the moment)
 
 # Generated using https://godot-build-options-generator.github.io
@@ -49,7 +49,7 @@ opengl3 = "no"
 How to play
 ===========
 Use the A and D keys, or the left and right arrow keys, to move left or right. Press them at the same time to split.
-R1/RB and L1/LB for controller.
+R1/RB and L1/LB for controller. Esc/Start/Options to pause.
 
 Original Game
 =============

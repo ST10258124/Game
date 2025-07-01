@@ -15,18 +15,21 @@ public partial class playerRight : CharacterBody3D
 	GpuParticles3D trail;
 	static StringName left = new StringName("MoveLeft");
 	static StringName right = new StringName("MoveRight");
+	Area3D playerSpace;
 
-	static string [] explosionSounds = {"Explode1", "Explode2"};
+	static string[] explosionSounds = { "Explode1", "Explode2" };
 
 	public override void _Ready()
 	{
 		Controller = (Globals)GetNode("/root/Globals");
 		Reset = GetNode<Timer>("ResetTimer");
-		
+
 		playerRightMesh = GetNode<MeshInstance3D>("MeshInstance3D");
 		playerGlitch = GetNode<MeshInstance3D>("GlitchBG");
 		sfxDeath = GetNode<AudioStreamPlayer3D>("Death");
 		trail = GetNode<GpuParticles3D>("Trail");
+
+		playerSpace = GetNode<Area3D>("Area3D");
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -51,22 +54,42 @@ public partial class playerRight : CharacterBody3D
 
 		if (!Input.IsActionPressed(right) && Input.IsActionPressed(left))
 		{ //MOVE LEFT
-			GlobalPosition = currentPosition.Lerp(new Vector3(-4.5f, 0.5f, 6.5f), (Speed + 0.75f) * (float)delta);
+			if (GlobalPosition.X <= -3.875f)
+			{
+				GlobalPosition = new Vector3(-3.875f, 0.5f, 6.5f);
+			} else {
+				GlobalPosition = currentPosition.Lerp(new Vector3(-4.5f, 0.5f, 6.5f), (Speed + 0.75f) * (float)delta);
+			}
 		}
 
 		if (Input.IsActionPressed(right) && !Input.IsActionPressed(left))
 		{ //MOVE RIGHT
-			GlobalPosition = currentPosition.Lerp(new Vector3(5.25f, 0.5f, 6.5f), Speed * (float)delta);
+			if (GlobalPosition.X >= 4.625f)
+			{
+				GlobalPosition = new Vector3(4.625f, 0.5f, 6.5f);
+			} else {
+				GlobalPosition = currentPosition.Lerp(new Vector3(5.25f, 0.5f, 6.5f), Speed * (float)delta);
+			}
 		}
 
 		if (Input.IsActionPressed(right) && Input.IsActionPressed(left))
 		{ //SPLIT
-			GlobalPosition = currentPosition.Lerp(new Vector3(5.25f, 0.5f, 6.5f), Speed * (float)delta);
+			if (GlobalPosition.X >= 4.625f)
+			{
+				GlobalPosition = new Vector3(4.625f, 0.5f, 6.5f);
+			} else {
+				GlobalPosition = currentPosition.Lerp(new Vector3(5.25f, 0.5f, 6.5f), Speed * (float)delta);
+			}
 		}
 
 		if (!Input.IsActionPressed(right) && !Input.IsActionPressed(left)) //RE-CENTER
 		{
-			GlobalPosition = currentPosition.Lerp(new Vector3(0.3f, 0.5f, 6.5f), (Speed + 1.75f) * (float)delta);
+			/*if (GlobalPosition.X <= 0.375f)
+			{
+				GlobalPosition = new Vector3(0.375f, 0.5f, 6.5f);
+			} else {*/
+				GlobalPosition = currentPosition.Lerp(new Vector3(0.3f, 0.5f, 6.5f), (Speed + 1.75f) * (float)delta);
+			//}
 		}
 
 		MoveAndSlide();

@@ -1,0 +1,33 @@
+[gd_scene load_steps=8 format=3 uid="uid://ccjqer83b6s3b"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerBoth.cs" id="1_6tyem"]
+[ext_resource type="PackedScene" uid="uid://cp3lii1467a5m" path="res://player_Left.tscn" id="1_fge8p"]
+[ext_resource type="PackedScene" uid="uid://bnloedxuncdsf" path="res://player_Right.tscn" id="2_e3rir"]
+[ext_resource type="Material" uid="uid://64mdpovifjk" path="res://New folder/BeamOuter.tres" id="3_b8af2"]
+[ext_resource type="Material" uid="uid://dke1o3w1dway0" path="res://New folder/BeamInner.tres" id="4_s21o7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_j4emg"]
+size = Vector3(0.65, 0.65, 0.65)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bc7vj"]
+size = Vector3(0.325, 0.325, 0.325)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_6tyem")
+
+[node name="PlayerChar" parent="." instance=ExtResource("1_fge8p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 7.5)
+
+[node name="PlayerChar2" parent="." instance=ExtResource("2_e3rir")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 7.5)
+
+[node name="Beam" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 6.5)
+
+[node name="Outer" type="MeshInstance3D" parent="Beam"]
+mesh = SubResource("BoxMesh_j4emg")
+surface_material_override/0 = ExtResource("3_b8af2")
+
+[node name="Inner" type="MeshInstance3D" parent="Beam"]
+mesh = SubResource("BoxMesh_bc7vj")
+surface_material_override/0 = ExtResource("4_s21o7")

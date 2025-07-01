@@ -1,20 +1,18 @@
-[gd_scene load_steps=201 format=3 uid="uid://3qlfhxae8rjg"]
+[gd_scene load_steps=197 format=3 uid="uid://3qlfhxae8rjg"]
 
 [ext_resource type="Script" path="res://Scripts/Start.cs" id="1_ian6e"]
 [ext_resource type="Texture2D" uid="uid://buk5ca0560kr2" path="res://panorama_image.png" id="2_4o08q"]
 [ext_resource type="Material" uid="uid://dtb3sf4taa6hh" path="res://New folder/Walls_Spikes.tres" id="3_65cke"]
-[ext_resource type="Material" uid="uid://64mdpovifjk" path="res://New folder/BeamOuter.tres" id="4_0wbbn"]
 [ext_resource type="Script" path="res://Scripts/Detect_Avoid.cs" id="4_5k10i"]
-[ext_resource type="Material" uid="uid://dke1o3w1dway0" path="res://New folder/BeamInner.tres" id="4_u3s02"]
 [ext_resource type="AudioStream" uid="uid://dd4q0el5v407b" path="res://SFX/Gate.wav" id="6_c7twy"]
 [ext_resource type="AudioStream" uid="uid://bt3gj3hfs3a37" path="res://SFX/Hum1.wav" id="6_ot6h3"]
 [ext_resource type="AudioStream" uid="uid://cs6kwko2m2ylr" path="res://SFX/GateSecondary.wav" id="7_8hdgh"]
 [ext_resource type="AudioStream" uid="uid://t4d73sd3e2y7" path="res://SFX/Crackle.ogg" id="7_pqbln"]
 [ext_resource type="AudioStream" uid="uid://0vluyt5y8lmo" path="res://SFX/Hum2.wav" id="7_t53b8"]
-[ext_resource type="AudioStream" uid="uid://8xmljpnfmn2n" path="res://Music/Opening.ogg" id="8_xweed"]
 [ext_resource type="Texture2D" uid="uid://bdqsqgra16otm" path="res://New folder/Flare01.png" id="9_2gvp3"]
 [ext_resource type="AudioStream" uid="uid://dylhjje3lej1r" path="res://SFX/Metallic1.ogg" id="10_h075w"]
 [ext_resource type="AudioStream" uid="uid://c2sem6hxm4p5t" path="res://SFX/Metallic2.ogg" id="11_678xb"]
+[ext_resource type="AudioStream" uid="uid://bqtkq02qbicvj" path="res://Music/opening_3.ogg" id="12_ih6y8"]
 [ext_resource type="AudioStream" uid="uid://1fk46i68yvd7" path="res://SFX/Metallic3.ogg" id="12_s6lyw"]
 [ext_resource type="Texture2D" uid="uid://m5vf4c158wc4" path="res://2Dstuff/Title Frames/Classic/Game_Fancy_1_00000.png" id="17_7os3o"]
 [ext_resource type="Texture2D" uid="uid://0np11dtxpoid" path="res://2Dstuff/Title Frames/Classic/Game_Fancy_1_00001.png" id="18_us2rf"]
@@ -161,6 +159,11 @@ ambient_light_source = 1
 reflected_light_source = 2
 tonemap_mode = 2
 tonemap_exposure = 0.75
+sdfgi_cascades = 1
+sdfgi_min_cell_size = 0.172656
+sdfgi_cascade0_distance = 11.05
+sdfgi_max_distance = 22.1
+sdfgi_y_scale = 0
 glow_enabled = true
 glow_intensity = 0.05
 glow_bloom = 0.25
@@ -267,12 +270,6 @@ size = 0.2
 sections = 4
 section_segments = 4
 
-[sub_resource type="BoxMesh" id="BoxMesh_2dipe"]
-size = Vector3(0.65, 0.65, 0.65)
-
-[sub_resource type="BoxMesh" id="BoxMesh_vyrvn"]
-size = Vector3(0.325, 0.325, 0.325)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_mgoek"]
 size = Vector3(0.65, 0.65, 0.65)
 
@@ -286,7 +283,7 @@ stream_1/stream = ExtResource("7_t53b8")
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_ek6tf"]
+[sub_resource type="CurveTexture" id="CurveTexture_8v4uw"]
 curve = SubResource("Curve_ta2fq")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2kym6"]
@@ -302,10 +299,10 @@ linear_accel_max = 48.0
 tangential_accel_min = -64.0
 tangential_accel_max = -32.0
 color = Color(2, 2, 2, 1)
-alpha_curve = SubResource("CurveTexture_ek6tf")
+alpha_curve = SubResource("CurveTexture_8v4uw")
 turbulence_noise_strength = 0.1
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g17b5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jqh4x"]
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
@@ -314,7 +311,7 @@ albedo_texture = ExtResource("9_2gvp3")
 use_particle_trails = true
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_8jfib"]
-material = SubResource("StandardMaterial3D_g17b5")
+material = SubResource("StandardMaterial3D_jqh4x")
 size = 0.2
 sections = 4
 section_segments = 4
@@ -323,7 +320,7 @@ section_segments = 4
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_q4jw3"]
+[sub_resource type="CurveTexture" id="CurveTexture_g35lg"]
 curve = SubResource("Curve_dnrx7")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_thant"]
@@ -339,10 +336,10 @@ linear_accel_max = 48.0
 tangential_accel_min = 32.0
 tangential_accel_max = 64.0
 color = Color(2, 2, 2, 1)
-alpha_curve = SubResource("CurveTexture_q4jw3")
+alpha_curve = SubResource("CurveTexture_g35lg")
 turbulence_noise_strength = 0.1
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qlnk3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2i0ie"]
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
@@ -351,7 +348,7 @@ albedo_texture = ExtResource("9_2gvp3")
 use_particle_trails = true
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_ofm2e"]
-material = SubResource("StandardMaterial3D_qlnk3")
+material = SubResource("StandardMaterial3D_2i0ie")
 size = 0.2
 sections = 4
 section_segments = 4
@@ -993,14 +990,6 @@ script = ExtResource("4_5k10i")
 [node name="Beam" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 6.5)
 
-[node name="Outer" type="MeshInstance3D" parent="Beam"]
-mesh = SubResource("BoxMesh_2dipe")
-surface_material_override/0 = ExtResource("4_0wbbn")
-
-[node name="Inner" type="MeshInstance3D" parent="Beam"]
-mesh = SubResource("BoxMesh_vyrvn")
-surface_material_override/0 = ExtResource("4_u3s02")
-
 [node name="Area3D" type="Area3D" parent="Beam"]
 collision_layer = 2
 collision_mask = 2
@@ -1106,7 +1095,7 @@ wait_time = 3.5
 one_shot = true
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_xweed")
+stream = ExtResource("12_ih6y8")
 autoplay = true
 
 [node name="Gate" type="AudioStreamPlayer3D" parent="."]
@@ -1179,7 +1168,7 @@ outline_modulate = Color(1, 0, 1, 1)
 text = "High Score:"
 font = ExtResource("138_nf4he")
 font_size = 200
-outline_size = 16
+outline_size = 18
 
 [node name="Control" type="Control" parent="2DStuff/AnimatedTitle"]
 layout_mode = 3
